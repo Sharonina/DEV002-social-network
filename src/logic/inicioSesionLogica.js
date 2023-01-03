@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { GoogleAuthProvider, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { auth } from '../firebase/configuracionFirebase.js';
 //import { provider } from './registroUsuarioLogica.js'
 
@@ -54,6 +54,7 @@ export const inicioSesionLogica = (contenedor) => {
             const credenciales = await signInWithEmailAndPassword(auth, correoInicio.value, contrasenaInicio.value);
             console.log(credenciales);
             window.location.href = '/'; 
+    
         } catch (error) {
             console.log(error);
             console.log(error.code);
@@ -95,6 +96,7 @@ export const inicioSesionLogica = (contenedor) => {
         const user = auth.currentUser;
         console.log(user)
         if (user) {
+            // falta tomar nombre de la cuenta Gmail y poner en displayname
             window.location.href = '/';
         } else {
           alert ("La cuenta no está registrada")

@@ -3,14 +3,14 @@ import { auth } from '../firebase/configuracionFirebase.js';
 
 export const homeLogica = (contenedor) => {
     // Cerrar sesion
-    /*const botonCerrarSesion = contenedor.querySelector('#-------------------');
+    const botonCerrarSesion = contenedor.querySelector('#-------------------');
     botonCerrarSesion.addEventListener('click', () => {
         signOut(auth).then(() => {
         // Sign-out successful.
         }).catch((error) => {
         // An error happened.
         });
-    });*/
+    });
 
     // Metodo onAuthStateChanged - Obtener el usuario que ha iniciado sesión actualmente
     onAuthStateChanged(auth, (user) => {
@@ -19,6 +19,7 @@ export const homeLogica = (contenedor) => {
             const uid = user.uid;
             console.log(uid);
             const displayName = user.displayName;
+            console.log(displayName);
             const username = user.username;
             console.log(username);
             const email = user.email;

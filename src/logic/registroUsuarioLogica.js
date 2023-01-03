@@ -201,6 +201,7 @@ export const registroUsuarioLogica = (contenedor) => {
             window.location.href = 'formulario-registro';
         } catch (error) {
             console.log(error);
+            // un usuario con cuenta creada en google no se duplica pero NO pasa por la validacion de usuario en uso
         } 
     });
   
