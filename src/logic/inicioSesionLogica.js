@@ -55,6 +55,7 @@ export const inicioSesionLogica = (contenedor) => {
             console.log(credenciales);
             window.location.href = '/'; 
         } catch (error) {
+            console.log(error);
             console.log(error.code);
             
             if (error?.code === 'auth/empty-email' || errors?.email?.code === 'auth/empty-email') {
