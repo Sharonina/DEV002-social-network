@@ -408,19 +408,18 @@ main #content .formularioMascota{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
 }
 
 main #content .formularioMascota .logo{
     width: 100%;
-    height: 20%;
+    height: 18%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 main #content .formularioMascota .logo img{
-    width: 70%;
+    width: 72%;
 }
 
 main #content .formularioMascota .fotoPerfil{
@@ -434,7 +433,7 @@ main #content .formularioMascota .fotoPerfil{
 main #content .formularioMascota .fotoPerfil figure{
     width: 8rem;
     height: 8rem;
-    border: .1rem solid var(--font-gris-claro);
+    border: .2rem solid var(--font-gris-claro);
     border-radius: 50%;
 }
 
@@ -446,26 +445,32 @@ main #content .formularioMascota .fotoPerfil figure img{
     border-radius: 50%;
 }
 
-main #content .formularioMascota .fotoPerfil button{
-    border: none;
+main #content .formularioMascota .fotoPerfil .addImageButton{
     background-color: var(--font-gris);
     color: var(--blanco);
     position: absolute;
-    right: 35%;
-    width: 1.5rem;
-    height: 1.5rem;
+    right: 34%;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
-    font-size: 3vw;
+    font-size: 6vw;
     cursor: pointer;
-    top: 33%;
+    top: 28%;
+    text-align: center;
 }
 
 main #content .formularioMascota form{
-    height: 50vh;
+    height: 58vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+
+main #content .formularioMascota form p{
+    font-size: 2.5vw;
+    color: var(--rosa-oscuro);
+    margin-top: .3rem;
 }
 
 main #content .formularioMascota form div{
@@ -496,7 +501,7 @@ main #content .formularioMascota form .formP2{
 }
 
 main #content .formularioMascota form .formP2 .formEdad{
-    width: 20%;
+    width: 23%;
 }
 
 main #content .formularioMascota form .formP2 .formDogSex{

@@ -1,4 +1,4 @@
-import { auth, sendPasswordResetEmail } from '../firebase/configuracionFirebase.js';
+import { auth, /* sendPasswordResetEmail */ } from '../firebase/configuracionFirebase.js';
 
 export const recuperarContraseñaLogica = (contenedor) => {
     const recuperarContrasenaBtn = contenedor.querySelector('#recuperarContrasenaBtn');
