@@ -795,9 +795,11 @@ main #content .header .headerSuperior .menuContainer {
 }
 main #content .header .headerSuperior .menuContainer .menu {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center
+    align-items: center;
+    
 }
 
 main #content .header .headerSuperior .menuContainer .menu .opciones {
@@ -806,8 +808,8 @@ main #content .header .headerSuperior .menuContainer .menu .opciones {
     display: flex;
     align-items: stretch;
     flex-direction: column;
-    margin: 2%;
-    padding: 2%;
+    
+    
 }
 
 main #content .header .headerSuperior .menuContainer .menu .opciones input {
@@ -816,11 +818,12 @@ main #content .header .headerSuperior .menuContainer .menu .opciones input {
     background: none;
     border: 0;
     font-size: 3vw;
+    padding: 3%;
 }
 
 main #content .header .headerSuperior .menuContainer .menu .opciones input:hover {
-background-color: var(--jade);
-    color: var(--blanco);
+    background-color: var(--jade);
+    color: var(--blanco);   
 }
 
 /*fin de menu*/

@@ -5,13 +5,14 @@ export const headerLogica = (contenedor) => {
     // Desplegar menú de opciones
 
     const imagenPerfil = contenedor.querySelector('#menuOpciones');
-    const menu = contenedor.querySelector('#menu');
+    const menu = contenedor.querySelector('.menuContainer');
 
     imagenPerfil.addEventListener('click', () => {
         menu.classList.toggle('show');
     });
 
     // Cerrar sesion
+
     const botonCerrarSesion = contenedor.querySelector('#cerrarSesion');
     console.log(botonCerrarSesion);
     botonCerrarSesion.addEventListener('click', async () => {
