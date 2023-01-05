@@ -792,14 +792,14 @@ main #content .header .headerSuperior .menuContainer {
     height: 10%;
     right: 4%;
     top: 12%;
+    z-index: 100; /*poner elemento al frente*/
 }
 main #content .header .headerSuperior .menuContainer .menu {
     display: flex;
     width: 100%;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-    
+    align-items: center;    
 }
 
 main #content .header .headerSuperior .menuContainer .menu .opciones {
@@ -860,6 +860,7 @@ main #content .header .headerInferior .searchContainer .searcherIcon{
     width: 4%;
     position: absolute;
     left: 74%;
+    z-index: 1; /*poner elemento al frente*/
 }
 
 main #content .header .headerInferior .matchBtnContainer{
