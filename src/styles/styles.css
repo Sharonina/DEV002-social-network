@@ -48,7 +48,7 @@ main #content{
 }
 
 .show {
-    display: flex;
+    display: flex !important;
 }
 
 /* Pantalla de carga */
@@ -782,7 +782,46 @@ main #content .header .headerSuperior .profileImage{
 }
 
 /*menu*/
+main #content .header .headerSuperior .menuContainer {
+    display: none;
+    position: absolute;
+    border-radius: .5rem;
+    box-shadow: 0 .4rem 1rem var(--font-gris-claro);
+    background-color: var(--blanco);
+    width: 28%;
+    height: 10%;
+    right: 4%;
+    top: 12%;
+}
+main #content .header .headerSuperior .menuContainer .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center
+}
 
+main #content .header .headerSuperior .menuContainer .menu .opciones {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    margin: 2%;
+    padding: 2%;
+}
+
+main #content .header .headerSuperior .menuContainer .menu .opciones input {
+    color: var(--font-gris);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    font-size: 3vw;
+}
+
+main #content .header .headerSuperior .menuContainer .menu .opciones input:hover {
+background-color: var(--jade);
+    color: var(--blanco);
+}
 
 /*fin de menu*/
 main #content .header .headerInferior{
