@@ -781,83 +781,8 @@ main #content .header .headerSuperior .profileImage{
     border: .15rem solid var(--jade);
 }
 
-/* main #content .header .headerSuperior .profileImage img{
-    width: 100%;
-    height: 100%;
-} */
-
-main #content .header .headerSuperior .profileImage:focus + .dropdownMenu{
-    display: block;
-}
-
-main #content .header .headerSuperior .dropdownMenu{
-    position: absolute;
-    border-radius: .5rem;
-    box-shadow: 0 .4rem 1rem var(--font-gris-claro);
-    background-color: var(--blanco);
-    width: 30%;
-    height: 10%;
-    right: 5%;
-    top: 4%;
-    display: none;
-}
-
-main #content .header .headerSuperior .dropdownMenu .options{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-
-main #content .header .headerSuperior .dropdownMenu .options input{
-    color: var(--font-gris);
-    text-decoration: none;
-    background: none;
-    width: 100%;
-    height: 27%;
-    border: none;
-    cursor: pointer;
-    font-size: 3vw;
-}
-
-main #content .header .headerSuperior .dropdownMenu .options input:hover{
-    background-color: var(--jade);
-    color: var(--blanco);
-}
 /*menu*/
-main #content .header .headerSuperior .menu{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    border-radius: 0.5rem;
-    box-shadow: 0 0.4rem 1rem var(--font-gris-claro);
-    background-color: var(--blanco);
-    width: 30%;
-    height: 10%;
-    right: 5%;
-    top: 4%;
-    
-}
 
-main #content .header .headerSuperior .menu ul li input{
-    color: var(--font-gris);
-    text-decoration: none;
-    background: none;
-    width: 100%;
-    height: 27%;
-    border: none;
-    cursor: pointer;
-    font-size: 3vw;
-}
-main #content .header .headerSuperior .menu ul li input:hover{
-    background-color: var(--jade);
-    color: var(--blanco);
-}
 
 /*fin de menu*/
 main #content .header .headerInferior{
