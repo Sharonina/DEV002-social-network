@@ -4,12 +4,12 @@ const Header = () => {
             <div class="headerSuperior">
                 <input class='logoButton' type='image' title='logo' src='../assets/tindog_logo_r.png'/>
                 <button class='profileImage' id="menuOpciones">Foto</button>
-                <div class="menu" >
-                        <ul id="menu">
-                            <li><input type='submit' value='Mi perfil' /></li>
-                            <li><input type='submit' value='Editar perfil' /></li>
-                            <li><input type='submit' id="cerrarSesion" value='Cerrar Sesión'/></li>
-                        </ul>
+                <div class="menuContainer">
+                    <ul class="menu" id="menuLista">
+                        <li class="opciones"> <input type="submit" value="Mi perfil"/> </li>
+                        <li class="opciones"> <input type="submit" value="Editar perfil"/> </li>
+                        <li class="opciones"> <input type="submit" id="cerrarSesion" value="Cerrar Sesión"/></li>
+                    </ul>
                 </div>
             </div>
             <div class="headerInferior">
