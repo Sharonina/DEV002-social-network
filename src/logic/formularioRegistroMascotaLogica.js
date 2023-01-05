@@ -14,6 +14,10 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     const raza = contenedor.querySelector('#dogBreed');
     const tallaRadios = document.getElementsByName('dogSize');
     const sexoRadios = document.getElementsByName('dogSex');
+    const sexMacho = document.getElementsByName('#macho');
+    const sexHembra = document.getElementsByName('#hembra');
+
+    //traer los input de los radio  1 por cada uno, validar si el input esta checked para enviar ´el valor correspondiente´
     const mensajeErrorNombre = contenedor.querySelector('#mensajeErrorNombre');
     const mensajeErrorUsuario = contenedor.querySelector('#mensajeErrorUsuario');
     const mensajeErrorEdad = contenedor.querySelector('#mensajeErrorEdad');
@@ -26,6 +30,13 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     // usuario.addEventListener("keyup", () => {
     // console.log(usuario.value)
     // });
+    const eleccionSexo = () => {
+        if (sexMacho.checked) {
+            return 'Macho'
+        }else if (sexHembra.checked) {
+            return 'Hembra'
+        }
+    }
 
     function UserException(message, code) {
         this.message = message;
@@ -121,6 +132,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
     saveUserData.addEventListener('click', async () => {
         const errors = validateFields();
+        console.log(tallaRadios.value)
         try {
             if (Object.keys(errors).length > 0) {
                 throw new Error('hay errores');
@@ -141,6 +153,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 }
                 else if (!usuarioEncontrado) {
                     console.log("Usuario no encontrado")
+                    console.log(usuarios)
                     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
                     mensajeErrorUsuario.classList.add('hide');
                 }
@@ -163,6 +176,8 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 location: ubicacion.value,
                 breed: raza.value,
                 pictureUrl: urlContainer[0],
+                sex: eleccionSexo(),
+                /* size: tallaRadios.value, */
             });
 
             //PARA SOBREESCRIBIR EN UN DOC''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
