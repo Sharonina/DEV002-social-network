@@ -1,10 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
-
-import { createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { auth, coleccionUsuarios2 } from '../firebase/configuracionFirebase.js';
+import { auth, coleccionUsuarios2, createUser, getCurrentUser } from '../firebase/configuracionFirebase.js';
 import { addDoc, getDocs, doc, setDoc, collection, getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { getCurrentUser } from '../firebase/configuracionFirebase.js';
 
 export const registroUsuarioLogica = (contenedor) => {
     const nombre = contenedor.querySelector('#nombreUsuario');
@@ -83,8 +80,8 @@ export const registroUsuarioLogica = (contenedor) => {
             if (Object.keys(errors).length > 0) {
                 throw new Error('hay errores');
             }
-
-            const credenciales = await createUserWithEmailAndPassword(auth, correoUsuario.value, contrasenaUsuario.value);
+            //const credenciales = await createUserWithEmailAndPassword(auth, correoUsuario.value, contrasenaUsuario.value);
+            const credenciales = await createUser(correoUsuario.value, contrasenaUsuario.value);
             console.log(credenciales);
 
             const usuarios = getCurrentUser();
@@ -159,6 +156,14 @@ export const registroUsuarioLogica = (contenedor) => {
             const credentials = await signInWithPopup(auth, provider);
             console.log(credentials);
             window.location.href = 'formulario-registro';
+            /*
+                user.providerData.forEach((profile) => {
+                    console.log("Sign-in provider: " + profile.providerId);
+                    console.log("  Provider-specific UID: " + profile.uid);
+                    console.log("  Name: " + profile.displayName);
+                    console.log("  Email: " + profile.email);
+                    console.log("  Photo URL: " + profile.photoURL);
+                })*/
         } catch (error) {
             console.log(error);
         }
