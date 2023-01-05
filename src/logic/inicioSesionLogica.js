@@ -1,6 +1,5 @@
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, getAdditionalUserInfo, deleteUser } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { auth, normalSign, googleSign } from '../firebase/configuracionFirebase.js';
-//import { provider } from './registroUsuarioLogica.js'
 
 export const inicioSesionLogica = (contenedor) => {
     const correoInicio = contenedor.querySelector('#correoUsuarioInicio');

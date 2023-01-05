@@ -4,13 +4,20 @@ import { auth, coleccionNombresUsuario } from '../firebase/configuracionFirebase
 import { addDoc, getDocs, doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
 export const formularioRegistroMascotaLogica = (contenedor) => {
+    const profileImage = contenedor.querySelector('#profileImg');
+    const uploadProfileImage = contenedor.querySelector('#addImageButton')
+    const fileImage = contenedor.querySelector('#file')
     const nombre = contenedor.querySelector('#nombreMascota');
     const usuario = contenedor.querySelector('#idUsuario');
     const edad = contenedor.querySelector('#edadMascota');
     const ubicacion = contenedor.querySelector('#dogLocation');//En Firestore existe la opcion de colocar un GeoPoint
     const raza = contenedor.querySelector('#dogBreed');
-    const tallaRadios = document.getElementsByName("dogSize");
-    const sexoRadios = document.getElementsByName("dogSex");
+    const tallaRadios = document.getElementsByName('dogSize');
+    const sexoRadios = document.getElementsByName('dogSex');
+    const sexMacho = document.getElementsByName('#macho');
+    const sexHembra = document.getElementsByName('#hembra');
+
+    //traer los input de los radio  1 por cada uno, validar si el input esta checked para enviar ´el valor correspondiente´
     const mensajeErrorNombre = contenedor.querySelector('#mensajeErrorNombre');
     const mensajeErrorUsuario = contenedor.querySelector('#mensajeErrorUsuario');
     const mensajeErrorEdad = contenedor.querySelector('#mensajeErrorEdad');
@@ -23,6 +30,13 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     // usuario.addEventListener("keyup", () => {
     // console.log(usuario.value)
     // });
+    const eleccionSexo = () => {
+        if (sexMacho.checked) {
+            return 'Macho'
+        }else if (sexHembra.checked) {
+            return 'Hembra'
+        }
+    }
 
     function UserException(message, code) {
         this.message = message;
@@ -99,14 +113,30 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         return errors;
     };
 
+    const urlContainer = []
+
+    if(fileImage){
+        const handleChange = () => {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                let urlImage = e.target.result
+                profileImage.src = urlImage;
+                urlContainer.push(urlImage)
+                console.log(urlContainer);
+            }
+            reader.readAsDataURL(fileImage.files[0]);
+        }
+
+        fileImage.addEventListener('change', handleChange);
+    }
 
     saveUserData.addEventListener('click', async () => {
         const errors = validateFields();
+        console.log(tallaRadios.value)
         try {
             if (Object.keys(errors).length > 0) {
                 throw new Error('hay errores');
             }
-            
             getDocs(coleccionNombresUsuario)
             // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
             .then((snapshot) => {
@@ -123,6 +153,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 }
                 else if (!usuarioEncontrado) {
                     console.log("Usuario no encontrado")
+                    console.log(usuarios)
                     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
                     mensajeErrorUsuario.classList.add('hide');
                 }
@@ -144,6 +175,9 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 age: edad.value,
                 location: ubicacion.value,
                 breed: raza.value,
+                pictureUrl: urlContainer[0],
+                sex: eleccionSexo(),
+                /* size: tallaRadios.value, */
             });
 
             //PARA SOBREESCRIBIR EN UN DOC''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
