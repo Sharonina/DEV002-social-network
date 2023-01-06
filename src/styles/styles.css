@@ -48,7 +48,7 @@ main #content{
 }
 
 .show {
-    display: flex;
+    display: flex !important;
 }
 
 /* Pantalla de carga */
@@ -781,82 +781,49 @@ main #content .header .headerSuperior .profileImage{
     border: .15rem solid var(--jade);
 }
 
-/* main #content .header .headerSuperior .profileImage img{
-    width: 100%;
-    height: 100%;
-} */
-
-main #content .header .headerSuperior .profileImage:focus + .dropdownMenu{
-    display: block;
-}
-
-main #content .header .headerSuperior .dropdownMenu{
+/*menu*/
+main #content .header .headerSuperior .menuContainer {
+    display: none;
     position: absolute;
     border-radius: .5rem;
     box-shadow: 0 .4rem 1rem var(--font-gris-claro);
     background-color: var(--blanco);
-    width: 30%;
+    width: 28%;
     height: 10%;
-    right: 5%;
-    top: 4%;
-    display: none;
+    right: 4%;
+    top: 12%;
+    z-index: 100; /*poner elemento al frente*/
 }
-
-main #content .header .headerSuperior .dropdownMenu .options{
-    width: 100%;
-    height: 100%;
+main #content .header .headerSuperior .menuContainer .menu {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    align-items: center;
     justify-content: space-evenly;
+    align-items: center;    
 }
 
-
-main #content .header .headerSuperior .dropdownMenu .options input{
-    color: var(--font-gris);
-    text-decoration: none;
-    background: none;
+main #content .header .headerSuperior .menuContainer .menu .opciones {
+    list-style-type: none;
     width: 100%;
-    height: 27%;
-    border: none;
-    cursor: pointer;
-    font-size: 3vw;
-}
-
-main #content .header .headerSuperior .dropdownMenu .options input:hover{
-    background-color: var(--jade);
-    color: var(--blanco);
-}
-/*menu*/
-main #content .header .headerSuperior .menu{
-    position: absolute;
     display: flex;
+    align-items: stretch;
     flex-direction: column;
-    align-items: center;
     
-    border-radius: 0.5rem;
-    box-shadow: 0 0.4rem 1rem var(--font-gris-claro);
-    background-color: var(--blanco);
-    width: 30%;
-    height: 10%;
-    right: 5%;
-    top: 4%;
     
 }
 
-main #content .header .headerSuperior .menu ul li input{
+main #content .header .headerSuperior .menuContainer .menu .opciones input {
     color: var(--font-gris);
     text-decoration: none;
     background: none;
-    width: 100%;
-    height: 27%;
-    border: none;
-    cursor: pointer;
+    border: 0;
     font-size: 3vw;
+    padding: 3%;
 }
-main #content .header .headerSuperior .menu ul li input:hover{
+
+main #content .header .headerSuperior .menuContainer .menu .opciones input:hover {
     background-color: var(--jade);
-    color: var(--blanco);
+    color: var(--blanco);   
 }
 
 /*fin de menu*/
@@ -893,6 +860,7 @@ main #content .header .headerInferior .searchContainer .searcherIcon{
     width: 4%;
     position: absolute;
     left: 74%;
+    z-index: 1; /*poner elemento al frente*/
 }
 
 main #content .header .headerInferior .matchBtnContainer{
