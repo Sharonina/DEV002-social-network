@@ -24,7 +24,7 @@ export const auth = getAuth(app);
 export const database = getFirestore();
 const provider = new GoogleAuthProvider(app);
 // export const coleccionUsuarios = collection(database, 'users');
-export const coleccionNombresUsuario = collection(database, 'usernames');
+// export const coleccionNombresUsuario = collection(database, 'usernames');
 export const coleccionUsuarios2 = collection(database, 'usuarios');
 
 // Propuesta de Pris -> Se lo podria exportar las funciones desde aqui
@@ -52,11 +52,12 @@ export const getCurrentUser = () => {
             currentUser.uid = user.uid;
             currentUser.displayName = user.displayName;
             // currentUser.iddoc = user.id;
-        } else {
-            // User is signed out
-            // ...
         }
-        console.log(currentUser);
+        //  else {
+        //     // User is signed out
+        //     // ...
+        // }
+        // console.log(currentUser);
     });
 };
 

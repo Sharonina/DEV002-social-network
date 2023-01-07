@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
-import { auth, coleccionUsuarios2, createUser, getCurrentUser } from '../firebase/configuracionFirebase.js';
+import { auth, coleccionUsuarios2, createUser, getCurrentUser, guardarDisplayName } from '../firebase/configuracionFirebase.js';
 import { addDoc, getDocs, doc, setDoc, collection, getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+
+export const valorUid = []
 
 export const registroUsuarioLogica = (contenedor) => {
     const nombre = contenedor.querySelector('#nombreUsuario');
@@ -84,16 +86,22 @@ export const registroUsuarioLogica = (contenedor) => {
             const credenciales = await createUser(correoUsuario.value, contrasenaUsuario.value);
             console.log(credenciales);
 
+            const nombreDueno = nombre.value;
+            const guardado = await guardarDisplayName(nombreDueno);
+
             const usuarios = getCurrentUser();
 
-            const numeroFinal = (number[0]);
-            const suma = numeroFinal + 1;
-            const cadena = suma.toString();
-            window.localStorage.setItem('cadena', cadena);
 
-            const usuariosDocumento = await setDoc(doc(getFirestore(), 'usuarios', cadena), {
+            // const numeroFinal = (number[0]);
+            // const suma = numeroFinal + 1;
+            // const cadena = suma.toString();
+            // window.localStorage.setItem('cadena', cadena);
+
+            valorUid.push(auth.currentUser.uid);
+
+            const usuariosDocumento = await setDoc(doc(getFirestore(), 'usuarios', auth.currentUser.uid), {
                 email: correoUsuario.value,
-                name: nombre.value,
+                nameOwner: nombreDueno,
                 uid: auth.currentUser.uid,
             });
 
