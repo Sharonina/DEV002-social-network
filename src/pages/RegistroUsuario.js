@@ -16,7 +16,7 @@ const RegistroUsuario = () => {
             <!--<div>
                 <label>Usuario</label>
                 <input id="idUsuario" type="text" placeholder="@elsully">
-                <p id='mensajeErrorUsuario' class='hide'>Ingresa tu usuario</p>
+                <p id='mensajeErrorUsuario' class='hide'>Ingresa el nombre de usuario</p>
             </div>-->
             <div>
                 <label>Correo electrónico</label>

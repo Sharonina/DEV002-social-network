@@ -8,6 +8,7 @@ export const homeLogica = (contenedor) => {
             console.log(user);
             const uid = user.uid;
             console.log(uid);
+            console.log('holaaaa')
             const displayName = user.displayName;
             console.log(displayName);
             const username = user.username;

@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
 import { createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { auth, coleccionNombresUsuario } from '../firebase/configuracionFirebase.js';
+import { auth, coleccionUsuarios2 } from '../firebase/configuracionFirebase.js';
 import { addDoc, getDocs, doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { currentUser } from '../firebase/configuracionFirebase.js';
+import { valorUid } from './registroUsuarioLogica.js';
 
 export const formularioRegistroMascotaLogica = (contenedor) => {
     const profileImage = contenedor.querySelector('#profileImg');
@@ -63,6 +65,45 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         }
 
         // Username validation
+
+        getDocs(coleccionUsuarios2)
+        // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
+        .then((snapshot) => {
+            const listaUsuarios = [];
+            snapshot.docs.forEach((documento) => {
+                listaUsuarios.push({ username: documento.get("username") });
+                //listaUsuarios.push({ ...documento.data() });
+            });
+            console.log(listaUsuarios)
+            const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
+            // console.log(usuarioEncontrado)
+            if (usuarioEncontrado) {
+                console.log("Usuario invalido")
+                mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
+                mensajeErrorUsuario.classList.remove('hide');// show
+            } else if (!usuarioEncontrado && !usuario.value){
+                mensajeErrorUsuario.innerHTML = 'Ingresa el nombre de usuario';
+                mensajeErrorUsuario.classList.remove('hide'); // show
+            } else {
+                mensajeErrorUsuario.innerHTML = 'Ingresa el nombre de usuario';
+                mensajeErrorUsuario.classList.add('hide'); // hide
+            }
+            
+            // else {
+            //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
+            //     mensajeErrorUsuario.classList.add('hide'); // hide
+            // }
+            // else if (!usuarioEncontrado && !usuario.value) {
+            //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
+            //     mensajeErrorUsuario.classList.remove('hide');// hide
+            // }
+            // else if (!usuarioEncontrado) {
+            //     console.log("Usuario valido")
+            //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
+            //     mensajeErrorUsuario.classList.add('hide');
+            // }
+        });
+        
         if (!usuario.value) {
             errors.username = new UserException('Ingresa el nombre de usuario', 'auth/empty-username');
         }
@@ -128,26 +169,28 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             if (Object.keys(errors).length > 0) {
                 throw new Error('hay errores');
             }
-            getDocs(coleccionNombresUsuario)
-            // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
-            .then((snapshot) => {
-                const listaUsuarios = [];
-                snapshot.docs.forEach((documento) => {
-                    listaUsuarios.push({ ...documento.data() });
-                });
-                const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
-                // console.log(usuarioEncontrado)
-                if (usuarioEncontrado) {
-                    console.log("Usuario encontrado")
-                    mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
-                    mensajeErrorUsuario.classList.remove('hide');
-                }
-                else if (!usuarioEncontrado) {
-                    console.log("Usuario no encontrado")
-                    mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
-                    mensajeErrorUsuario.classList.add('hide');
-                }
-            });
+
+
+            // getDocs(coleccionNombresUsuario)
+            // // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
+            // .then((snapshot) => {
+            //     const listaUsuarios = [];
+            //     snapshot.docs.forEach((documento) => {
+            //         listaUsuarios.push({ ...documento.data() });
+            //     });
+            //     const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
+            //     // console.log(usuarioEncontrado)
+            //     if (usuarioEncontrado) {
+            //         console.log("Usuario invalido")
+            //         mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
+            //         mensajeErrorUsuario.classList.remove('hide');// show
+            //     } 
+            //     // else if (!usuarioEncontrado) {
+            //     //     console.log("Usuario valido")
+            //     //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
+            //     //     mensajeErrorUsuario.classList.add('hide');
+            //     // }
+            // });
             //---------------------------------------------------------------------------------------
             // const guardarDisplayName = (valorUsuario) => updateProfile(auth.currentUser, {
             //     displayName: valorUsuario,
@@ -155,11 +198,20 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
             // const displayUsuario = guardarDisplayName(usuario.value)
             //---------------------------------------------------------------------------------------
-            const cadena = window.localStorage.getItem('cadena');
-            console.log('hola')
+            // const cadena = window.localStorage.getItem('cadena');
+            // console.log('hola')
+
+            // const sex = document.querySelector('input[name="dogSex"]:checked').value
+            // console.log(sex)
+            // const tamano = document.querySelector('input[name="dogSize"]:checked').value
+            // console.log(tamano)
+            // const esterilizado = document.getElementById('esterilizacion').checked
+            // console.log(esterilizado)
+            // const vacunas = document.getElementById('vacunas').checked
+            // console.log(vacunas)
 
             //PARA ACTUALIZAR DOC ---------------------------------------------------------------------
-            const documentoReferencia = doc(getFirestore(), "usuarios", cadena);
+            const documentoReferencia = doc(getFirestore(), "usuarios", auth.currentUser.uid);
             const usuarios = await updateDoc(documentoReferencia, {
                 petName: nombre.value,
                 username: usuario.value,
@@ -178,9 +230,14 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             //     fieldPrueba: "lalala"
             //   });
 
-            const usernames = await addDoc(coleccionNombresUsuario, {
-                username: usuario.value,
-            })
+            // const documentoUsernames = doc(getFirestore(), "usernames", auth.currentUser.uid);
+            // const usernames = await updateDoc(documentoUsernames, {
+            //     username: usuario.value,
+            // });
+
+            // const usernames = await addDoc(coleccionNombresUsuario, {
+            //     username: usuario.value,
+            // })
 
             window.location.href = '/';
             // window.location.href = 'formulario-registro';

@@ -96,36 +96,14 @@ export const inicioSesionLogica = (contenedor) => {
         googleSign(provider)
             .then((result) => {
                 const credenciales = getAdditionalUserInfo(result)
-                // console.log(result);
-                // console.log(credenciales)
-                // console.log(credenciales.isNewUser)
                 if (credenciales.isNewUser) {
-                    // alert('eres nuevo usuario, regístrate')
-                    const user = auth.currentUser;
-                    deleteUser(user).then(() => {
-                    window.location.href = '/registro-usuario';
-                    }).catch((error) => {
-                    });
+                    window.location.href = '/formulario-registro';
                 } else {
                     window.location.href = '/';
-                    // alert('usuario regitrado, te irás a Home')
                 }
             })
-
-        // return contenedor;
-        // const user = auth.currentUser;
-        // console.log(user)
-        // if (user) {
-        //     window.location.href = '/';
-        // } else {
-        //   alert ("usuario null")
-        // }
-
-        // googleSign()
-        //     .then(() => {
-        //         window.location.href = '/';
-        //     })
-
-        // return contenedor;
     })
 };
+
+//Llamar a la coleccion... darle un false a menos que la llene
+//True si completó el formulario y lo mande a Home 
