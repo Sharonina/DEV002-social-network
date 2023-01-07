@@ -9,8 +9,8 @@ const InicioSesion = () => {
         </div>
         <div class="camposInicioSesion">
             <div>
-                <label>Usuario | Correo </label>
-                <input id="correoUsuarioInicio" type="text" placeholder="@pulguitas18">
+                <label>Correo</label>
+                <input id="correoUsuarioInicio" type="text" placeholder="lucky@hotmail.com">
                 <p id='mensajeErrorCorreo2' class='hide'>Ingresa un correo</p>
             </div>
             <div>
