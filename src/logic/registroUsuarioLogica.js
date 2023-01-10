@@ -162,7 +162,14 @@ export const registroUsuarioLogica = (contenedor) => {
 
         try {
             const credentials = await signInWithPopup(auth, provider);
-            console.log(credentials);
+            console.log(credentials); 
+
+            const usuariosDocumento = await setDoc(doc(getFirestore(), 'usuarios', auth.currentUser.uid), {
+                email: auth.currentUser.email,
+                nameOwner: auth.currentUser.displayName,
+                uid: auth.currentUser.uid,
+            });
+
             window.location.href = 'formulario-registro';
             /*
                 user.providerData.forEach((profile) => {

@@ -1,5 +1,7 @@
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, getAdditionalUserInfo, deleteUser } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { auth, normalSign, googleSign } from '../firebase/configuracionFirebase.js';
+import { doc, setDoc, getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+
 
 export const inicioSesionLogica = (contenedor) => {
     const correoInicio = contenedor.querySelector('#correoUsuarioInicio');
@@ -91,17 +93,21 @@ export const inicioSesionLogica = (contenedor) => {
 
     botonInicioGoogle.addEventListener('click', async () => {
 
-        var provider = new GoogleAuthProvider();
+        const provider = new GoogleAuthProvider();
+        const result = await signInWithPopup(auth, provider);
+        await setDoc(doc(getFirestore(), 'usuarios', auth.currentUser.uid), {
+            email: auth.currentUser.email,
+            nameOwner: auth.currentUser.displayName,
+            uid: auth.currentUser.uid,
+        })
+        const credenciales = getAdditionalUserInfo(result);
+        if (credenciales.isNewUser) {
+            window.location.href = '/formulario-registro';
+        } else {
+            window.location.href = '/';
+        }
 
-        googleSign(provider)
-            .then((result) => {
-                const credenciales = getAdditionalUserInfo(result)
-                if (credenciales.isNewUser) {
-                    window.location.href = '/formulario-registro';
-                } else {
-                    window.location.href = '/';
-                }
-            })
+
     })
 };
 
