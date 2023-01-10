@@ -39,6 +39,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     }
 
     const validateFields = () => {
+        console.log(validateFields);
         mensajeErrorNombre.classList.add('hide');
         mensajeErrorUsuario.classList.add('hide');
         mensajeErrorEdad.classList.add('hide');
@@ -182,6 +183,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 let urlImage = e.target.result;
                 profileImage.src = urlImage;
                 urlContainer.push(urlImage)
+                console.log(urlContainer);
             }
             reader.readAsDataURL(fileImage.files[0]);
         }
@@ -189,8 +191,8 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         fileImage.addEventListener('change', handleChange);
     }
 
-    const subirImagenPerfil = () => {
-        uploadString(storageRef, urlContainer[0], 'data_url').then((snapshot) => {
+    const subirImagenPerfil = async() => {
+        await uploadString(storageRef, urlContainer[0], 'data_url').then((snapshot) => {
             console.log('Uploaded a data_url string!');
         });
     }
@@ -203,7 +205,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 throw new Error('hay errores');
             }
 
-            subirImagenPerfil();
+            await subirImagenPerfil();
             // getDocs(coleccionNombresUsuario)
             // // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
             // .then((snapshot) => {
