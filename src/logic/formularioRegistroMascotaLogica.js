@@ -73,7 +73,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         // Username validation
         if (!usuario.value) {
             errors.username = new UserException('Ingresa un nombre de usuario', 'auth/empty-username');
-        } 
+        }
 
         // Age validation
         if (!edad.value) {
@@ -109,7 +109,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         return errors;
     };
 
-// 
+//
     const validateUser = async () => {
         let usernameValue = usuario.value;
         const usernamesRef = collection(database, "usernames");
@@ -121,11 +121,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             const resultado = doc.data();
             //{username: 'manzanita'}
             if(Object.keys(resultado).length > 0){
-                //console.log("usuario registrado")
-                //return  'auth/invalid-username';
-                mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
-                mensajeErrorUsuario.classList.remove('hide');
-
+                throw new Error('auth/invalid-username')
             }
         });
     }
@@ -141,7 +137,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             window.localStorage.removeItem('uid')
             window.localStorage.setItem('uid', uid)
             /* uidArray.push(uid) */
-        } 
+        }
 
     });
 
@@ -168,7 +164,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         await uploadString(storageRef, urlContainer[0], 'data_url').then((snapshot) => {
             console.log('Uploaded a data_url string!');
         });
-    } 
+    }
     //console.log(subirImagenPerfil());
 
     saveUserData.addEventListener('click', async () => {
@@ -181,7 +177,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
             await subirImagenPerfil();
             await validateUser();
-          
+
 
             //PARA ACTUALIZAR DOC ---------------------------------------------------------------------
             const documentoReferencia = doc(getFirestore(), "usuarios", auth.currentUser.uid);
@@ -217,7 +213,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             // window.location.href = 'formulario-registro';
 
         } catch (error) {
-            console.log(error);
+            console.log(error, 'error');
             if (error?.code === 'auth/empty-name' || errors?.name?.code === 'auth/empty-name') {
                 mensajeErrorNombre.innerHTML = 'Ingresa el nombre de tu mascota';
                 mensajeErrorNombre.classList.remove('hide');
@@ -228,7 +224,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             if (errors?.username?.code === 'auth/empty-username') {
                 mensajeErrorUsuario.innerHTML = 'Ingresa el nombre de usuario';
                 mensajeErrorUsuario.classList.remove('hide');// show
-            } else if (errors?.username?.code === 'auth/invalid-username') {
+            } else if (errors?.username?.code === 'auth/invalid-username' || error.message === 'auth/invalid-username') {
                 //'Usuario inválido, ya está registrado'
                 mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
                 mensajeErrorUsuario.classList.remove('hide');// show
