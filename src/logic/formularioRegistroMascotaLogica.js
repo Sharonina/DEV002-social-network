@@ -33,7 +33,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     const mensajeErrorTalla = contenedor.querySelector('#mensajeErrorTalla');
     const saveUserData = contenedor.querySelector('#guardarDatos');
 
-    usuario.addEventListener("keyup", () => {
+    /* usuario.addEventListener("keyup", () => {
         getDocs(coleccionNombresUsuario)
             // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
             .then((snapshot) => {
@@ -51,7 +51,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                     mensajeErrorUsuario.classList.add('hide');
                 }
             });
-    });
+    }); */
 
     // getDocs(coleccionNombresUsuario)
     //     // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
@@ -169,7 +169,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     // });
 
     const urlContainer = [];
-    
+
     if(fileImage){
         const handleChange = () => {
             let reader = new FileReader();
@@ -249,8 +249,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 mensajeErrorUsuario.innerHTML = 'Ingresa el nombre de usuario';
                 mensajeErrorUsuario.classList.remove('hide');// show
             } else if (errors?.username?.code === 'auth/invalid-username' || error.message === 'auth/invalid-username') {
-                //'Usuario inválido, ya está registrado'
-
+                //'Usuario inválido, ya está registrado
                 mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
                 mensajeErrorUsuario.classList.remove('hide');
             } else {
