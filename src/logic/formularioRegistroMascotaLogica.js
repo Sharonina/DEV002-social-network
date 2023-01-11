@@ -9,7 +9,6 @@ import { ref, uploadString } from 'https://www.gstatic.com/firebasejs/9.15.0/fir
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { collection, query, where } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
-
 export const formularioRegistroMascotaLogica = (contenedor) => {
     const profileImage = contenedor.querySelector('#profileImg');
     const uploadProfileImage = contenedor.querySelector('#addImageButton')
@@ -17,15 +16,12 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     const nombre = contenedor.querySelector('#nombreMascota');
     const usuario = contenedor.querySelector('#idUsuario');
     const edad = contenedor.querySelector('#edadMascota');
-    const ubicacion = contenedor.querySelector('#dogLocation');//En Firestore existe la opcion de colocar un GeoPoint
+    const ubicacion = contenedor.querySelector('#dogLocation');
     const raza = contenedor.querySelector('#dogBreed');
     const tallaRadios = document.getElementsByName('dogSize');
     const sexoRadios = document.getElementsByName('dogSex');
-
-    //traer los input de los radio  1 por cada uno, validar si el input esta checked para enviar ´el valor correspondiente´
     const mensajeErrorNombre = contenedor.querySelector('#mensajeErrorNombre');
     const mensajeErrorUsuario = contenedor.querySelector('#mensajeErrorUsuario');
-    // console.log(mensajeErrorUsuario.innerHTML)
     const mensajeErrorEdad = contenedor.querySelector('#mensajeErrorEdad');
     const mensajeErrorSexo = contenedor.querySelector('#mensajeErrorSexo');
     const mensajeErrorUbicacion = contenedor.querySelector('#mensajeErrorUbicacion');
@@ -33,43 +29,10 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     const mensajeErrorTalla = contenedor.querySelector('#mensajeErrorTalla');
     const saveUserData = contenedor.querySelector('#guardarDatos');
 
-    /* usuario.addEventListener("keyup", () => {
-        getDocs(coleccionNombresUsuario)
-            // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
-            .then((snapshot) => {
-                const listaUsuarios = [];
-                snapshot.docs.forEach((documento) => {
-                    listaUsuarios.push({ ...documento.data() });
-                    console.log(listaUsuarios);
-                });
-                const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
-                if (usuarioEncontrado) {
-                    mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
-                    mensajeErrorUsuario.classList.remove('hide');
-                } else {
-                    mensajeErrorUsuario.innerHTML = '';
-                    mensajeErrorUsuario.classList.add('hide');
-                }
-            });
-    }); */
-
-    // getDocs(coleccionNombresUsuario)
-    //     // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
-    //     .then((snapshot) => {
-    //         const listaUsuarios = [];
-    //         snapshot.docs.forEach((documento) => {
-    //             listaUsuarios.push({ ...documento.data() });
-    //             //listaUsuarios.push({ ...documento.data() });
-    //             console.log(listaUsuarios);
-    //         });
-    //         const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
-    //         console.log(usuarioEncontrado);
-    //     });
-
     function UserException(message, code) {
         this.message = message;
         this.code = code;
-        console.log(code); //
+        console.log(code);
     }
 
     const validateFields = () => {
@@ -79,18 +42,15 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         mensajeErrorSexo.classList.add('hide');
         mensajeErrorUbicacion.classList.add('hide');
         mensajeErrorRaza.classList.add('hide');
-        //Talla
         mensajeErrorTalla.classList.add('hide');
 
         function check(radios) {
             for (var i = 0, len = radios.length; i < len; i++) {
                 if (radios[i].checked) {
-                    // console.log('los check fueron elegidos')
                     return true;
                 };
 
             };
-            // console.log('los check no han sido elegidos')
             return false;
         };
 
@@ -140,7 +100,6 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         return errors;
     };
 
-//
     const validateUser = async () => {
         let usernameValue = usuario.value;
         const usernamesRef = collection(database, "usernames");
@@ -148,25 +107,12 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
             const resultado = doc.data();
-            //{username: 'manzanita'}
             if(Object.keys(resultado).length > 0){
                 throw new Error('auth/invalid-username')
             }
         });
     }
-
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) { // User is signed in
-    //         console.log(user);
-    //         const uid = user.uid;
-    //         console.log(uid)
-    //         window.localStorage.removeItem('uid')
-    //         window.localStorage.setItem('uid', uid)
-    //         /* uidArray.push(uid) */
-    //     }
-    // });
 
     const urlContainer = [];
 
@@ -202,7 +148,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
             await subirImagenPerfil(auth.currentUser.uid);
             await validateUser();
-            
+
             //---------------------------------------------------------------------------------------
             // const guardarDisplayName = (valorUsuario) => updateProfile(auth.currentUser, {
             //     displayName: valorUsuario,
@@ -210,8 +156,6 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
             // const displayUsuario = guardarDisplayName(usuario.value)
             //----------------------------------------------------------------------------------------
-
-
 
             //PARA ACTUALIZAR DOC ---------------------------------------------------------------------
             const documentoReferencia = doc(getFirestore(), "usuarios", auth.currentUser.uid);
@@ -228,11 +172,9 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 vacunasAlDia: document.getElementById('vacunas').checked,
             });
 
-            //YA FUNCIONA-------------------------------------------------------------
             setDoc(doc(getFirestore(), "usernames", auth.currentUser.uid), {
                 username: usuario.value,
             });
-            //YA FUNCIONA-------------------------------------------------------------
 
             window.location.href = '/';
 
@@ -247,9 +189,8 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
             if (errors?.username?.code === 'auth/empty-username') {
                 mensajeErrorUsuario.innerHTML = 'Ingresa el nombre de usuario';
-                mensajeErrorUsuario.classList.remove('hide');// show
+                mensajeErrorUsuario.classList.remove('hide');
             } else if (errors?.username?.code === 'auth/invalid-username' || error.message === 'auth/invalid-username') {
-                //'Usuario inválido, ya está registrado
                 mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
                 mensajeErrorUsuario.classList.remove('hide');
             } else {
@@ -259,46 +200,46 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
 
             if (errors?.age?.code === 'auth/empty-age') {
                 mensajeErrorEdad.innerHTML = 'Ingresa la edad';
-                mensajeErrorEdad.classList.remove('hide');// show
+                mensajeErrorEdad.classList.remove('hide');
             } else if (errors?.age?.code === 'auth/invalid-age') {
                 mensajeErrorEdad.innerHTML = 'Ingresa una edad válida. Por ejemplo: 5';
-                mensajeErrorEdad.classList.remove('hide');// show
+                mensajeErrorEdad.classList.remove('hide');
             } else {
-                mensajeErrorEdad.classList.add('hide');// hide
+                mensajeErrorEdad.classList.add('hide');
             }
 
             if (errors?.sex?.code === 'auth/empty-sex') {
                 mensajeErrorSexo.innerHTML = 'Elige el sexo';
-                mensajeErrorSexo.classList.remove('hide');// show
+                mensajeErrorSexo.classList.remove('hide');
             } else {
-                mensajeErrorSexo.classList.add('hide');// hide
+                mensajeErrorSexo.classList.add('hide');
             }
 
             if (errors?.location?.code === 'auth/empty-location') {
                 mensajeErrorUbicacion.innerHTML = 'Ingresa tu ubicación';
-                mensajeErrorUbicacion.classList.remove('hide');// show
+                mensajeErrorUbicacion.classList.remove('hide');
             } else if (errors?.location?.code === 'auth/invalid-location') {
                 mensajeErrorUbicacion.innerHTML = 'Ingresa una ubicación válida. Por ejemplo: Sao Paulo, Brasil';
-                mensajeErrorUbicacion.classList.remove('hide');// show
+                mensajeErrorUbicacion.classList.remove('hide');
             } else {
-                mensajeErrorUbicacion.classList.add('hide');// hide
+                mensajeErrorUbicacion.classList.add('hide');
             }
 
             if (errors?.breed?.code === 'auth/empty-breed') {
                 mensajeErrorRaza.innerHTML = 'Ingresa la raza';
-                mensajeErrorRaza.classList.remove('hide');// show
+                mensajeErrorRaza.classList.remove('hide');
             } else if (errors?.breed?.code === 'auth/invalid-breed') {
                 mensajeErrorRaza.innerHTML = 'Ingresa una raza válida. Por ejemplo: Golden Retriever';
-                mensajeErrorRaza.classList.remove('hide');// show
+                mensajeErrorRaza.classList.remove('hide');
             } else {
-                mensajeErrorRaza.classList.add('hide');// hide
+                mensajeErrorRaza.classList.add('hide');
             }
 
             if (errors?.size?.code === 'auth/empty-size') {
                 mensajeErrorTalla.innerHTML = 'Elige el tamaño';
-                mensajeErrorTalla.classList.remove('hide');// show
+                mensajeErrorTalla.classList.remove('hide');
             } else {
-                mensajeErrorTalla.classList.add('hide');// hide
+                mensajeErrorTalla.classList.add('hide');
             }
 
         }
