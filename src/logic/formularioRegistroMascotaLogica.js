@@ -1,11 +1,13 @@
 // eslint-disable-next-line import/no-unresolved
 import { createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { auth, coleccionUsuarios2, storage } from '../firebase/configuracionFirebase.js';
+import { auth, coleccionUsuarios2, storage, database } from '../firebase/configuracionFirebase.js';
 import { addDoc, getDocs, doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { currentUser } from '../firebase/configuracionFirebase.js';
 import { valorUid } from './registroUsuarioLogica.js';
 import { ref, uploadString } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { collection, query, where } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+
 
 export const formularioRegistroMascotaLogica = (contenedor) => {
     const profileImage = contenedor.querySelector('#profileImg');
@@ -36,10 +38,10 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     function UserException(message, code) {
         this.message = message;
         this.code = code;
+        console.log(code); //
     }
 
     const validateFields = () => {
-        console.log(validateFields);
         mensajeErrorNombre.classList.add('hide');
         mensajeErrorUsuario.classList.add('hide');
         mensajeErrorEdad.classList.add('hide');
@@ -55,6 +57,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                     // console.log('los check fueron elegidos')
                     return true;
                 };
+
             };
             // console.log('los check no han sido elegidos')
             return false;
@@ -68,50 +71,9 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         }
 
         // Username validation
-
-        getDocs(coleccionUsuarios2)
-        // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
-        .then((snapshot) => {
-            const listaUsuarios = [];
-            snapshot.docs.forEach((documento) => {
-                listaUsuarios.push({ username: documento.get("username") });
-                //listaUsuarios.push({ ...documento.data() });
-            });
-            const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
-            // console.log(usuarioEncontrado)
-            if (usuarioEncontrado) {
-                console.log("Usuario invalido")
-                mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
-                mensajeErrorUsuario.classList.remove('hide');// show
-            } else if (!usuarioEncontrado && !usuario.value){
-                mensajeErrorUsuario.innerHTML = 'Ingresa el nombre de usuario';
-                mensajeErrorUsuario.classList.remove('hide'); // show
-            } else {
-                mensajeErrorUsuario.innerHTML = 'Ingresa el nombre de usuario';
-                mensajeErrorUsuario.classList.add('hide'); // hide
-            }
-
-            // else {
-            //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
-            //     mensajeErrorUsuario.classList.add('hide'); // hide
-            // }
-            // else if (!usuarioEncontrado && !usuario.value) {
-            //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
-            //     mensajeErrorUsuario.classList.remove('hide');// hide
-            // }
-            // else if (!usuarioEncontrado) {
-            //     console.log("Usuario valido")
-            //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
-            //     mensajeErrorUsuario.classList.add('hide');
-            // }
-        });
-
         if (!usuario.value) {
-            errors.username = new UserException('Ingresa el nombre de usuario', 'auth/empty-username');
-        }
-        else if (mensajeErrorUsuario.innerHTML === 'Usuario inválido, ya está registrado') {
-            errors.username = new UserException('Usuario inválido, ya está registrado', 'auth/invalid-username');
-        }
+            errors.username = new UserException('Ingresa un nombre de usuario', 'auth/empty-username');
+        } 
 
         // Age validation
         if (!edad.value) {
@@ -147,19 +109,29 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         return errors;
     };
 
+// 
+    const validateUser = async () => {
+        let usernameValue = usuario.value;
+        const usernamesRef = collection(database, "usernames");
+        const q = query(usernamesRef, where("username", "==", usernameValue));
+
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            const resultado = doc.data();
+            //{username: 'manzanita'}
+            if(Object.keys(resultado).length > 0){
+                //console.log("usuario registrado")
+                //return  'auth/invalid-username';
+                mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
+                mensajeErrorUsuario.classList.remove('hide');
+
+            }
+        });
+    }
+
     const urlContainer = [];
 
-
-    /* const uploadingImageToCloud = (urlImage) =>{ */
-        /* if(urlContainer.length > 0){ */
-            /* const urlString = urlContainer[0]; */
-            /* uploadString(storageRef, urlImage, 'data_url').then((snapshot) => {
-                console.log('Uploaded a data_url string!');
-            }); */
-        /* } */
-    /* } */
-
-    /* const uidArray = [] */
 
     onAuthStateChanged(auth, (user) => {
         if (user) { // User is signed in
@@ -169,7 +141,8 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             window.localStorage.removeItem('uid')
             window.localStorage.setItem('uid', uid)
             /* uidArray.push(uid) */
-        }
+        } 
+
     });
 
     /* console.log('soy el array ' + uidArray[0]) */
@@ -195,7 +168,8 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         await uploadString(storageRef, urlContainer[0], 'data_url').then((snapshot) => {
             console.log('Uploaded a data_url string!');
         });
-    }
+    } 
+    //console.log(subirImagenPerfil());
 
     saveUserData.addEventListener('click', async () => {
         const errors = validateFields();
@@ -206,50 +180,14 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             }
 
             await subirImagenPerfil();
-            // getDocs(coleccionNombresUsuario)
-            // // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
-            // .then((snapshot) => {
-            //     const listaUsuarios = [];
-            //     snapshot.docs.forEach((documento) => {
-            //         listaUsuarios.push({ ...documento.data() });
-            //     });
-            //     const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
-            //     // console.log(usuarioEncontrado)
-            //     if (usuarioEncontrado) {
-            //         console.log("Usuario invalido")
-            //         mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
-            //         mensajeErrorUsuario.classList.remove('hide');// show
-            //     }
-            //     // else if (!usuarioEncontrado) {
-            //     //     console.log("Usuario valido")
-            //     //     mensajeErrorUsuario.innerHTML = 'Ingresa tu usuario';
-            //     //     mensajeErrorUsuario.classList.add('hide');
-            //     // }
-            // });
-            //---------------------------------------------------------------------------------------
-            // const guardarDisplayName = (valorUsuario) => updateProfile(auth.currentUser, {
-            //     displayName: valorUsuario,
-            // });
-
-            // const displayUsuario = guardarDisplayName(usuario.value)
-            //---------------------------------------------------------------------------------------
-            // const cadena = window.localStorage.getItem('cadena');
-            // console.log('hola')
-
-            // const sex = document.querySelector('input[name="dogSex"]:checked').value
-            // console.log(sex)
-            // const tamano = document.querySelector('input[name="dogSize"]:checked').value
-            // console.log(tamano)
-            // const esterilizado = document.getElementById('esterilizacion').checked
-            // console.log(esterilizado)
-            // const vacunas = document.getElementById('vacunas').checked
-            // console.log(vacunas)
+            await validateUser();
+          
 
             //PARA ACTUALIZAR DOC ---------------------------------------------------------------------
             const documentoReferencia = doc(getFirestore(), "usuarios", auth.currentUser.uid);
             const usuarios = await updateDoc(documentoReferencia, {
                 petName: nombre.value,
-                username: usuario.value,
+                //username: usuario.value,
                 age: edad.value,
                 location: ubicacion.value,
                 breed: raza.value,
@@ -279,7 +217,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             // window.location.href = 'formulario-registro';
 
         } catch (error) {
-            console.log(error.code, errors);
+            console.log(error);
             if (error?.code === 'auth/empty-name' || errors?.name?.code === 'auth/empty-name') {
                 mensajeErrorNombre.innerHTML = 'Ingresa el nombre de tu mascota';
                 mensajeErrorNombre.classList.remove('hide');
