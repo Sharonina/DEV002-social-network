@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { auth, coleccionUsuarios2, storage, database } from '../firebase/configuracionFirebase.js';
+import { auth, coleccionUsuarios2, storage, coleccionNombresUsuario, database } from '../firebase/configuracionFirebase.js';
+
 import { addDoc, getDocs, doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { currentUser } from '../firebase/configuracionFirebase.js';
 import { valorUid } from './registroUsuarioLogica.js';
@@ -24,6 +25,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     //traer los input de los radio  1 por cada uno, validar si el input esta checked para enviar ´el valor correspondiente´
     const mensajeErrorNombre = contenedor.querySelector('#mensajeErrorNombre');
     const mensajeErrorUsuario = contenedor.querySelector('#mensajeErrorUsuario');
+    // console.log(mensajeErrorUsuario.innerHTML)
     const mensajeErrorEdad = contenedor.querySelector('#mensajeErrorEdad');
     const mensajeErrorSexo = contenedor.querySelector('#mensajeErrorSexo');
     const mensajeErrorUbicacion = contenedor.querySelector('#mensajeErrorUbicacion');
@@ -31,9 +33,38 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
     const mensajeErrorTalla = contenedor.querySelector('#mensajeErrorTalla');
     const saveUserData = contenedor.querySelector('#guardarDatos');
 
-    // usuario.addEventListener("keyup", () => {
-    // console.log(usuario.value)
-    // });
+    usuario.addEventListener("keyup", () => {
+        getDocs(coleccionNombresUsuario)
+            // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
+            .then((snapshot) => {
+                const listaUsuarios = [];
+                snapshot.docs.forEach((documento) => {
+                    listaUsuarios.push({ ...documento.data() });
+                    console.log(listaUsuarios);
+                });
+                const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
+                if (usuarioEncontrado) {
+                    mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
+                    mensajeErrorUsuario.classList.remove('hide');
+                } else {
+                    mensajeErrorUsuario.innerHTML = '';
+                    mensajeErrorUsuario.classList.add('hide');
+                }
+            });
+    });
+
+    // getDocs(coleccionNombresUsuario)
+    //     // Nota Pris: Any time you read data from the Database, you receive the data as a DataSnapshot
+    //     .then((snapshot) => {
+    //         const listaUsuarios = [];
+    //         snapshot.docs.forEach((documento) => {
+    //             listaUsuarios.push({ ...documento.data() });
+    //             //listaUsuarios.push({ ...documento.data() });
+    //             console.log(listaUsuarios);
+    //         });
+    //         const usuarioEncontrado = listaUsuarios.some(elemento => elemento.username === usuario.value);
+    //         console.log(usuarioEncontrado);
+    //     });
 
     function UserException(message, code) {
         this.message = message;
@@ -126,25 +157,19 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         });
     }
 
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) { // User is signed in
+    //         console.log(user);
+    //         const uid = user.uid;
+    //         console.log(uid)
+    //         window.localStorage.removeItem('uid')
+    //         window.localStorage.setItem('uid', uid)
+    //         /* uidArray.push(uid) */
+    //     }
+    // });
+
     const urlContainer = [];
-
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) { // User is signed in
-            console.log(user);
-            const uid = user.uid;
-            console.log(uid)
-            window.localStorage.removeItem('uid')
-            window.localStorage.setItem('uid', uid)
-            /* uidArray.push(uid) */
-        }
-
-    });
-
-    /* console.log('soy el array ' + uidArray[0]) */
-
-    const storageRef = ref(storage, `ikhybex-Bftzx/ ${window.localStorage.getItem('uid')}`);
-
+    
     if(fileImage){
         const handleChange = () => {
             let reader = new FileReader();
@@ -160,12 +185,12 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         fileImage.addEventListener('change', handleChange);
     }
 
-    const subirImagenPerfil = async() => {
+    const subirImagenPerfil = async(valorsillo) => {
+        const storageRef = ref(storage, `ikhybex-Bftzx/ ${valorsillo}`);
         await uploadString(storageRef, urlContainer[0], 'data_url').then((snapshot) => {
             console.log('Uploaded a data_url string!');
         });
     }
-    //console.log(subirImagenPerfil());
 
     saveUserData.addEventListener('click', async () => {
         const errors = validateFields();
@@ -175,8 +200,17 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 throw new Error('hay errores');
             }
 
-            await subirImagenPerfil();
+            await subirImagenPerfil(auth.currentUser.uid);
             await validateUser();
+            
+            //---------------------------------------------------------------------------------------
+            // const guardarDisplayName = (valorUsuario) => updateProfile(auth.currentUser, {
+            //     displayName: valorUsuario,
+            // });
+
+            // const displayUsuario = guardarDisplayName(usuario.value)
+            //----------------------------------------------------------------------------------------
+
 
 
             //PARA ACTUALIZAR DOC ---------------------------------------------------------------------
@@ -187,30 +221,20 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 age: edad.value,
                 location: ubicacion.value,
                 breed: raza.value,
-                pictureUrl: 'referenciaCS',
+                // pictureUrl: 'referenciaCS',
                 sex: document.querySelector('input[name="dogSex"]:checked').value,
                 size: document.querySelector('input[name="dogSize"]:checked').value,
                 esterilizacion: document.getElementById('esterilizacion').checked,
                 vacunasAlDia: document.getElementById('vacunas').checked,
             });
 
-
-            //PARA SOBREESCRIBIR EN UN DOC''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-            // const usuarios2 = await setDoc(doc(getFirestore(), "users", "mexnY2FprZw3ux7TJtVL"), {
-            //     fieldPrueba: "lalala"
-            //   });
-
-            // const documentoUsernames = doc(getFirestore(), "usernames", auth.currentUser.uid);
-            // const usernames = await updateDoc(documentoUsernames, {
-            //     username: usuario.value,
-            // });
-
-            // const usernames = await addDoc(coleccionNombresUsuario, {
-            //     username: usuario.value,
-            // })
+            //YA FUNCIONA-------------------------------------------------------------
+            setDoc(doc(getFirestore(), "usernames", auth.currentUser.uid), {
+                username: usuario.value,
+            });
+            //YA FUNCIONA-------------------------------------------------------------
 
             window.location.href = '/';
-            // window.location.href = 'formulario-registro';
 
         } catch (error) {
             console.log(error, 'error');
@@ -226,9 +250,11 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 mensajeErrorUsuario.classList.remove('hide');// show
             } else if (errors?.username?.code === 'auth/invalid-username' || error.message === 'auth/invalid-username') {
                 //'Usuario inválido, ya está registrado'
+
                 mensajeErrorUsuario.innerHTML = 'Usuario inválido, ya está registrado';
-                mensajeErrorUsuario.classList.remove('hide');// show
+                mensajeErrorUsuario.classList.remove('hide');
             } else {
+                mensajeErrorUsuario.innerHTML = '';
                 mensajeErrorUsuario.classList.add('hide');
             }
 

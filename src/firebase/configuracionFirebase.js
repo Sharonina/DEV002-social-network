@@ -26,7 +26,7 @@ export const storage = getStorage(app);
 export const auth = getAuth(app);
 export const database = getFirestore();
 const provider = new GoogleAuthProvider(app);
-// export const coleccionUsuarios = collection(database, 'users');
+
 export const coleccionNombresUsuario = collection(database, 'usernames');
 export const coleccionUsuarios2 = collection(database, 'usuarios');
 
