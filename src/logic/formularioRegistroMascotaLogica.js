@@ -183,7 +183,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             const documentoReferencia = doc(getFirestore(), "usuarios", auth.currentUser.uid);
             const usuarios = await updateDoc(documentoReferencia, {
                 petName: nombre.value,
-                //username: usuario.value,
+                username: usuario.value,
                 age: edad.value,
                 location: ubicacion.value,
                 breed: raza.value,
