@@ -11,8 +11,8 @@ import { collection, query, where } from 'https://www.gstatic.com/firebasejs/9.1
 
 export const formularioRegistroMascotaLogica = (contenedor) => {
     const profileImage = contenedor.querySelector('#profileImg');
-    const uploadProfileImage = contenedor.querySelector('#addImageButton')
-    const fileImage = contenedor.querySelector('#file')
+    const uploadProfileImage = contenedor.querySelector('#addImageButton');
+    const fileImage = contenedor.querySelector('#file');
     const nombre = contenedor.querySelector('#nombreMascota');
     const usuario = contenedor.querySelector('#idUsuario');
     const edad = contenedor.querySelector('#edadMascota');
