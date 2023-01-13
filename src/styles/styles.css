@@ -1015,6 +1015,24 @@ main #content .Timeline .botones .ladraloBtn button:hover{
         width: 50%;
     }
     /* Termina: Registro Usuario */
+
+    /* Pantalla: Recuperar Contraseña */
+    main #content .recuperarContraseña .imagen img {
+        height: 75%;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena {
+        height: 40%;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena input {
+        border-radius: 0.6rem;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion p{
+        font-size: 3.2vw;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion a{
+        font-size: 3.2vw;
+    }
+
 }
 
 @media screen and (min-width: 960px){
