@@ -1,8 +1,8 @@
 import Header from '../templates/Header.js';
-import Timeline from '../templates/timeline.js';
+import CreacionPost from '../templates/creacionPost.js';
 import { homeLogica } from '../logic/homeLogica.js';
 import { headerLogica } from '../logic/headerLogica.js';
-import { timelineLogica } from '../logic/timelineLogica.js';
+import { creacionPostLogica } from '../logic/creacionPostLogica.js';
 
 
 const Home = () => {
@@ -12,8 +12,8 @@ const Home = () => {
     const view = Header();
     contenedor.innerHTML = view;
     const otroContenedor = document.createElement('section');
-    otroContenedor.classList.add('Timeline');
-    const otroview = Timeline();
+    otroContenedor.classList.add('CreacionPost');
+    const otroview = CreacionPost();
     otroContenedor.innerHTML = otroview;
 
     const contenedorPadre = document.createElement('section');
@@ -25,7 +25,7 @@ const Home = () => {
     console.log(contenedorPadre);
     homeLogica(contenedorPadre);
     headerLogica(contenedor);
-    timelineLogica(otroContenedor);
+    creacionPostLogica(otroContenedor);
     return contenedorPadre;
 };
 

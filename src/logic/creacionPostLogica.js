@@ -1,7 +1,7 @@
 import { addDoc, getDocs, doc, setDoc, collection, getFirestore, query, where } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { database, coleccionPost, getCurrentUser, auth } from '../firebase/configuracionFirebase.js';
 
-export const timelineLogica = (contenedor) => {
+export const creacionPostLogica = (contenedor) => {
     const ingresoPost = contenedor.querySelector('#ingresoPost');
     const ladraloBtn = contenedor.querySelector('.ladraloBtn');
 
