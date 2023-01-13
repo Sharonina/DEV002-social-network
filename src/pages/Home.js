@@ -2,6 +2,8 @@ import Header from '../templates/Header.js';
 import Timeline from '../templates/timeline.js';
 import { homeLogica } from '../logic/homeLogica.js';
 import { headerLogica } from '../logic/headerLogica.js';
+import { timelineLogica } from '../logic/timelineLogica.js';
+
 
 const Home = () => {
     const contenedor = document.createElement('section');
@@ -23,6 +25,7 @@ const Home = () => {
     console.log(contenedorPadre);
     homeLogica(contenedorPadre);
     headerLogica(contenedor);
+    timelineLogica(otroContenedor);
     return contenedorPadre;
 };
 

@@ -30,6 +30,8 @@ export const storageRef = ref(storage);
 
 export const coleccionNombresUsuario = collection(database, 'usernames');
 export const coleccionUsuarios2 = collection(database, 'usuarios');
+export const coleccionPost = collection(database, 'posts');
+
 
 // Propuesta de Pris -> Se lo podria exportar las funciones desde aqui
 // Authenticacion normal----------------------------------------------

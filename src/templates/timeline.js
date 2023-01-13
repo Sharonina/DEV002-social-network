@@ -1,7 +1,8 @@
 const Timeline = () => {
     const view = `
         <article class='post'>
-            <textarea type="text" id="ingresoPost" class="areaDeTexto" placeholder="¿En qué estás pensando ahora?"></textarea>
+            <textarea type="text" id="ingresoPost" class="areaDeTexto" placeholder="¿En qué estás pensando ahora?" maxlength="160"
+            ></textarea>
             <!--<input type="text" name='post' placeholder="¿En qué estás pensando?"/>-->
         </article>
         <section class='botones'>
