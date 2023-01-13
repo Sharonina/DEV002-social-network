@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProf
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // eslint-disable-next-line import/no-unresolved, object-curly-newline
-import { getFirestore, collection, getDocs, setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { getFirestore, collection, getDocs, setDoc, doc, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 // eslint-disable-next-line import/no-unresolved
 import { getStorage, ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 // eslint-disable-next-line object-curly-newline
@@ -69,6 +69,12 @@ export const getCurrentUser = () => {
 
 // Cierre de sesión
 export const logOut = () => signOut(auth);
+
+// Mostrar post en tiempo real
+// export const onGetPost = (callback) => onSnapshot(collection(database, 'posts', auth.currentUser.uid, 'userPosts'), callback);
+// const subColRef = collection(database, 'posts', auth.currentUser.uid, 'userPosts');
+
+
 
 // eslint-disable-next-line max-len
 // Notas Pris: las siguientes líneas de código solo son para nuestra referencia. Despues las podemos borrar
