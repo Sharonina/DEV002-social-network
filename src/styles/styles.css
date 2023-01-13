@@ -1053,19 +1053,32 @@ main #content .Timeline .botones .ladraloBtn button:hover{
     }
 
     main #content .inicio .inicio-logo img{
-        width: 32%;
+        width: 21%;
+        /*width: 32%;*/
+    }
+    /*otro cambio*/
+    main #content .inicio .inicio-bienvenida{
+        margin-top: 1%;
     }
 
     main #content .inicio .inicio-bienvenida img{
-        width: 40%;
+        width: 25%;
+        /*width: 40%;*/
     }
 
     main #content .inicio .inicio-botones{
-        font-size: 3.5vw;
+        font-size: 2.3vw;
+        margin-top: 1%;
+        /*font-size: 3.5vw;*/
     }
 
     main #content .inicio .inicio-botones a{
-        font-size: 3vw;
+        font-size: 1.9vw;
+        /*font-size: 3vw;*/
+    }
+
+    main #content .inicio .inicio-botones span{
+        margin: 0 3vw;
     }
 }
 
