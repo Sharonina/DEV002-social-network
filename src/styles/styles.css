@@ -636,6 +636,13 @@ main #content .recuperarContraseña .camposRecuperacion input{
     outline: none;
 }
 
+main #content .recuperarContraseña .camposRecuperacion p{
+    width: 80%;
+    margin-top: .3rem;
+    font-size: 2.5vw;
+    color: var(--rosa-oscuro);
+}
+
 main #content .recuperarContraseña .botonRecuperacion{
     height: 60%;
     width: 100vw;
