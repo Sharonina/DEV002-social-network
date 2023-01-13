@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import { createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { auth, coleccionUsuarios2, storage, coleccionNombresUsuario, database } from '../firebase/configuracionFirebase.js';
-
+import { auth, coleccionUsuarios2, storage, storageRef, coleccionNombresUsuario, database } from '../firebase/configuracionFirebase.js';
 import { addDoc, getDocs, doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { currentUser } from '../firebase/configuracionFirebase.js';
 import { valorUid } from './registroUsuarioLogica.js';
@@ -139,6 +138,9 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         });
     }
 
+    /* const spaceRef = ref(storage, 'ikhybex-Bftzx/space.jpg');
+    const crearReferencia = () => {} */
+
     saveUserData.addEventListener('click', async () => {
         const errors = validateFields();
 
@@ -166,7 +168,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 age: edad.value,
                 location: ubicacion.value,
                 breed: raza.value,
-                // pictureUrl: 'referenciaCS',
+                /* pictureUrl: spaceStorage[0], */
                 sex: document.querySelector('input[name="dogSex"]:checked').value,
                 size: document.querySelector('input[name="dogSize"]:checked').value,
                 esterilizacion: document.getElementById('esterilizacion').checked,
