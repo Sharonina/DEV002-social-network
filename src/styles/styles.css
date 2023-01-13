@@ -1078,6 +1078,51 @@ main #content .Timeline .botones .ladraloBtn button:hover{
         /*background-image: url(../assets/dog-iniciosesion.png);*/
     }
     /* Termina: Registro Usuario */
+    /* Pantalla: Recuperar Contraseña */
+    main #content .recuperarContraseña {
+        justify-content: space-around;
+    }
+    main #content .recuperarContraseña .imagen {
+        justify-content: space-evenly;
+    }
+    main #content .recuperarContraseña .imagen img {
+        height: 85%;
+    }
+    main #content .recuperarContraseña .contenidoInputs {
+        height: 52%;
+    }
+    main #content .recuperarContraseña .camposRecuperacion {
+        height: 37%;
+        justify-content: flex-start;
+    }
+    main #content .recuperarContraseña .camposRecuperacion label {
+        font-size: 2.2vw;
+        width: 40%;
+    }
+    main #content .recuperarContraseña .camposRecuperacion input {
+        font-size: 2.2vw;
+        width: 40%;
+    }
+    main #content .recuperarContraseña .camposRecuperacion p {
+        font-size: 1.2vw;
+        width: 40%;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena {
+        height: 35%;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena input {
+        font-size: 1.9vw;
+        width: 36%;
+        border-radius: 0.6rem;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion p {
+        font-size: 1.7vw;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion a {
+        font-size: 1.7vw;
+    }
+    /*Termina: Recuperar Contraseña */
+
 }
 
 @media screen and (min-width: 1350px){
