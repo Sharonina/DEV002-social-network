@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import { createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { auth, coleccionUsuarios2, storage, coleccionNombresUsuario, database } from '../firebase/configuracionFirebase.js';
-
+import { auth, coleccionUsuarios2, storage, storageRef, coleccionNombresUsuario, database } from '../firebase/configuracionFirebase.js';
 import { addDoc, getDocs, doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { currentUser } from '../firebase/configuracionFirebase.js';
 import { valorUid } from './registroUsuarioLogica.js';
@@ -114,7 +113,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
         });
     }
 
-    const urlContainer = [];
+    const urlContainer = ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAMFBMVEXT1t3Y19bb2tre3t3k4+HR0NDIyc3AwMK2t7ivr6+mpaWenJuEhZBmaHdQUmQ/QVIcDibjAAADfklEQVR42u2Wu29SURzHrya3D0dbEmMcSB8mGgcL1MdY7qFEXbjQs9SFRKnaJqYLbWiXJgasslq4J01cHAxQnRwEEgcX49Q41cE4d1D8D8DzO5xy4DwKxpVvwuHmnvv5fc/v/H73YQ011FD/q5XN5ym8Yg0uG/tIEWPs+q0BhfF0hGQBca5bA8nGE2iRIQk0CGOv2DiOOLKEkOPvl1GGlFJ4BqEoIHCAomUvfZpFpl7yUi4CJE2RED2KVGrehhl5Ui+RAp6kF17wKBFHoO0aIUaf0UqVkCyLnfFY9qArNI6XNCB5Go+wdS28yLF1gaIUITmDCcx5LPZNSAVYwMHbYLMKSBFScTK09nDAxMyzOsKuwFQBdnZxN+3jJpB/nZ4v6pAxMCFZQMLnQ/P0n+s+ICSpXRcBhCftm0Anuspi7WiQ/RogaYyYgqijO4DoVjZSqTLERbKiDPFiCjIOEyZEn8xyP0RNZq1OTkeymuz7IAU1+36IpyD1ahvBRiSm60lWSnrNW9SW8/Ihrwsoqe4xdwmh981XbeRe64iOt/nUuqaNecNE/jQ/t5GnrV90vGtAaLsKpPVNILzHNIVZE4hz2PzQRq61jum4zKf2ZBfYY978F7/yxo8cPOPNrytMvgvpkUCK+uKTgoqs6RG7Yka2OeLJxe8gkwpS0yKj9Sp3HxgZk5HLBx8THMmfIDHN40Ugt342Gz+WBMKU1CMehgudT61Go3HURvYHQw4BOZaQdRPCUrjUajZ+v2GEY0DGJcR53Wp8QW0EnlaavlyWEBR59x1qGkIobESIQGZh0248gBdFgv6gMTStvNqN+GAH5hN8WDC4bPe4wNW+OB1mB0PiaN6lSWNMB/ADRLew/W5kAU8EZzFOBOfwTDeSk28XgSAfdnEcBhd1I4VTkDl4HYfZ5wXfMfUes1kkUZfAFBRkahoJF1BMul0E0quwQJJyv/RHYlK/iFwkQZ5qX57rIEXs9kGkFgNEvvmdfAfZ0SKFEeyGegi/cNmTu5KfPZNyg4II+K18ZzIruQjvM3iCOzgB6D8Rz4hYdurs1HQwGLDFq0fjUlI3RS3ajvZsUkVGRTwd4lk6RDzIpFe43Kxqm8d0Z7M6RP+C2aor1upzMSt9IpdEHFk2rEH9it2CSB7bEtM25+RImXJpN2UZ9Lhc1n34P9qIWUaNbKasoYYa6t/1F3AWrLl/AjIsAAAAAElFTkSuQmCC'];
 
     if(fileImage){
         const handleChange = () => {
@@ -122,8 +121,9 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             reader.onload = (e) => {
                 let urlImage = e.target.result;
                 profileImage.src = urlImage;
-                urlContainer.push(urlImage)
-                console.log(urlContainer);
+                urlContainer.unshift(urlImage)
+                console.log(urlImage)
+                console.log(urlContainer[0]);
             }
             reader.readAsDataURL(fileImage.files[0]);
         }
@@ -137,6 +137,9 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
             console.log('Uploaded a data_url string!');
         });
     }
+
+    /* const spaceRef = ref(storage, 'ikhybex-Bftzx/space.jpg');
+    const crearReferencia = () => {} */
 
     saveUserData.addEventListener('click', async () => {
         const errors = validateFields();
@@ -165,7 +168,7 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 age: edad.value,
                 location: ubicacion.value,
                 breed: raza.value,
-                // pictureUrl: 'referenciaCS',
+                /* pictureUrl: spaceStorage[0], */
                 sex: document.querySelector('input[name="dogSex"]:checked').value,
                 size: document.querySelector('input[name="dogSize"]:checked').value,
                 esterilizacion: document.getElementById('esterilizacion').checked,

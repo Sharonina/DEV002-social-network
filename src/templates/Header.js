@@ -3,7 +3,9 @@ const Header = () => {
         <section class="header">
             <div class="headerSuperior">
                 <input class='logoButton' type='image' title='logo' src='../assets/tindog_logo_r.png'/>
-                <button class='profileImage' id="menuOpciones">Foto</button>
+                <button class='profileImage' id="menuOpciones">
+                    <img class='userImage' src='./assets/dog-iconuser.png' alt="foto de perfil del usuario activo"/>
+                </button>
                 <div class="menuContainer">
                     <ul class="menu" id="menuLista">
                         <li class="opciones"> <input type="submit" value="Mi perfil"/> </li>
