@@ -29,14 +29,14 @@ export const timelineLogica = (contenedor) => {
                                         <div class='postTexto'>
                                             <p class ='textoPost'>${post.valorPost}</p>
                                         </div>
-                                        <div class='postImagen'>
+                                        <figure class='postImagen'>
                                             <img class ='imagenDelPost' src='' alt = ''/>
-                                        </div>
+                                        </figure>
                                         <div class='postBotones'>
-                                            <button>
+                                            <button class = 'likes'>
                                                 <img class='likeImage' src='./assets/heart_rosa.png' alt="foto de like a post"/>
                                             </button>
-                                            <button>10</button>
+                                            <button class = 'contadorLikes'>10</button>
                                         </div>
                                     </section>
                                     `;

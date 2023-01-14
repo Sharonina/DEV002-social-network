@@ -1037,9 +1037,12 @@ main #content .Timeline .postPublicado .postIndividual .postBotones button{
     border: none;
 }
 
-main #content .Timeline .postPublicado .postIndividual .postBotones .likeImage{
+main #content .Timeline .postPublicado .postIndividual .postBotones .likes .likeImage{
     height: 1.5rem;
     border: none;
+}
+main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLikes{
+    margin-left: 2% ;
 }
 /* Final TimeLine-----------------------------------------------------*/
 
