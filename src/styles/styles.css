@@ -789,7 +789,6 @@ main #content .header .headerSuperior .profileImage img{
     border-radius: 50%;
 }
 
-/*menu*/
 main #content .header .headerSuperior .menuContainer {
     display: none;
     position: absolute;
@@ -832,7 +831,6 @@ main #content .header .headerSuperior .menuContainer .menu .opciones input:hover
     color: var(--blanco);
 }
 
-/*fin de menu*/
 main #content .header .headerInferior{
     height: 40%;
     width: 100%;
@@ -896,7 +894,7 @@ main #content .header .headerInferior .matchBtnContainer button:hover{
 main #content .header .headerInferior .matchBtnContainer button img{
     width: 60%;
 }
-
+/*Crear Post*/
 main #content .CreacionPost{
     width: 100vw;
     height: 20vh;
@@ -965,8 +963,14 @@ main #content .CreacionPost .botones .ladraloBtn button{
 main #content .CreacionPost .botones .ladraloBtn button:hover{
     background-color: var(--jade-oscuro);
 }
+/*TimeLine------------------------------------------------------------*/
+main #content .Timeline{
+    background-color: var(--blanco);
+}
 
 
+
+/* Final TimeLine-----------------------------------------------------*/
 
 /* Responsive Design */
 @media screen and (min-width: 500px){

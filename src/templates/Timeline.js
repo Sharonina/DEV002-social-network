@@ -1,7 +1,7 @@
 const Timeline = () => {
     const view = `
-    <article class='postPublicado'></article>
-    `;
+                <section class='postPublicado'></section>
+                `;
     return view;
 };
 export default Timeline;

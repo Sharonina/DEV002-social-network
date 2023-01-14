@@ -13,7 +13,23 @@ export const timelineLogica = (contenedor) => {
         querySnapshot.forEach((doc) => {
             const post = doc.data();
             console.log(post.valorPost);
-            postPublicado.innerHTML += `${post.valorPost}`;
+            postPublicado.innerHTML += `
+                                    <section class = 'postIndividual'>
+                                        <div class = 'postEncabezado'>
+                                            <img class ='imagenDelPost' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
+                                            <p class = 'nombreMascota'>      </p>
+                                            <p class = 'username'>   </p>
+                                            <button>editar</button>
+                                        </div> 
+                                        <div class='postTexto'>
+                                            <p class ='textoPost'>${post.valorPost}</p>
+                                        </div>
+                                        <div class='postBotones'>
+                                            <button>me encorazona</button>
+                                            <button>numero de likes</button>
+                                        </div>
+                                    </section>
+                                    `;
         });
     });
 };
