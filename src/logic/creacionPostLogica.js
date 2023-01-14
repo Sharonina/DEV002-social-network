@@ -16,5 +16,6 @@ export const creacionPostLogica = (contenedor) => {
             }),
 
         ]);
+        ingresoPost.value = '';
     });
 };

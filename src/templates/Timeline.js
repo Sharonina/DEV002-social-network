@@ -1,6 +1,6 @@
 const Timeline = () => {
     const view = `
-    <p>No hay publicaciones aún</p>
+    <article class='postPublicado'></article>
     `;
     return view;
 };

@@ -1,21 +1,11 @@
 import { onSnapshot, collection } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { database, auth } from '../firebase/configuracionFirebase.js';
+import Timeline from '../templates/Timeline.js';
 
 export const timelineLogica = (contenedor) => {
     const postsContainer = contenedor.querySelector('.Timeline');
+    const postPublicado = contenedor.querySelector('.postPublicado');
 
-    /* onGetPost((querySnapshot) => {
-        let html = '';
-        querySnapshot.forEach((doc) => {
-            const post = doc.data();
-            html += `
-                <div>
-                    <h3>${post.valorPost}</h3>
-                </div>
-            `;
-        });
-        postsContainer.innerHTML = html;
-    }); */
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'posts', userUid, 'userPosts');
 
@@ -23,6 +13,7 @@ export const timelineLogica = (contenedor) => {
         querySnapshot.forEach((doc) => {
             const post = doc.data();
             console.log(post.valorPost);
+            postPublicado.innerHTML += `${post.valorPost}`;
         });
     });
 };
