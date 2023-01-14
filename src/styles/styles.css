@@ -963,14 +963,86 @@ main #content .CreacionPost .botones .ladraloBtn button{
 main #content .CreacionPost .botones .ladraloBtn button:hover{
     background-color: var(--jade-oscuro);
 }
+
 /*TimeLine------------------------------------------------------------*/
 main #content .Timeline{
     background-color: var(--blanco);
 }
 
+main #content .Timeline .postPublicado{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
+main #content .Timeline .postPublicado .postIndividual{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
 
+main #content .Timeline .postPublicado .postIndividual .postEncabezado{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .name{
+    margin-top: 5%;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .username{
+    margin-top: 5%;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado button{
+    margin-left: 25%;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera{
+    height: 100%;
+    border-top: 2%;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera img{
+    height: 90%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postTexto{
+    width: 100%;
+    min-height: 3.5vh;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postTexto p{
+    width: 100%;
+    font-size: 3vw;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postBotones{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-bottom: 3%;
+    border-bottom: 0.1rem solid var(--morado);
+
+}
+
+main #content .Timeline .postPublicado .postIndividual .postBotones button{
+    border: none;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postBotones .likeImage{
+    height: 1.5rem;
+    border: none;
+}
 /* Final TimeLine-----------------------------------------------------*/
+
 
 /* Responsive Design */
 @media screen and (min-width: 500px){

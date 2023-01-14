@@ -16,17 +16,27 @@ export const timelineLogica = (contenedor) => {
             postPublicado.innerHTML += `
                                     <section class = 'postIndividual'>
                                         <div class = 'postEncabezado'>
-                                            <img class ='imagenDelPost' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
-                                            <p class = 'nombreMascota'>      </p>
-                                            <p class = 'username'>   </p>
+                                            <figure class ='imagenCabecera'>
+                                                <img src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
+                                            </figure>
+                                            <div class='name'>
+                                                <p class = 'nombreMascota'>Nombre Mascota</p>
+                                                <p class = 'tiempo'>Tiempo</p>
+                                            </div>
+                                            <p class = 'username'>@username</p>
                                             <button>editar</button>
                                         </div> 
                                         <div class='postTexto'>
                                             <p class ='textoPost'>${post.valorPost}</p>
                                         </div>
+                                        <div class='postImagen'>
+                                            <img class ='imagenDelPost' src='' alt = ''/>
+                                        </div>
                                         <div class='postBotones'>
-                                            <button>me encorazona</button>
-                                            <button>numero de likes</button>
+                                            <button>
+                                                <img class='likeImage' src='./assets/heart_rosa.png' alt="foto de like a post"/>
+                                            </button>
+                                            <button>10</button>
                                         </div>
                                     </section>
                                     `;
