@@ -24,7 +24,6 @@ export const headerLogica = (contenedor) => {
         menu.classList.toggle('show');
     });
 
-    /*      */
     // Cerrar sesion
 
     const botonCerrarSesion = contenedor.querySelector('#cerrarSesion');

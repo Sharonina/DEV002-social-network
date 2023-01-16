@@ -1006,7 +1006,7 @@ main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCa
     border-top: 2%;
 }
 
-main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera img{
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera .imgUsuario{
     height: 90%;
     object-fit: cover;
     object-position: center;
