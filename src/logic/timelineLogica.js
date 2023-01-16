@@ -25,7 +25,7 @@ export const timelineLogica = (contenedor) => {
                                             </div>
                                             <p class = 'username'>@username</p>
                                             <button>editar</button>
-                                        </div> 
+                                        </div>
                                         <div class='postTexto'>
                                             <p class ='textoPost'>${post.valorPost}</p>
                                         </div>

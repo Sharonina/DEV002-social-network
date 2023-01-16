@@ -6,7 +6,7 @@ export const homeLogica = (contenedor) => {
     onAuthStateChanged(auth, (user) => {
         if (user) { // User is signed in
             const uid = user.uid;
-            const displayName = user.displayName;
+            window.localStorage. setItem('uid', uid);
             const username = user.username;
             const email = user.email;
             const photoURL = user.photoURL;
