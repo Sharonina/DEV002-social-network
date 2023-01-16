@@ -1,8 +1,6 @@
 import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
-import {
-    auth, storage, storageRef, currentUser,
-} from '../firebase/configuracionFirebase.js';
+import { auth, storage, storageRef, currentUser,} from '../firebase/configuracionFirebase.js';
 
 export const headerLogica = (contenedor) => {
     // Desplegar menú de opciones
