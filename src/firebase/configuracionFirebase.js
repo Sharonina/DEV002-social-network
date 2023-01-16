@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProf
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // eslint-disable-next-line import/no-unresolved, object-curly-newline
-import { getFirestore, collection, getDocs, setDoc, doc, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { getFirestore, collection, getDocs, setDoc, doc, onSnapshot, query, where } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 // eslint-disable-next-line import/no-unresolved
 import { getStorage, ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 // eslint-disable-next-line object-curly-newline
@@ -57,6 +57,13 @@ export const getCurrentUser = () => {
             currentUser.email = user.email;
             currentUser.uid = user.uid;
             currentUser.displayName = user.displayName;
+
+            /* const consultaUsuarios = collection(database, 'usuarios');
+            const q = query(consultaUsuarios, where('username', '==', (user.uid).username));
+            console.log(q); */
+            currentUser.petName = user.petName;
+            currentUser.username = user.username;
+
             // currentUser.iddoc = user.id;
         }
         //  else {
