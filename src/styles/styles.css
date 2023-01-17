@@ -1278,8 +1278,10 @@ main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLik
     }
     main #content .recuperarContraseña .contenidoMensaje .mensajes {
         justify-content: flex-start;
+        height: 34%;
     }
     main #content .recuperarContraseña .contenidoMensaje .mensajes p {
+        height: 37%;
         font-size: 1.6vw;
     }
     main #content .recuperarContraseña .contenidoMensaje .mensajes span {
@@ -1291,7 +1293,7 @@ main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLik
     }
     main #content .recuperarContraseña .contenidoMensaje .boton input {
         width: 27%;
-        height: 80%;
+        height: 72%;
         border-radius: 0.6rem;
         font-size: 1.5vw;
     }
