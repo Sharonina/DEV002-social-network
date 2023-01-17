@@ -174,7 +174,6 @@ export const formularioRegistroMascotaLogica = (contenedor) => {
                 esterilizacion: document.getElementById('esterilizacion').checked,
                 vacunasAlDia: document.getElementById('vacunas').checked,
             });
-
             setDoc(doc(getFirestore(), "usernames", auth.currentUser.uid), {
                 username: usuario.value,
             });
