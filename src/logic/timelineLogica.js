@@ -26,7 +26,7 @@ export const timelineLogica = (contenedor) => {
         querySnapshot.forEach((doc) => {
             const post = doc.data();
             console.log(post.valorPost);
-            
+
             postPublicado.innerHTML += `
                                     <section class = 'postIndividual'>
                                         <div class = 'postEncabezado'>
