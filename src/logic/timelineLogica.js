@@ -1,7 +1,7 @@
 import { onSnapshot, collection, query, where, getDocs, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
-import { database, auth, storage, currentUser, deletePost } from '../firebase/configuracionFirebase.js';
+import { database, auth, storage, currentUser, deletePost, getPostData } from '../firebase/configuracionFirebase.js';
 import Timeline from '../templates/Timeline.js';
 
 export const timelineLogica = (contenedor) => {
@@ -11,6 +11,8 @@ export const timelineLogica = (contenedor) => {
     // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
+    // console.log(subColRef); 
+    // console.log(auth.currentUser);
 
     /* const petName = [];
     onGetPostData((querySnapshot) => {
@@ -23,24 +25,18 @@ export const timelineLogica = (contenedor) => {
         let data = result.data();
         console.log(data());
     }); */
-    const dataPetPost = collection(database, 'usuarios', userUid, 'petName');
+
+   /*  const dataPetPost = collection(database, 'usuarios', userUid, 'petName');
     // console.log(dataPetPost.petName);
     onSnapshot(dataPetPost, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const petName = doc.data();
             console.log(petName.petName);
         });
-    });
+    }); */
 
-   /*  const docRef = doc(database, 'usuarios', userUid);
-    const docSnap = getDoc(docRef);
-    if (docSnap) {
-    console.log('Document data', docSnap.data());
-    } else {
-    // doc.data() will be undefined in this case
-    console.log('No such document!');
-    } */
-
+    /* const docData = getPostData(userUid);
+    console.log(docData.data()); */
 
     onSnapshot(subColRef, (querySnapshot) => {
         postPublicado.innerHTML = '';
@@ -54,11 +50,12 @@ export const timelineLogica = (contenedor) => {
                                                 <img class = 'imgUsuario' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
                                             </figure>
                                             <div class='name'>
-                                                <p class = 'nombreMascota'>${dataPetPost.petName}</p>
+                                                <p class = 'nombreMascota'>${post.petName}</p>
                                                 <p class = 'tiempo'>Tiempo</p>
                                             </div>
-                                            <p class = 'username'>${post.userUid}</p>
+                                            <p class = 'username'>@${post.username}</p>
                                             <button class='borrarPost' data-uid='${doc.id}'>Eliminar</button>
+                                            <button class='editarPost' data-uid='${doc.id}'>Editar</button>
                                         </div> 
                                         <div class='postTexto'>
                                             <p class ='textoPost'>${post.valorPost}</p>
@@ -79,6 +76,12 @@ export const timelineLogica = (contenedor) => {
         borrarPostBtn.forEach(btn => {
             btn.addEventListener('click', ({ target: { dataset } }) => {
                 deletePost(dataset.uid);
+            });
+        });
+        const editarPostBtn = postPublicado.querySelectorAll('.editarPost');
+        editarPostBtn.forEach(btn => {
+            btn.addEventListener('click', e => {
+                
             });
         });
     });

@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProf
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // eslint-disable-next-line import/no-unresolved, object-curly-newline
-import { getFirestore, collection, getDocs, setDoc, doc, onSnapshot, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { getFirestore, collection, getDoc, getDocs, setDoc, doc, onSnapshot, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 // eslint-disable-next-line import/no-unresolved
 import { getStorage, ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 // eslint-disable-next-line object-curly-newline
@@ -74,8 +74,10 @@ export const getCurrentUser = () => {
 export const logOut = () => signOut(auth);
 
 // Borrar post
-
 export const deletePost = uid => deleteDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+
+// consultar
+export const getPostData = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid));
 
 // Mostrar post en tiempo real
 // export const onGetPostData = (callback) => onSnapshot(doc(database, 'usuarios', auth.currentUser.uid), callback);
