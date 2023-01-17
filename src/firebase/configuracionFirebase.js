@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProf
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // eslint-disable-next-line import/no-unresolved, object-curly-newline
-import { getFirestore, collection, getDocs, setDoc, doc, onSnapshot, query, where } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { getFirestore, collection, getDoc, getDocs, setDoc, doc, onSnapshot, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 // eslint-disable-next-line import/no-unresolved
 import { getStorage, ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 // eslint-disable-next-line object-curly-newline
@@ -57,10 +57,6 @@ export const getCurrentUser = () => {
             currentUser.email = user.email;
             currentUser.uid = user.uid;
             currentUser.displayName = user.displayName;
-
-            /* const consultaUsuarios = collection(database, 'usuarios');
-            const q = query(consultaUsuarios, where('username', '==', (user.uid).username));
-            console.log(q); */
             currentUser.petName = user.petName;
             currentUser.username = user.username;
 
@@ -77,8 +73,14 @@ export const getCurrentUser = () => {
 // Cierre de sesión
 export const logOut = () => signOut(auth);
 
+// Borrar post
+export const deletePost = uid => deleteDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+
+// consultar
+export const getPostData = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid));
+
 // Mostrar post en tiempo real
-// export const onGetPost = (callback) => onSnapshot(collection(database, 'posts', auth.currentUser.uid, 'userPosts'), callback);
+// export const onGetPostData = (callback) => onSnapshot(doc(database, 'usuarios', auth.currentUser.uid), callback);
 // const subColRef = collection(database, 'posts', auth.currentUser.uid, 'userPosts');
 
 

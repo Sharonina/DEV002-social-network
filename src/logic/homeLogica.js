@@ -17,13 +17,4 @@ export const homeLogica = (contenedor) => {
             window.location.href = 'bienvenida';
         }
     });
-
-    // Metodo current user - Obtener perfil de usuario
-    /* const user = auth.currentUser;
-        console.log(user);
-        if (user !== null) {
-        } else {
-        // No user is signed in.
-            // window.location.href = 'bienvenida';
-    } */
 };

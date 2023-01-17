@@ -1031,7 +1031,7 @@ main #content .Timeline .postPublicado .postIndividual .postEncabezado .username
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado button{
-    margin-left: 25%;
+    /*margin-left: 25%;*/
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera{
