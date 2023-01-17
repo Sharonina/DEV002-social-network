@@ -1238,6 +1238,9 @@ main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLik
         margin: 0 3vw;
     }
     /* Pantalla: Recuperar Contraseña */
+    main #content .recuperarContraseña {
+        justify-content: space-evenly;
+    }
     main #content .recuperarContraseña .camposRecuperacion label {
         width: 30%;
         font-size: 1.65vw;
@@ -1264,6 +1267,34 @@ main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLik
         font-size: 1.3vw;
     }
     /*Recuperar contraseña: imagen correo*/
+    main #content .recuperarContraseña .contenidoMensaje {
+        height: 65%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mailImg {
+        height: 37%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mailImg img {
+        width: 10%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mensajes {
+        justify-content: flex-start;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mensajes p {
+        font-size: 1.6vw;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mensajes span {
+        width: 20%;
+        font-size: 1.2vw;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .boton {
+        height: 19%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .boton input {
+        width: 27%;
+        height: 80%;
+        border-radius: 0.6rem;
+        font-size: 1.5vw;
+    }
 }
 
 @media screen and (min-width: 1800px){ /* 1868 x 919 */
