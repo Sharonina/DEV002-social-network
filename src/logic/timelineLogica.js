@@ -19,6 +19,7 @@ export const timelineLogica = (contenedor) => {
     onSnapshot(subColRef, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const post = doc.data();
+            const fechaPublicacion = new Date().toLocaleDateString('en-us', { weekday: 'long', month: 'long', day: 'numeric' });
             // console.log(post.valorPost);
             postPublicado.innerHTML += `
                 <section class = 'postIndividual'>
@@ -28,7 +29,7 @@ export const timelineLogica = (contenedor) => {
                         </figure>
                         <div class='name'>
                             <p class = 'nombreMascota'>Nombre Mascota</p>
-                            <p class = 'tiempo'>Tiempo</p>
+                            <p class = 'tiempo'>${fechaPublicacion}</p>
                         </div>
                         <p class = 'username'>${auth.currentUser.username}</p>
                         <button>editar</button>
