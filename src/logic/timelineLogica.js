@@ -1,7 +1,7 @@
-import { onSnapshot, collection, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { onSnapshot, collection, query, where, getDocs, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
-import { database, auth, storage, currentUser } from '../firebase/configuracionFirebase.js';
+import { database, auth, storage, currentUser, deletePost } from '../firebase/configuracionFirebase.js';
 import Timeline from '../templates/Timeline.js';
 
 export const timelineLogica = (contenedor) => {
@@ -10,12 +10,23 @@ export const timelineLogica = (contenedor) => {
 
     // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
-    const subColRef = collection(database, 'posts', userUid, 'userPosts');
+    const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
+    const usernameRef = collection(database, 'usuarios', userUid, 'username');
 
+/*     const docRef = doc(database, 'usuarios', userUid);
+    const docSnap = await getDoc(docRef);
+    console.log(docSnap); */
+
+    /* console.log(docSnap.data().petName);
+    const datos = docSnap.data();
+    console.log(datos);
+ */
     onSnapshot(subColRef, (querySnapshot) => {
+        postPublicado.innerHTML = '';
         querySnapshot.forEach((doc) => {
             const post = doc.data();
-            // console.log(post.valorPost);
+            console.log(post.valorPost);
+            
             postPublicado.innerHTML += `
                                     <section class = 'postIndividual'>
                                         <div class = 'postEncabezado'>
@@ -23,11 +34,11 @@ export const timelineLogica = (contenedor) => {
                                                 <img class = 'imgUsuario' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
                                             </figure>
                                             <div class='name'>
-                                                <p class = 'nombreMascota'>Nombre Mascota</p>
+                                                <p class = 'nombreMascota'>${userUid.username}</p>
                                                 <p class = 'tiempo'>Tiempo</p>
                                             </div>
                                             <p class = 'username'>${post.userUid}</p>
-                                            <button>editar</button>
+                                            <button class='borrarPost' data-uid='${doc.id}'>Eliminar</button>
                                         </div> 
                                         <div class='postTexto'>
                                             <p class ='textoPost'>${post.valorPost}</p>
@@ -43,6 +54,12 @@ export const timelineLogica = (contenedor) => {
                                         </div>
                                     </section>
                                     `;
+        });
+        const borrarPostBtn = postPublicado.querySelectorAll('.borrarPost');
+        borrarPostBtn.forEach(btn => {
+            btn.addEventListener('click', ({ target: { dataset } }) => {
+                deletePost(dataset.uid);
+            });
         });
     });
 };

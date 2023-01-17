@@ -12,24 +12,15 @@ export const creacionPostLogica = (contenedor) => {
         console.log(userUid);
 
         // consultar usuario--------------------------------------------------------
-        // const consultaUsuario = collection(database, 'usuarios');
-        /* const q = query(collection(database, 'usuarios'), where('username', 'in', [userUid === 'uid']));
 
-        console.log(q);
-        console.log('hola1');
-        const querySnapshot = await getDocs(q);
-        console.log(querySnapshot);
-        querySnapshot.forEach((doc) => {
-            console.log(doc);
-            console.log('hola2');
-            console.log(doc.id, ' => ', doc.data());
-            return (doc.id, doc.data());
-        }); */
+       /*  const usernameRef = collection(database, 'usuarios');
+
+        const q = query(usernameRef, where('username', '==', "CA")); */
         //---------------------------------------------------------------------------
 
         // creacion de subcoleccion y valor del post
         if (ingresoPost.value.length > 0) {
-            const posts = collection(database, 'posts');
+            const posts = collection(database, 'usuarios');
             Promise.all([
                 addDoc(collection(posts, auth.currentUser.uid, 'userPosts'), {
                     userUid, valorPost, // username, // petName,
