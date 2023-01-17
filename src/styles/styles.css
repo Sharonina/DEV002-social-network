@@ -1111,6 +1111,34 @@ main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLik
     main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion a{
         font-size: 3.2vw;
     }
+    /*Recuperar contraseña: Correo enviado*/
+    main #content .recuperarContraseña {
+        justify-content: space-around;
+    }
+    main #content .recuperarContraseña .contenidoMensaje {
+        height: 65%;
+        justify-content: flex-start;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mailImg {
+        height: 31%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mailImg img {
+        width: 25%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mensajes p {
+        font-size: 4vw;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mensajes span {
+        font-size: 3vw;
+        width: 50%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .boton {
+        height: 23%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .boton input {
+        height: 59%;
+        border-radius: 0.6rem;
+    }
 
 }
 
