@@ -1158,6 +1158,33 @@ main #content .Timeline .botones .ladraloBtn button:hover{
     main #content .inicio .inicio-botones span{
         margin: 0 3vw;
     }
+    /* Pantalla: Recuperar Contraseña */
+    main #content .recuperarContraseña .camposRecuperacion label {
+        width: 30%;
+        font-size: 1.65vw;
+    }
+    main #content .recuperarContraseña .camposRecuperacion input {
+        width: 30%;
+        font-size: 1.65vw;
+    }
+    main #content .recuperarContraseña .camposRecuperacion p {
+        width: 30%;
+        font-size: 0.9vw;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena {
+        height: 32%;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena input {
+        width: 27%;
+        font-size: 1.5vw;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion p {
+        font-size: 1.3vw;
+    }
+    main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion a {
+        font-size: 1.3vw;
+    }
+    /*Recuperar contraseña: imagen correo*/
 }
 
 @media screen and (min-width: 1800px){ /* 1868 x 919 */
