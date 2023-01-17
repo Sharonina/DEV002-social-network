@@ -57,10 +57,6 @@ export const getCurrentUser = () => {
             currentUser.email = user.email;
             currentUser.uid = user.uid;
             currentUser.displayName = user.displayName;
-
-            /* const consultaUsuarios = collection(database, 'usuarios');
-            const q = query(consultaUsuarios, where('username', '==', (user.uid).username));
-            console.log(q); */
             currentUser.petName = user.petName;
             currentUser.username = user.username;
 

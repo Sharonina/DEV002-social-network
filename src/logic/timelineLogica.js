@@ -26,7 +26,7 @@ export const timelineLogica = (contenedor) => {
                                                 <p class = 'nombreMascota'>Nombre Mascota</p>
                                                 <p class = 'tiempo'>Tiempo</p>
                                             </div>
-                                            <p class = 'username'>${auth.currentUser.username}</p>
+                                            <p class = 'username'>${post.userUid}</p>
                                             <button>editar</button>
                                         </div> 
                                         <div class='postTexto'>
