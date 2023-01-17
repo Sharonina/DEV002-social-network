@@ -1228,8 +1228,25 @@ main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLik
     main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion a {
         font-size: 1.7vw;
     }
+    /*Recuperar contraseña: Correo enviado*/
+    main #content .recuperarContraseña .imagen {
+        justify-content: flex-end;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mailImg img {
+        width: 13%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mensajes p {
+        font-size: 2.2vw;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .mensajes span {
+        font-size: 1.7vw;
+        width: 29%;
+    }
+    main #content .recuperarContraseña .contenidoMensaje .boton input {
+        width: 36%;
+        font-size: 2.1vw;
+    }
     /*Termina: Recuperar Contraseña */
-
 }
 
 @media screen and (min-width: 1350px){
