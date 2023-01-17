@@ -11,22 +11,42 @@ export const timelineLogica = (contenedor) => {
     // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
-    const usernameRef = collection(database, 'usuarios', userUid, 'username');
 
-/*     const docRef = doc(database, 'usuarios', userUid);
-    const docSnap = await getDoc(docRef);
-    console.log(docSnap); */
+    /* const petName = [];
+    onGetPostData((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const postData = doc.data();
+            petName.push(postData.petName);
+        });
+    }); */
+    /* database.collection('usuarios').document(userUid).get()addOnSuccessListener onSnapshot(function(result) {
+        let data = result.data();
+        console.log(data());
+    }); */
+    const dataPetPost = collection(database, 'usuarios', userUid, 'petName');
+    // console.log(dataPetPost.petName);
+    onSnapshot(dataPetPost, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const petName = doc.data();
+            console.log(petName.petName);
+        });
+    });
 
-    /* console.log(docSnap.data().petName);
-    const datos = docSnap.data();
-    console.log(datos);
- */
+   /*  const docRef = doc(database, 'usuarios', userUid);
+    const docSnap = getDoc(docRef);
+    if (docSnap) {
+    console.log('Document data', docSnap.data());
+    } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+    } */
+
+
     onSnapshot(subColRef, (querySnapshot) => {
         postPublicado.innerHTML = '';
         querySnapshot.forEach((doc) => {
             const post = doc.data();
             console.log(post.valorPost);
-
             postPublicado.innerHTML += `
                                     <section class = 'postIndividual'>
                                         <div class = 'postEncabezado'>
@@ -34,7 +54,7 @@ export const timelineLogica = (contenedor) => {
                                                 <img class = 'imgUsuario' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
                                             </figure>
                                             <div class='name'>
-                                                <p class = 'nombreMascota'>${userUid.username}</p>
+                                                <p class = 'nombreMascota'>${dataPetPost.petName}</p>
                                                 <p class = 'tiempo'>Tiempo</p>
                                             </div>
                                             <p class = 'username'>${post.userUid}</p>

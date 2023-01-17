@@ -76,8 +76,9 @@ export const logOut = () => signOut(auth);
 // Borrar post
 
 export const deletePost = uid => deleteDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+
 // Mostrar post en tiempo real
-// export const onGetPost = (callback) => onSnapshot(collection(database, 'posts', auth.currentUser.uid, 'userPosts'), callback);
+// export const onGetPostData = (callback) => onSnapshot(doc(database, 'usuarios', auth.currentUser.uid), callback);
 // const subColRef = collection(database, 'posts', auth.currentUser.uid, 'userPosts');
 
 
