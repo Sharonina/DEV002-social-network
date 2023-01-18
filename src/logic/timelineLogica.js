@@ -1,10 +1,10 @@
 import {
-    onSnapshot, collection, query, where, getDocs, doc, getDoc,
+    onSnapshot, collection, query, where, getDocs, doc, getDoc, serverTimestamp, orderBy,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 import {
-    database, auth, storage, currentUser, deletePost, getPostData, getPostData2, likePost, dislikePost, getPost, updatePost
+    database, auth, storage, currentUser, deletePost, getPostData, getPostData2, likePost, dislikePost, getPost, updatePost,
 } from '../firebase/configuracionFirebase.js';
 import Timeline from '../templates/Timeline.js';
 
@@ -14,13 +14,13 @@ export const timelineLogica = (contenedor) => {
     let id = '';
 
     const userUid = window.localStorage.getItem('uid');
-    const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
+    const subColRef = query(collection(database, 'usuarios', userUid, 'userPosts'), orderBy('createdAt', 'desc'));
 
+    /* .orderBy('createdAt', 'desc') */
     onSnapshot(subColRef, (querySnapshot) => {
         postPublicado.innerHTML = '';
         querySnapshot.forEach((doc) => {
             const post = doc.data();
-            const fechaPublicacion = new Date().toLocaleDateString('es-es', { weekday: 'long', month: 'long', day: 'numeric' });
 
             postPublicado.innerHTML += `
                 <section class='postIndividual'>
@@ -33,7 +33,7 @@ export const timelineLogica = (contenedor) => {
                                 <p class='nombreMascota'>${post.petName}</p>
                                 <p class = 'username'>@${post.username}</p>
                             </div>
-                            <p class='tiempo'>${fechaPublicacion}</p>
+                            <p class='tiempo'>${post.fechaPublicacion}</p>
                         </div>
                         <div class='postOptionsContainer'>
                             <button class='editarPost'>
@@ -77,7 +77,7 @@ export const timelineLogica = (contenedor) => {
                 const docPost = await getPost(e.target.dataset.uid);
                 const post = docPost.data();
                 id = docPost.id;
-                let postMessage = prompt('Edita tu ladrido. Woof!', post.valorPost);
+                const postMessage = prompt('Edita tu ladrido. Woof!', post.valorPost);
                 if (postMessage == null || postMessage === post.valorPost) {
                     console.log('no me editaron');
                 } else if (postMessage !== post.valorPost) {

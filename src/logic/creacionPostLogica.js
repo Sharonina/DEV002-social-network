@@ -1,4 +1,6 @@
-import { addDoc, doc, collection, where, query, getDocs, getDoc,  setDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import {
+    addDoc, doc, collection, where, query, getDocs, getDoc, setDoc, onSnapshot, serverTimestamp, orderBy,
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { database, auth, currentUser } from '../firebase/configuracionFirebase.js';
 
@@ -25,16 +27,20 @@ export const creacionPostLogica = (contenedor) => {
         }
         const username = docSnap.data().username;
         const petName = docSnap.data().petName;
-        let amountLikes = 0;
-        let arrayUsersLikes = [];
+        const amountLikes = 0;
+        const arrayUsersLikes = [];
         //---------------------------------------------------------------------------
 
         // creacion de subcoleccion y valor del post
         if (ingresoPost.value.length > 0) {
             const posts = collection(database, 'usuarios');
+            const fechaPublicacion = new Date().toLocaleDateString('es-es', {
+                month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
+            });
+            const createdAt = serverTimestamp();
             Promise.all([
                 addDoc(collection(posts, auth.currentUser.uid, 'userPosts'), {
-                    userUid, valorPost, username, petName, amountLikes, arrayUsersLikes,
+                    userUid, valorPost, username, petName, amountLikes, arrayUsersLikes, fechaPublicacion, createdAt,
                 }),
             ]);
         }
