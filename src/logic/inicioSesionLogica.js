@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, getAdditionalUserInfo, deleteUser } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { auth, normalSign, googleSign } from '../firebase/configuracionFirebase.js';
-import { doc, setDoc, getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
 
 export const inicioSesionLogica = (contenedor) => {
@@ -94,12 +94,14 @@ export const inicioSesionLogica = (contenedor) => {
     botonInicioGoogle.addEventListener('click', async () => {
 
         const provider = new GoogleAuthProvider();
+        console.log(provider)
         const result = await signInWithPopup(auth, provider);
-        await setDoc(doc(getFirestore(), 'usuarios', auth.currentUser.uid), {
-            email: auth.currentUser.email,
-            nameOwner: auth.currentUser.displayName,
-            uid: auth.currentUser.uid,
-        })
+        console.log(result)
+        // setDoc(doc(database, 'usuarios', auth.currentUser.uid), {
+        //     email: auth.currentUser.email,
+        //     nameOwner: auth.currentUser.displayName,
+        //     uid: auth.currentUser.uid,
+        // })
         const credenciales = getAdditionalUserInfo(result);
         if (credenciales.isNewUser) {
             window.location.href = '/formulario-registro';
