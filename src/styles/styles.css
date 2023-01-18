@@ -1000,9 +1000,12 @@ main #content .CreacionPost .botones .ladraloBtn button:hover{
 /*TimeLine------------------------------------------------------------*/
 main #content .Timeline{
     background-color: var(--blanco);
+    height: auto;
+    width: 100%;
 }
 
 main #content .Timeline .postPublicado{
+    height: auto;
     width: 100%;
     display: flex;
     align-content: center;
@@ -1011,44 +1014,98 @@ main #content .Timeline .postPublicado{
 }
 
 main #content .Timeline .postPublicado .postIndividual{
+    height: 11rem;
     width: 90%;
     display: flex;
     flex-direction: column;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado{
-    height: 10vh;
+    height: 38%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 3%;
 }
 main #content .Timeline .postPublicado .postIndividual .postEncabezado .name{
-    margin-top: 5%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-main #content .Timeline .postPublicado .postIndividual .postEncabezado .username{
-    margin-top: 5%;
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior{
+    height: 45%;
+    display: flex;
+    align-items: flex-end;
 }
 
-main #content .Timeline .postPublicado .postIndividual .postEncabezado button{
-    /*margin-left: 25%;*/
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior .nombreMascota{
+    font-size: 3.5vw;
+    color: var(--font-gris);
+    font-weight: 600;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior .username{
+    font-size: 2.5vw;
+    margin-left: 2%;
+    padding-bottom: 1%;
+    color: var(--font-gris-claro);
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .tiempo{
+    font-size: 2.2vw;
+    margin-top: 1%;
+    color: var(--font-gris);
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .postOptionsContainer{
+    width: 15%;
+    margin-top: 2%;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .postOptionsContainer .editarPost{
+    width: 40%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .postOptionsContainer .editarPost img{
+    width: 80%;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .postOptionsContainer .borrarPost{
+    width: 40%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postEncabezado .postOptionsContainer .borrarPost img{
+    width: 80%;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera{
     height: 100%;
-    border-top: 2%;
+    width: 20%;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera .imgUsuario{
-    height: 90%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postTexto{
+    height: 47%;
     width: 100%;
-    min-height: 3.5vh;
+    color: var(--font-negro);
+    padding-top: 3%;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postTexto p{
@@ -1058,25 +1115,43 @@ main #content .Timeline .postPublicado .postIndividual .postTexto p{
 
 main #content .Timeline .postPublicado .postIndividual .postBotones{
     width: 100%;
+    height: 20%;
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
-    margin-bottom: 3%;
+    padding-bottom: 2%;
     border-bottom: 0.1rem solid var(--morado);
-
+    align-items: center;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postBotones button{
     border: none;
 }
 
+main #content .Timeline .postPublicado .postIndividual .postBotones .likes{
+    height: 100%;
+}
+
 main #content .Timeline .postPublicado .postIndividual .postBotones .likes .likeImage{
-    height: 1.5rem;
+    height: 100%;
     border: none;
     cursor: pointer;
 }
 main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLikes{
-    margin-left: 2% ;
+    margin-left: 1%;
+    color: var(--font-gris);
+    font-size: 3vw;
+}
+
+main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorrar{
+    position: absolute;
+    background: var(--blanco);
+    box-shadow: 0 .4rem 1rem var(--font-gris-claro);
+    width: 75%;
+    height: 13%;
+    border-radius: .5rem;
+    margin-top: 6%;
+    margin-left: 8%;
 }
 /* Final TimeLine-----------------------------------------------------*/
 
