@@ -86,6 +86,11 @@ export const likePost = (uid, likes, userLike) => updateDoc(doc(database, 'usuar
 // Dislike post
 export const dislikePost = (uid, likes, userLike) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), { amountLikes: likes, arrayUsersLikes: arrayRemove(userLike) });
 
+// Obtener doc
+export const getPost = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+
+// Update doc
+export const updatePost = (uid, nuevoValorPost) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), nuevoValorPost);
 // Mostrar post en tiempo real
 // export const onGetPostData = (callback) => onSnapshot(doc(database, 'usuarios', auth.currentUser.uid), callback);
 // const subColRef = collection(database, 'posts', auth.currentUser.uid, 'userPosts');
