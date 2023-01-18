@@ -4,16 +4,15 @@ import {
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 import {
-    database, auth, storage, currentUser, deletePost, getPostData, getPostData2, likePost, dislikePost,
+    database, auth, storage, currentUser, deletePost, getPostData, getPostData2, likePost, dislikePost, getPost, updatePost
 } from '../firebase/configuracionFirebase.js';
-
 import Timeline from '../templates/Timeline.js';
 
 export const timelineLogica = (contenedor) => {
     const postsContainer = contenedor.querySelector('.Timeline');
     const postPublicado = contenedor.querySelector('.postPublicado');
+    let id = '';
 
-    // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
 
@@ -37,9 +36,8 @@ export const timelineLogica = (contenedor) => {
                             <p class='tiempo'>${fechaPublicacion}</p>
                         </div>
                         <div class='postOptionsContainer'>
-                            <button class='editarPost' data-uid='${doc.id}'>
-                                <img src='./assets/pencil.png' alt="Ícono para editar post"/>
-                            </button>
+                            <button class='editarPost'>
+                                <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
                             <button class='borrarPost'>
                                 <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
                             </button>
@@ -55,11 +53,7 @@ export const timelineLogica = (contenedor) => {
                         <button class = 'likes' data-uid='${doc.id}'>
                             <img class='likeImage' data-uid='${doc.id}' src='./assets/heart.png' alt="foto de like a post"/>
                         </button>
-
-                        <!-- <button class = 'contadorLikes'>${post.arrayUsersLikes.length}</button> -->
-
                         <span class = 'contadorLikes'>${post.arrayUsersLikes.length}</span>
-
                     </div>
                 </section>
             `;
@@ -77,10 +71,18 @@ export const timelineLogica = (contenedor) => {
             });
         });
 
-        const editarPostBtn = postPublicado.querySelectorAll('.editarPost');
+        const editarPostBtn = postPublicado.querySelectorAll('.editarPostImg');
         editarPostBtn.forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-
+            btn.addEventListener('click', async (e) => {
+                const docPost = await getPost(e.target.dataset.uid);
+                const post = docPost.data();
+                id = docPost.id;
+                let postMessage = prompt('Edita tu ladrido. Woof!', post.valorPost);
+                if (postMessage == null || postMessage === post.valorPost) {
+                    console.log('no me editaron');
+                } else if (postMessage !== post.valorPost) {
+                    updatePost(id, { valorPost: postMessage });
+                }
             });
         });
 
