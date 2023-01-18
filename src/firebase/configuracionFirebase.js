@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProf
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // eslint-disable-next-line import/no-unresolved, object-curly-newline
-import { getFirestore, collection, getDoc, getDocs, setDoc, doc, onSnapshot, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { getFirestore, collection, getDoc, getDocs, setDoc, doc, onSnapshot, query, where, deleteDoc, updateDoc, arrayRemove, arrayUnion } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 // eslint-disable-next-line import/no-unresolved
 import { getStorage, ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 // eslint-disable-next-line object-curly-newline
@@ -78,6 +78,13 @@ export const deletePost = uid => deleteDoc(doc(database, 'usuarios', auth.curren
 
 // consultar
 export const getPostData = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid));
+
+export const getPostData2 = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+// Like post
+export const likePost = (uid, likes, userLike) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), { amountLikes: likes, arrayUsersLikes: arrayUnion(userLike) });
+
+// Dislike post
+export const dislikePost = (uid, likes, userLike) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), { amountLikes: likes, arrayUsersLikes: arrayRemove(userLike) });
 
 // Mostrar post en tiempo real
 // export const onGetPostData = (callback) => onSnapshot(doc(database, 'usuarios', auth.currentUser.uid), callback);

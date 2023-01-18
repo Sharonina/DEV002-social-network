@@ -3,9 +3,8 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
-import {
-    database, auth, storage, currentUser, deletePost, getPostData,
-} from '../firebase/configuracionFirebase.js';
+import { database, auth, storage, currentUser, deletePost, getPostData, getPostData2, likePost, dislikePost } from '../firebase/configuracionFirebase.js';
+
 import Timeline from '../templates/Timeline.js';
 
 export const timelineLogica = (contenedor) => {
@@ -15,12 +14,13 @@ export const timelineLogica = (contenedor) => {
     // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
-
+   
     onSnapshot(subColRef, (querySnapshot) => {
         postPublicado.innerHTML = '';
         querySnapshot.forEach((doc) => {
             const post = doc.data();
             const fechaPublicacion = new Date().toLocaleDateString('es-es', { weekday: 'long', month: 'long', day: 'numeric' });
+
             postPublicado.innerHTML += `
                 <section class='postIndividual'>
                     <div class='postEncabezado'>
@@ -50,21 +50,19 @@ export const timelineLogica = (contenedor) => {
                         <img class ='imagenDelPost' src='' alt = ''/>
                     </figure>
                     <div class='postBotones'>
-                        <button class = 'likes'>
-                            <img class='likeImage' src='./assets/heart.png' alt="foto de like a post"/>
+                        <button class = 'likes' data-uid='${doc.id}'>
+                            <img class='likeImage' data-uid='${doc.id}' src='./assets/heart.png' alt="foto de like a post"/>
                         </button>
-                        <span class = 'contadorLikes'>10</span>
+
+                        <!-- <button class = 'contadorLikes'>${post.arrayUsersLikes.length}</button> -->
+
+                        <span class = 'contadorLikes'>${post.arrayUsersLikes.length}</span>
+
                     </div>
                 </section>
             `;
+            
         });
-        /* const optionPostContainer = postPublicado.querySelectorAll('.toggleOptionsContainer');
-        const postOptionsBtn = postPublicado.querySelectorAll('.dotsBtn');
-        postOptionsBtn.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                optionPostContainer.classList.remove('hide');
-            });
-        }); */
 
         const borrarPostBtn = postPublicado.querySelectorAll('.borrarPostImg');
         borrarPostBtn.forEach((btn) => {
@@ -76,19 +74,35 @@ export const timelineLogica = (contenedor) => {
                     text = 'You canceled!';
                 }
             });
-            /* console.log(dataset.uid);
-            deletePost(dataset.uid); */
         });
-        /* borrarPostBtn.forEach((btn) => {
-            btn.addEventListener('click', ({ target: { dataset } }) => {
-                console.log(dataset.uid);
-                deletePost(dataset.uid);
-            });
-        }); */
+        
         const editarPostBtn = postPublicado.querySelectorAll('.editarPost');
         editarPostBtn.forEach((btn) => {
             btn.addEventListener('click', (e) => {
 
+            });
+        });
+        
+        const likeButton = postPublicado.querySelectorAll('.likes');
+        likeButton.forEach((btn) => {
+            btn.addEventListener('click', ({ target: { dataset } }) => {
+                console.log(dataset.uid);
+                const currentUserLike = auth.currentUser.uid;
+                const idLikeButton = dataset.uid;
+                getPostData2(idLikeButton)
+                    .then((document) => {
+                        const post = document.data();
+                        console.log(post);
+                        if (!post.arrayUsersLikes.includes(currentUserLike)) {
+                            const likes = (post.amountLikes) + 1;
+                            likePost(idLikeButton, likes, currentUserLike);
+                        } else {
+                            const likes = (post.amountLikes) - 1;
+                            dislikePost(idLikeButton, likes, currentUserLike);
+                        }
+                    })
+                    .catch(() => {
+                    });
             });
         });
     });

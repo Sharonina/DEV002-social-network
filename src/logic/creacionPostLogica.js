@@ -25,6 +25,8 @@ export const creacionPostLogica = (contenedor) => {
         }
         const username = docSnap.data().username;
         const petName = docSnap.data().petName;
+        let amountLikes = 0;
+        let arrayUsersLikes = [];
         //---------------------------------------------------------------------------
 
         // creacion de subcoleccion y valor del post
@@ -32,7 +34,7 @@ export const creacionPostLogica = (contenedor) => {
             const posts = collection(database, 'usuarios');
             Promise.all([
                 addDoc(collection(posts, auth.currentUser.uid, 'userPosts'), {
-                    userUid, valorPost, username, petName,
+                    userUid, valorPost, username, petName, amountLikes, arrayUsersLikes,
                 }),
             ]);
         }
