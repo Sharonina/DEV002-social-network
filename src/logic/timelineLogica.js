@@ -3,7 +3,9 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
-import { database, auth, storage, currentUser, deletePost, getPostData, getPostData2, likePost, dislikePost } from '../firebase/configuracionFirebase.js';
+import {
+    database, auth, storage, currentUser, deletePost, getPostData, getPostData2, likePost, dislikePost,
+} from '../firebase/configuracionFirebase.js';
 
 import Timeline from '../templates/Timeline.js';
 
@@ -14,7 +16,7 @@ export const timelineLogica = (contenedor) => {
     // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
-   
+
     onSnapshot(subColRef, (querySnapshot) => {
         postPublicado.innerHTML = '';
         querySnapshot.forEach((doc) => {
@@ -61,7 +63,6 @@ export const timelineLogica = (contenedor) => {
                     </div>
                 </section>
             `;
-            
         });
 
         const borrarPostBtn = postPublicado.querySelectorAll('.borrarPostImg');
@@ -75,14 +76,15 @@ export const timelineLogica = (contenedor) => {
                 }
             });
         });
-        
+
         const editarPostBtn = postPublicado.querySelectorAll('.editarPost');
         editarPostBtn.forEach((btn) => {
             btn.addEventListener('click', (e) => {
 
             });
         });
-        
+
+        const likeImg = postPublicado.querySelectorAll('.likeImage');
         const likeButton = postPublicado.querySelectorAll('.likes');
         likeButton.forEach((btn) => {
             btn.addEventListener('click', ({ target: { dataset } }) => {
@@ -96,9 +98,11 @@ export const timelineLogica = (contenedor) => {
                         if (!post.arrayUsersLikes.includes(currentUserLike)) {
                             const likes = (post.amountLikes) + 1;
                             likePost(idLikeButton, likes, currentUserLike);
+                            likeImg.src = './assets/heart_rosa.png';
                         } else {
                             const likes = (post.amountLikes) - 1;
                             dislikePost(idLikeButton, likes, currentUserLike);
+                            likeImg.src = './assets/heart.png';
                         }
                     })
                     .catch(() => {
