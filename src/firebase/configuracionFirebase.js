@@ -91,11 +91,6 @@ export const getPost = (uid) => getDoc(doc(database, 'usuarios', auth.currentUse
 
 // Update doc
 export const updatePost = (uid, nuevoValorPost) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), nuevoValorPost);
-// Mostrar post en tiempo real
-// export const onGetPostData = (callback) => onSnapshot(doc(database, 'usuarios', auth.currentUser.uid), callback);
-// const subColRef = collection(database, 'posts', auth.currentUser.uid, 'userPosts');
-
-
 
 // eslint-disable-next-line max-len
 // Notas Pris: las siguientes líneas de código solo son para nuestra referencia. Despues las podemos borrar

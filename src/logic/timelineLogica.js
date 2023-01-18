@@ -13,7 +13,6 @@ export const timelineLogica = (contenedor) => {
     const postPublicado = contenedor.querySelector('.postPublicado');
     let id = '';
 
-    // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
 
@@ -54,11 +53,7 @@ export const timelineLogica = (contenedor) => {
                         <button class = 'likes' data-uid='${doc.id}'>
                             <img class='likeImage' data-uid='${doc.id}' src='./assets/heart.png' alt="foto de like a post"/>
                         </button>
-
-                        <!-- <button class = 'contadorLikes'>${post.arrayUsersLikes.length}</button> -->
-
                         <span class = 'contadorLikes'>${post.arrayUsersLikes.length}</span>
-
                     </div>
                 </section>
             `;
@@ -81,14 +76,11 @@ export const timelineLogica = (contenedor) => {
             btn.addEventListener('click', async (e) => {
                 const docPost = await getPost(e.target.dataset.uid);
                 const post = docPost.data();
-                console.log(post.valorPost);
                 id = docPost.id;
-                console.log(id);
                 let postMessage = prompt('Edita tu ladrido. Woof!', post.valorPost);
                 if (postMessage == null || postMessage === post.valorPost) {
                     console.log('no me editaron');
                 } else if (postMessage !== post.valorPost) {
-                    console.log('post editado');
                     updatePost(id, { valorPost: postMessage });
                 }
             });
