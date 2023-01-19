@@ -74,23 +74,27 @@ export const getCurrentUser = () => {
 export const logOut = () => signOut(auth);
 
 // Borrar post
-export const deletePost = uid => deleteDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+export const deletePost = uid => deleteDoc(doc(database, 'postsTimeline', uid));
+// export const deletePost = uid => deleteDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
 
 // consultar
 export const getPostData = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid));
 
-export const getPostData2 = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+export const getPostData2 = (uid) => getDoc(doc(database, 'postsTimeline', uid));
+
 // Like post
-export const likePost = (uid, likes, userLike) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), { amountLikes: likes, arrayUsersLikes: arrayUnion(userLike) });
+export const likePost = (uid, likes, userLike) => updateDoc(doc(database, 'postsTimeline', uid), { amountLikes: likes, arrayUsersLikes: arrayUnion(userLike) });
 
 // Dislike post
-export const dislikePost = (uid, likes, userLike) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), { amountLikes: likes, arrayUsersLikes: arrayRemove(userLike) });
+export const dislikePost = (uid, likes, userLike) => updateDoc(doc(database, 'postsTimeline', uid), { amountLikes: likes, arrayUsersLikes: arrayRemove(userLike) });
 
 // Obtener doc
-export const getPost = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
+export const getPost = (uid) => getDoc(doc(database, 'postsTimeline', uid));
+// export const getPost = (uid) => getDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid));
 
 // Update doc
-export const updatePost = (uid, nuevoValorPost) => updateDoc(doc(database, 'usuarios', auth.currentUser.uid, 'userPosts', uid), nuevoValorPost);
+export const updatePost = (uid, nuevoValorPost) => updateDoc(doc(database, 'postsTimeline', uid), nuevoValorPost);
+
 
 // eslint-disable-next-line max-len
 // Notas Pris: las siguientes líneas de código solo son para nuestra referencia. Despues las podemos borrar
