@@ -86,45 +86,38 @@ export const timelineLogica = (contenedor) => {
         querySnapshot.forEach((doc) => {
             const post = doc.data();
 
-            postPublicado.innerHTML += `
-                    <section class='postIndividual'>
-                        <div class='postEncabezado'>
-                            <figure class='imagenCabecera'>
-                                <img class='imgUsuario' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
-                            </figure>
-                            <div class='name'>
-                                <div class='nameSuperior'>
-                                    <p class='nombreMascota'>${post.petName}</p>
-                                    <p class = 'username'>@${post.username}</p>
-                                </div>
-                                <p class='tiempo'>${post.fechaPublicacion}</p>
-                            </div>
-                            <div class='postOptionsContainer'>
-                                <button class='editarPost'>
-                                    <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
-                                <button class='borrarPost'>
-                                    <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
-                                </button>
-                            </div>
-                        </div>
-                        <div class='postTexto'>
-                            <p class ='textoPost'>${post.valorPost}</p>
-                        </div>
-                        <figure class='postImagen'>
-                            <img class ='imagenDelPost' src='' alt = ''/>
-                        </figure>
-                        <div class='postBotones'>
-                            <button class = 'likes' data-uid='${doc.id}'>
-                                <img class='likeImage' data-uid='${doc.id}' src='./assets/heart.png' alt="foto de like a post"/>
-                            </button>
-                            <span class = 'contadorLikes'>${post.arrayUsersLikes.length}</span>
-                        </div>
-                    </section>
-                `;
-            /* const optionsContainer = postPublicado.querySelectorAll('.postOptionsContainer');
-            if (post.userUid !== auth.currentUser.uid) {
-                optionsContainer.classList.add('hide');
-            } */
+            const postIndividual = document.createElement('section');
+            postIndividual.classList.add('postIndividual');
+            const view = `
+            <div class='postEncabezado'>
+            <figure class='imagenCabecera'>
+                <img class='imgUsuario' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
+            </figure>
+            <div class='name'>
+                <div class='nameSuperior'>
+                    <p class='nombreMascota'>${post.petName}</p>
+                    <p class = 'username'>@${post.username}</p>
+                </div>
+                <p class='tiempo'>${post.fechaPublicacion}</p>
+            </div>
+            <div class='postOptionsContainer'>
+            </div>
+        </div>
+        <div class='postTexto'>
+            <p class ='textoPost'>${post.valorPost}</p>
+        </div>
+        <figure class='postImagen'>
+            <img class ='imagenDelPost' src='' alt = ''/>
+        </figure>
+        <div class='postBotones'>
+            <button class = 'likes' data-uid='${doc.id}'>
+                <img class='likeImage' data-uid='${doc.id}' src='./assets/heart.png' alt="foto de like a post"/>
+            </button>
+            <span class = 'contadorLikes'>${post.arrayUsersLikes.length}</span>
+        </div>
+    `;
+            postIndividual.innerHTML = view;
+            return postIndividual;
         });
 
         const borrarPostBtn = postPublicado.querySelectorAll('.borrarPostImg');
@@ -198,3 +191,10 @@ export const timelineLogica = (contenedor) => {
         });
     });
 };
+
+{ /* <button class='editarPost'>
+                                    <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
+                                <button class='borrarPost'>
+                                    <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
+                                </button>
+ */ }
