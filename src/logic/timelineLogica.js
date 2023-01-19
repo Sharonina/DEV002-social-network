@@ -13,7 +13,7 @@ export const timelineLogica = (contenedor) => {
     const postPublicado = contenedor.querySelector('.postPublicado');
 
     let id = '';
-    
+
     const userUid = window.localStorage.getItem('uid');
     const subColRef = query(collection(database, 'usuarios', userUid, 'userPosts'), orderBy('createdAt', 'desc'));
 
