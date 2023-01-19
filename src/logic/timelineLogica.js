@@ -29,12 +29,13 @@ export const timelineLogica = (contenedor) => {
     const subColRef = query(collection(database, 'postsTimeline'), orderBy('createdAt', 'desc'));
 
     onSnapshot(subColRef, (querySnapshot) => {
-        postPublicado.innerHTML = '';
+        //postPublicado.innerHTML = '';
+        let plantillaPost = '';
         querySnapshot.forEach((doc) => {
             // console.log(doc.data());
             const post = doc.data();
 
-            postPublicado.innerHTML += `
+            plantillaPost += `
                 <section class='postIndividual'>
                     <div class='postEncabezado'>
                         <figure class='imagenCabecera'>
@@ -47,14 +48,21 @@ export const timelineLogica = (contenedor) => {
                             </div>
                             <p class='tiempo'>${post.fechaPublicacion}</p>
                         </div>
-                        <div class='postOptionsContainer'>
-                            <button class='editarPost'>
-                                <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
-                            <button class='borrarPost'>
-                                <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
-                            </button>
-                        </div>
                     </div>
+                        `;
+            if (post.userUid === auth.currentUser.uid) {
+                plantillaPost += ` 
+                    <div class='postOptionsContainer'>
+                        <button class='editarPost'>
+                            <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
+                        <button class='borrarPost'>
+                            <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
+                        </button>
+                    </div>
+                `;
+            } else {
+                plantillaPost += ` 
+                    
                     <div class='postTexto'>
                         <p class ='textoPost'>${post.valorPost}</p>
                     </div>
@@ -69,7 +77,10 @@ export const timelineLogica = (contenedor) => {
                     </div>
                 </section>
             `;
+            }
+            postPublicado.innerHTML = plantillaPost;
         });
+
 
         const borrarPostBtn = postPublicado.querySelectorAll('.borrarPostImg');
         borrarPostBtn.forEach((btn) => {
