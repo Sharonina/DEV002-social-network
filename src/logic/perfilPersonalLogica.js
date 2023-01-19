@@ -1,4 +1,4 @@
-import {
+/* import {
     onSnapshot, collection, query, where, getDocs, doc, getDoc, serverTimestamp, orderBy,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
@@ -11,32 +11,17 @@ import Timeline from '../templates/Timeline.js';
 export const timelineLogica = (contenedor) => {
     const postsContainer = contenedor.querySelector('.Timeline');
     const postPublicado = contenedor.querySelector('.postPublicado');
-
     let id = '';
 
     const userUid = window.localStorage.getItem('uid');
-    /*let allUsersUid = [];
-
-    const collUid = query(collection(database, 'usuarios'));
-
-     getDocs(collUid)
-        .then((snapshot) => {
-            snapshot.docs.forEach((doc) => {
-                allUsersUid.push(doc.id);
-            });
-        });
-    // console.log(allUsersUid); */
-
-    const subColRef = query(collection(database, 'postsTimeline'), orderBy('createdAt', 'desc'));
+    const subColRef = query(collection(database, 'usuarios', userUid, 'userPosts'), orderBy('createdAt', 'desc'));
 
     onSnapshot(subColRef, (querySnapshot) => {
-        //postPublicado.innerHTML = '';
-        let plantillaPost = '';
+        postPublicado.innerHTML = '';
         querySnapshot.forEach((doc) => {
-            // console.log(doc.data());
             const post = doc.data();
 
-            plantillaPost += `
+            postPublicado.innerHTML += `
                 <section class='postIndividual'>
                     <div class='postEncabezado'>
                         <figure class='imagenCabecera'>
@@ -49,21 +34,14 @@ export const timelineLogica = (contenedor) => {
                             </div>
                             <p class='tiempo'>${post.fechaPublicacion}</p>
                         </div>
+                        <div class='postOptionsContainer'>
+                            <button class='editarPost'>
+                                <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
+                            <button class='borrarPost'>
+                                <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
+                            </button>
+                        </div>
                     </div>
-                        `;
-            if (post.userUid === auth.currentUser.uid) {
-                plantillaPost += ` 
-                    <div class='postOptionsContainer'>
-                        <button class='editarPost'>
-                            <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
-                        <button class='borrarPost'>
-                            <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
-                        </button>
-                    </div>
-                `;
-            } else {
-                plantillaPost += ` 
-                    
                     <div class='postTexto'>
                         <p class ='textoPost'>${post.valorPost}</p>
                     </div>
@@ -78,10 +56,7 @@ export const timelineLogica = (contenedor) => {
                     </div>
                 </section>
             `;
-            }
-            postPublicado.innerHTML = plantillaPost;
         });
-
 
         const borrarPostBtn = postPublicado.querySelectorAll('.borrarPostImg');
         borrarPostBtn.forEach((btn) => {
@@ -110,41 +85,25 @@ export const timelineLogica = (contenedor) => {
             });
         });
 
-        const likeButton = postPublicado.querySelectorAll('.likes');
         const likeImg = postPublicado.querySelectorAll('.likeImage');
-        const contadorLikes = postPublicado.querySelectorAll('.contadorLikes');
-        contadorLikes.forEach((btn) => {
-            if (btn.innerHTML === '0') {
-                btn.classList.add('hide');
-            } else {
-                btn.classList.remove('hide');
-            }
-        });
-
-        likeImg.forEach((btn) => {
-            console.log(btn.src);
-            btn.addEventListener('click', () => {
-                // eslint-disable-next-line no-param-reassign
-                btn.src = './assets/heart_rosa.png';
-            });
-        });
-
+        const likeButton = postPublicado.querySelectorAll('.likes');
         likeButton.forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-                // eslint-disable-next-line no-plusplus, no-param-reassign
-                // btn.src = './assets/heart_rosa.png';
+            btn.addEventListener('click', ({ target: { dataset } }) => {
+                console.log(dataset.uid);
                 const currentUserLike = auth.currentUser.uid;
-                const idLikeButton = e.target.dataset.uid;
+                const idLikeButton = dataset.uid;
                 getPostData2(idLikeButton)
                     .then((document) => {
                         const post = document.data();
+                        console.log(post);
                         if (!post.arrayUsersLikes.includes(currentUserLike)) {
                             const likes = (post.amountLikes) + 1;
                             likePost(idLikeButton, likes, currentUserLike);
+                            likeImg.src = './assets/heart_rosa.png';
                         } else {
                             const likes = (post.amountLikes) - 1;
                             dislikePost(idLikeButton, likes, currentUserLike);
-                            // likeImg.src = './assets/heart.png';
+                            likeImg.src = './assets/heart.png';
                         }
                     })
                     .catch(() => {
@@ -152,4 +111,4 @@ export const timelineLogica = (contenedor) => {
             });
         });
     });
-}; 
+}; */

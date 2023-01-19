@@ -1,5 +1,5 @@
 import {
-    addDoc, doc, collection, where, query, getDocs, getDoc, setDoc, onSnapshot, serverTimestamp, orderBy,
+    addDoc, doc, collection, where, query, getDocs, getDoc, setDoc, onSnapshot, serverTimestamp, orderBy, getFirestore
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { database, auth, currentUser } from '../firebase/configuracionFirebase.js';
@@ -38,11 +38,16 @@ export const creacionPostLogica = (contenedor) => {
                 month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
             });
             const createdAt = serverTimestamp();
-            Promise.all([
+
+            addDoc(collection(database, 'postsTimeline'), {
+                userUid, valorPost, username, petName, amountLikes, arrayUsersLikes, fechaPublicacion, createdAt,
+            });
+
+            /* Promise.all([
                 addDoc(collection(posts, auth.currentUser.uid, 'userPosts'), {
                     userUid, valorPost, username, petName, amountLikes, arrayUsersLikes, fechaPublicacion, createdAt,
                 }),
-            ]);
+            ]); */
         }
         ingresoPost.value = '';
     });
