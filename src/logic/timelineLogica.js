@@ -12,7 +12,8 @@ import Timeline from '../templates/Timeline.js';
 export const timelineLogica = (contenedor) => {
     const postsContainer = contenedor.querySelector('.Timeline');
     const postPublicado = contenedor.querySelector('.postPublicado');
-
+    // const likeImg = postPublicado.querySelectorAll('.likeImage');
+    // console.log(likeImg);
     // consultar texto del post
     const userUid = window.localStorage.getItem('uid');
     const subColRef = collection(database, 'usuarios', userUid, 'userPosts');
@@ -22,7 +23,6 @@ export const timelineLogica = (contenedor) => {
         querySnapshot.forEach((doc) => {
             const post = doc.data();
             const fechaPublicacion = new Date().toLocaleDateString('es-es', { weekday: 'long', month: 'long', day: 'numeric' });
-
             postPublicado.innerHTML += `
                 <section class='postIndividual'>
                     <div class='postEncabezado'>
@@ -84,25 +84,41 @@ export const timelineLogica = (contenedor) => {
             });
         });
 
-        const likeImg = postPublicado.querySelectorAll('.likeImage');
         const likeButton = postPublicado.querySelectorAll('.likes');
+        const likeImg = postPublicado.querySelectorAll('.likeImage');
+        const contadorLikes = postPublicado.querySelectorAll('.contadorLikes');
+        contadorLikes.forEach((btn) => {
+            if (btn.innerHTML === '0') {
+                btn.classList.add('hide');
+            } else {
+                btn.classList.remove('hide');
+            }
+        });
+
+        likeImg.forEach((btn) => {
+            console.log(btn.src);
+            btn.addEventListener('click', () => {
+                // eslint-disable-next-line no-param-reassign
+                btn.src = './assets/heart_rosa.png';
+            });
+        });
+
         likeButton.forEach((btn) => {
-            btn.addEventListener('click', ({ target: { dataset } }) => {
-                console.log(dataset.uid);
+            btn.addEventListener('click', (e) => {
+                // eslint-disable-next-line no-plusplus, no-param-reassign
+                // btn.src = './assets/heart_rosa.png';
                 const currentUserLike = auth.currentUser.uid;
-                const idLikeButton = dataset.uid;
+                const idLikeButton = e.target.dataset.uid;
                 getPostData2(idLikeButton)
                     .then((document) => {
                         const post = document.data();
-                        console.log(post);
                         if (!post.arrayUsersLikes.includes(currentUserLike)) {
                             const likes = (post.amountLikes) + 1;
                             likePost(idLikeButton, likes, currentUserLike);
-                            likeImg.src = './assets/heart_rosa.png';
                         } else {
                             const likes = (post.amountLikes) - 1;
                             dislikePost(idLikeButton, likes, currentUserLike);
-                            likeImg.src = './assets/heart.png';
+                            // likeImg.src = './assets/heart.png';
                         }
                     })
                     .catch(() => {
