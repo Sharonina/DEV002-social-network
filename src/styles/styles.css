@@ -998,6 +998,101 @@ main #content .CreacionPost .botones .ladraloBtn button:hover{
 }
 
 /*TimeLine------------------------------------------------------------*/
+/* main #content .Timeline{
+    background-color: var(--blanco);
+    height: auto;
+    width: 100%;
+}
+
+main #content .Timeline .postPublicado{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main #content .Timeline .postPublicado .postEncabezado{
+    height: 4rem;
+    width: 65%;
+    display: flex;
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+main #content .Timeline .postPublicado .postEncabezado .imagenCabecera{
+    width: 25%;
+    height: 100%;
+}
+
+main #content .Timeline .postPublicado .postEncabezado .imagenCabecera img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+main #content .Timeline .postPublicado .postEncabezado .name{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3%;
+}
+
+main #content .Timeline .postPublicado .postEncabezado .name .nameSuperior{
+    height: 45%;
+    display: flex;
+    align-items: flex-end;
+}
+
+main #content .Timeline .postPublicado .postEncabezado .name .nameSuperior .nombreMascota{
+    font-size: 3.5vw;
+    color: var(--font-gris);
+    font-weight: 600;
+}
+
+main #content .Timeline .postPublicado .postEncabezado .name .nameSuperior .username{
+    font-size: 2.5vw;
+    margin-left: 2%;
+    padding-bottom: 1%;
+    color: var(--font-gris-claro);
+}
+
+main #content .Timeline .postPublicado .postEncabezado .name .tiempo{
+    font-size: 2.2vw;
+    margin-top: 1%;
+    color: var(--font-gris);
+}
+
+main #content .Timeline .postPublicado .postOptionsContainer{
+    height: 4rem;
+    width: 25%;
+    display: flex;
+    margin-top: 3%;
+    margin-right: 5%;
+    position: absolute;
+    right: 0;
+}
+
+main #content .Timeline .postPublicado .postOptionsContainer .editarPost{
+    width: 40%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+main #content .Timeline .postPublicado .postOptionsContainer .editarPost img{
+    width: 80%;
+}
+
+main #content .Timeline .postPublicado .postOptionsContainer .borrarPost{
+    width: 40%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+main #content .Timeline .postPublicado .postOptionsContainer .borrarPost img{
+    width: 80%;
+} */
 main #content .Timeline{
     background-color: var(--blanco);
     height: auto;
