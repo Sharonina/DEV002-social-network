@@ -902,6 +902,7 @@ main #content .header .headerSuperior .menuContainer .menu .opciones input {
     border: 0;
     font-size: 3vw;
     padding: 3%;
+    cursor: pointer;
 }
 
 main #content .header .headerSuperior .menuContainer .menu .opciones input:hover {
