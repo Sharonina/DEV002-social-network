@@ -1244,7 +1244,39 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         height: 59%;
         border-radius: 0.6rem;
     }
-
+    /* Formulario de Registro Mascota */
+    main #content .formularioMascota .logo{
+        height: 15%;
+    }
+    main #content .formularioMascota .logo img{
+        width: 35%;
+    }
+    main #content .formularioMascota .fotoPerfil{
+        height: 13%;
+    }
+    main #content .formularioMascota .fotoPerfil figure{
+        height: 5rem;
+        width: 5rem;
+    }
+    main #content .formularioMascota .fotoPerfil .addImageButton{
+        top: 24%;
+        right: 41%;
+        width: 1.3rem;
+        height: 1.3rem;
+        font-size: 4.2vw;
+    }
+    main #content .formularioMascota form div{
+        width: 60%;
+    }
+    main #content .formularioMascota form div label{
+        font-size: 3vw;
+    }
+    main #content .formularioMascota form div #nombreMascota{
+        font-size: 3vw;
+    }
+    main #content .formularioMascota form div p{
+        font-size: 2vw;
+    }
 }
 
 @media screen and (min-width: 960px){
