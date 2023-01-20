@@ -1596,5 +1596,31 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     }
 
     /* registro */
-    
+    main #content .registro-usuario .campos-registro{
+        width: 70%;
+        height: 44vh;
+        justify-content: space-around;
+    }
+    main #content .registro-usuario .campos-registro label{
+        font-size: 1vw;
+        margin-bottom: 1%;
+    }
+    main #content .registro-usuario .campos-registro div input{
+        font-size: 1vw;
+    }
+    main #content .registro-usuario .campos-registro p{
+        font-size: .9vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo input{
+        width: 28%;
+        font-size: 1.3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle button{
+        width: 28%;
+        font-size: 1.3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .volverInicioSesion{
+        font-size: 1.3vw;
+        margin-top: 1rem;
+    }
 }
