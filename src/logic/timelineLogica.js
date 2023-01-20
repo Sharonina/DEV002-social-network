@@ -13,74 +13,12 @@ export const timelineLogica = (contenedor) => {
     const postPublicado = contenedor.querySelector('.postPublicado');
 
     let id = '';
+    const postId = '';
 
     const userUid = window.localStorage.getItem('uid');
-    /* let allUsersUid = [];
-
-    const collUid = query(collection(database, 'usuarios'));
-
-     getDocs(collUid)
-        .then((snapshot) => {
-            snapshot.docs.forEach((doc) => {
-                allUsersUid.push(doc.id);
-            });
-        });
-    // console.log(allUsersUid); */
 
     const subColRef = query(collection(database, 'postsTimeline'), orderBy('createdAt', 'desc'));
 
-    /* onSnapshot(subColRef, (querySnapshot) => {
-        postPublicado.innerHTML = '';
-        //let plantillaPost = '';
-        querySnapshot.forEach((doc) => {
-            // console.log(doc.data());
-            const post = doc.data();
-            postPublicado.innerHTML +=
-            plantillaPost += `
-                    <div class='postEncabezado'>
-                        <figure class='imagenCabecera'>
-                            <img class='imgUsuario' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
-                        </figure>
-                        <div class='name'>
-                            <div class='nameSuperior'>
-                                <p class='nombreMascota'>${post.petName}</p>
-                                <p class = 'username'>@${post.username}</p>
-                            </div>
-                            <p class='tiempo'>${post.fechaPublicacion}</p>
-                        </div>
-                    </div>
-                        `;
-            if (post.userUid === auth.currentUser.uid) {
-                plantillaPost += `
-                    <div class='postOptionsContainer'>
-                        <button class='editarPost'>
-                            <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
-                        <button class='borrarPost'>
-                            <img class='borrarPostImg' src='./assets/bin.png' data-uid='${doc.id}' alt="Ícono para borrar post"/>
-                        </button>
-                    </div>
-                `;
-            } else {
-                plantillaPost += `
-                <section class='postindividualInf'>
-                    <div class='postTexto'>
-                        <p class ='textoPost'>${post.valorPost}</p>
-                    </div>
-                    <figure class='postImagen'>
-                        <img class ='imagenDelPost' src='' alt = ''/>
-                    </figure>
-                    <div class='postBotones'>
-                        <button class = 'likes' data-uid='${doc.id}'>
-                            <img class='likeImage' data-uid='${doc.id}' src='./assets/heart.png' alt="foto de like a post"/>
-                        </button>
-                        <span class = 'contadorLikes'>${post.arrayUsersLikes.length}</span>
-                    </div>
-                </section>
-            `;
-            }
-            postPublicado.innerHTML = plantillaPost;
-            };
-        }); */
     onSnapshot(subColRef, (querySnapshot) => {
         postPublicado.innerHTML = '';
         querySnapshot.forEach((doc) => {
@@ -99,7 +37,7 @@ export const timelineLogica = (contenedor) => {
                                 </div>
                                 <p class='tiempo'>${post.fechaPublicacion}</p>
                             </div>
-                            <div class='postOptionsContainer'>
+                            <div class='postOptionsContainer hide' data-uid='${doc.id}'>
                                 <button class='editarPost'>
                                     <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
                                 <button class='borrarPost'>
@@ -121,10 +59,21 @@ export const timelineLogica = (contenedor) => {
                         </div>
                     </section>
                 `;
-            /* const optionsContainer = postPublicado.querySelectorAll('.postOptionsContainer');
-            if (post.userUid !== auth.currentUser.uid) {
-                optionsContainer.classList.add('hide');
-            } */
+
+            const optionsContainer = postPublicado.querySelectorAll('.postOptionsContainer');
+            const validacionPostPropio = () => {
+                optionsContainer.forEach((item) => {
+                    getPost(item.dataset.uid)
+                        .then((elUserUid) => {
+                            const datoUsuario = elUserUid.data().userUid;
+                            console.log(datoUsuario);
+                            if (datoUsuario === auth.currentUser.uid) {
+                                item.classList.remove('hide');
+                            }
+                        });
+                });
+            };
+            validacionPostPropio();
         });
 
         const borrarPostBtn = postPublicado.querySelectorAll('.borrarPostImg');
@@ -169,15 +118,12 @@ export const timelineLogica = (contenedor) => {
 
         likeImg.forEach((btn) => {
             btn.addEventListener('click', () => {
-                // eslint-disable-next-line no-param-reassign
                 btn.src = './assets/heart_rosa.png';
             });
         });
 
         likeButton.forEach((btn) => {
             btn.addEventListener('click', (e) => {
-                // eslint-disable-next-line no-plusplus, no-param-reassign
-                // btn.src = './assets/heart_rosa.png';
                 const currentUserLike = auth.currentUser.uid;
                 const idLikeButton = e.target.dataset.uid;
                 getPostData2(idLikeButton)
