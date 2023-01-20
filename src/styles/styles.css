@@ -220,6 +220,17 @@ main #content .registro-usuario .botonesRegistro .registroCorreo input{
     cursor: pointer;
 }
 
+main #content .registro-usuario .botonesRegistro .registroCorreo input:hover{
+    background-color: var(--jade-oscuro);
+}
+main #content .registro-usuario .botonesRegistro .registroGoogle button:hover{
+    color: var(--jade-oscuro);
+    border: .15rem solid var(--jade-oscuro);
+}
+main #content .registro-usuario .botonesRegistro .volverInicioSesion a:hover{
+    color: var(--jade-oscuro);
+}
+
 main #content .registro-usuario .botonesRegistro .registroGoogle{
     height: 25%;
     width: 100%;
@@ -346,6 +357,23 @@ main #content .inicio-sesion .botonesInicioSesion .iniciarSesion input{
     font-size: 3.5vw;
     font-weight: 600;
     cursor: pointer;
+}
+
+main #content .inicio-sesion .botonesInicioSesion .iniciarSesion input:hover{
+    background-color: var(--jade-oscuro);
+}
+
+main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle button:hover{
+    color: var(--jade-oscuro);
+    border: .15rem solid var(--jade-oscuro);
+}
+
+main #content .inicio-sesion .botonesInicioSesion .volverRegistro a:hover{
+    color: var(--jade-oscuro);
+}
+
+main #content .inicio-sesion .botonesInicioSesion .resetContrasena a:hover{
+    color: var(--jade-oscuro);
 }
 
 main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle{
@@ -485,6 +513,10 @@ main #content .formularioMascota .fotoPerfil .addImageButton{
     text-align: center;
 }
 
+main #content .formularioMascota .fotoPerfil .addImageButton:hover{
+    background-color: var(--font-gris-claro);
+}
+
 main #content .formularioMascota form{
     height: 58vh;
     display: flex;
@@ -604,6 +636,10 @@ main #content .formularioMascota .botonGuardar input{
     cursor: pointer;
 }
 
+main #content .formularioMascota .botonGuardar input:hover{
+    background-color: var(--jade-oscuro);
+}
+
 /* Recuperar Contaseña */
 main #content .recuperarContraseña{
     width: 100vw;
@@ -692,6 +728,14 @@ main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena inpu
     font-size: 3.5vw;
     font-weight: 600;
     cursor: pointer;
+}
+
+main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena input:hover{
+    background-color: var(--jade-oscuro);
+}
+
+main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion a:hover{
+    color: var(--jade-oscuro);
 }
 
 main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion{
