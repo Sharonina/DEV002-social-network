@@ -1287,6 +1287,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .registro-usuario .campos-registro p{
         font-size: 2.3vw;
     }
+
 }
 
 @media screen and (min-width: 960px){
@@ -1446,6 +1447,15 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         margin-top: .7rem;
         font-size: 2vw;
     }
+
+    /* 404 */
+    main #content .error404 img{
+        width: 40%;
+    }
+    main #content .error404 h3{
+        font-size: 2.5vw;
+        margin-top: 3rem;
+    }
 }
 
 @media screen and (min-width: 1350px){
@@ -1567,6 +1577,14 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .registro-usuario .botonesRegistro .volverInicioSesion{
         font-size: 1.4vw;
     }
+
+    /* 404 */
+    main #content .error404 img{
+        width: 30%;
+    }
+    main #content .error404 h3{
+        font-size: 1.8vw;
+    }
 }
 
 @media screen and (min-width: 1800px){ /* 1868 x 919 */
@@ -1623,4 +1641,5 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         font-size: 1.3vw;
         margin-top: 1rem;
     }
+
 }
