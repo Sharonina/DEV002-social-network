@@ -220,6 +220,17 @@ main #content .registro-usuario .botonesRegistro .registroCorreo input{
     cursor: pointer;
 }
 
+main #content .registro-usuario .botonesRegistro .registroCorreo input:hover{
+    background-color: var(--jade-oscuro);
+}
+main #content .registro-usuario .botonesRegistro .registroGoogle button:hover{
+    color: var(--jade-oscuro);
+    border: .15rem solid var(--jade-oscuro);
+}
+main #content .registro-usuario .botonesRegistro .volverInicioSesion a:hover{
+    color: var(--jade-oscuro);
+}
+
 main #content .registro-usuario .botonesRegistro .registroGoogle{
     height: 25%;
     width: 100%;
@@ -346,6 +357,23 @@ main #content .inicio-sesion .botonesInicioSesion .iniciarSesion input{
     font-size: 3.5vw;
     font-weight: 600;
     cursor: pointer;
+}
+
+main #content .inicio-sesion .botonesInicioSesion .iniciarSesion input:hover{
+    background-color: var(--jade-oscuro);
+}
+
+main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle button:hover{
+    color: var(--jade-oscuro);
+    border: .15rem solid var(--jade-oscuro);
+}
+
+main #content .inicio-sesion .botonesInicioSesion .volverRegistro a:hover{
+    color: var(--jade-oscuro);
+}
+
+main #content .inicio-sesion .botonesInicioSesion .resetContrasena a:hover{
+    color: var(--jade-oscuro);
 }
 
 main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle{
@@ -485,6 +513,10 @@ main #content .formularioMascota .fotoPerfil .addImageButton{
     text-align: center;
 }
 
+main #content .formularioMascota .fotoPerfil .addImageButton:hover{
+    background-color: var(--font-gris-claro);
+}
+
 main #content .formularioMascota form{
     height: 58vh;
     display: flex;
@@ -604,6 +636,10 @@ main #content .formularioMascota .botonGuardar input{
     cursor: pointer;
 }
 
+main #content .formularioMascota .botonGuardar input:hover{
+    background-color: var(--jade-oscuro);
+}
+
 /* Recuperar Contaseña */
 main #content .recuperarContraseña{
     width: 100vw;
@@ -692,6 +728,14 @@ main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena inpu
     font-size: 3.5vw;
     font-weight: 600;
     cursor: pointer;
+}
+
+main #content .recuperarContraseña .botonRecuperacion .recuperarContrasena input:hover{
+    background-color: var(--jade-oscuro);
+}
+
+main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion a:hover{
+    color: var(--jade-oscuro);
 }
 
 main #content .recuperarContraseña .botonRecuperacion .volverInicioSesion{
@@ -858,6 +902,7 @@ main #content .header .headerSuperior .menuContainer .menu .opciones input {
     border: 0;
     font-size: 3vw;
     padding: 3%;
+    cursor: pointer;
 }
 
 main #content .header .headerSuperior .menuContainer .menu .opciones input:hover {
@@ -1245,6 +1290,49 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         border-radius: 0.6rem;
     }
 
+    /* registro */
+    main #content .registro-usuario .imagen{
+        height: 18%;
+    }
+    main #content .registro-usuario .imagen img{
+        height: 80%;
+    }
+    main #content .registro-usuario .campos-registro{
+        height: 50vh;
+        margin-top: 2%;
+    }
+    main #content .registro-usuario .campos-registro label{
+        font-size: 3.3vw;
+    }
+    main #content .registro-usuario .campos-registro div input{
+        font-size: 3.3vw;
+    }
+    main #content .registro-usuario .botonesRegistro{
+        height: 30vh;
+        padding-top: 2%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo{
+        height: 32%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo input{
+        width: 55%;
+        font-size: 3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle{
+        height: 32%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle button{
+        width: 55%;
+        font-size: 3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .volverInicioSesion{
+        font-size: 3vw;
+        height: 13%;
+    }
+    main #content .registro-usuario .campos-registro p{
+        font-size: 2.3vw;
+    }
+
 }
 
 @media screen and (min-width: 960px){
@@ -1352,6 +1440,67 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         font-size: 2.1vw;
     }
     /*Termina: Recuperar Contraseña */
+
+    /* registro */
+    main #content .registro-usuario{
+        margin: 0;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    main #content .registro-usuario .campos-registro div{
+        width: 55%;
+    }
+    main #content .registro-usuario .campos-registro{
+        width: 80%;
+        justify-content: space-between;
+        height: 48vh;
+        margin-top: 1%;
+    }
+    main #content .registro-usuario .imagen img{
+        height: 83%;
+    }
+    main #content .registro-usuario .campos-registro label{
+        font-size: 1.9vw;
+    }
+    main #content .registro-usuario .campos-registro div input{
+        font-size: 1.9vw;
+        margin-top: 1%;
+        padding-bottom: 0.2vh;
+    }
+    main #content .registro-usuario .campos-registro p{
+        font-size: 1.2vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo input{
+        width: 40%;
+        font-size: 2vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo{
+        height: 37%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle button{
+        width: 40%;
+        font-size: 2vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle{
+        height: 37%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle button img{
+        width: 8%;
+    }
+    main #content .registro-usuario .botonesRegistro .volverInicioSesion{
+        margin-top: .7rem;
+        font-size: 2vw;
+    }
+
+    /* 404 */
+    main #content .error404 img{
+        width: 40%;
+    }
+    main #content .error404 h3{
+        font-size: 2.5vw;
+        margin-top: 3rem;
+    }
 }
 
 @media screen and (min-width: 1350px){
@@ -1447,6 +1596,40 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         border-radius: 0.6rem;
         font-size: 1.5vw;
     }
+
+    /* registro */
+    main #content .registro-usuario .campos-registro div{
+        width: 45%;
+    }
+    main #content .registro-usuario .campos-registro label{
+        font-size: 1.3vw;
+    }
+    main #content .registro-usuario .campos-registro div input{
+        font-size: 1.3vw;
+        margin-top: 0;
+    }
+    main #content .registro-usuario .campos-registro p{
+        font-size: 1vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo input{
+        width: 33%;
+        font-size: 1.5vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle button{
+        width: 33%;
+        font-size: 1.5vw;
+    }
+    main #content .registro-usuario .botonesRegistro .volverInicioSesion{
+        font-size: 1.4vw;
+    }
+
+    /* 404 */
+    main #content .error404 img{
+        width: 30%;
+    }
+    main #content .error404 h3{
+        font-size: 1.8vw;
+    }
 }
 
 @media screen and (min-width: 1800px){ /* 1868 x 919 */
@@ -1474,4 +1657,34 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .inicio .inicio-botones a{
         font-size: 2vw;
     }
+
+    /* registro */
+    main #content .registro-usuario .campos-registro{
+        width: 70%;
+        height: 44vh;
+        justify-content: space-around;
+    }
+    main #content .registro-usuario .campos-registro label{
+        font-size: 1vw;
+        margin-bottom: 1%;
+    }
+    main #content .registro-usuario .campos-registro div input{
+        font-size: 1vw;
+    }
+    main #content .registro-usuario .campos-registro p{
+        font-size: .9vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo input{
+        width: 28%;
+        font-size: 1.3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle button{
+        width: 28%;
+        font-size: 1.3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .volverInicioSesion{
+        font-size: 1.3vw;
+        margin-top: 1rem;
+    }
+
 }
