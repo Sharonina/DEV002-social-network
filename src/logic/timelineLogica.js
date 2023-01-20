@@ -163,6 +163,6 @@ export const timelineLogica = (contenedor) => {
                     // }
                 });
         });
-        // Comentario de prueba para el commit
+        // Comentario de prueba para el commit 2
     });
 };
