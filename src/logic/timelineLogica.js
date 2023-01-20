@@ -28,7 +28,7 @@ export const timelineLogica = (contenedor) => {
                     <section class='postIndividual'>
                         <div class='postEncabezado'>
                             <figure class='imagenCabecera'>
-                                <img class='imgUsuario' src='./assets/dog-iconuser.png' alt = 'foto usuario'/>
+                                <img class='imgUsuario' src='./assets/dog-iconuser.png' data-uid='${doc.id}' alt = 'foto usuario'/>
                             </figure>
                             <div class='name'>
                                 <div class='nameSuperior'>
@@ -66,7 +66,7 @@ export const timelineLogica = (contenedor) => {
                     getPost(item.dataset.uid)
                         .then((elUserUid) => {
                             const datoUsuario = elUserUid.data().userUid;
-                            console.log(datoUsuario);
+                            // console.log(datoUsuario);
                             if (datoUsuario === auth.currentUser.uid) {
                                 item.classList.remove('hide');
                             }
@@ -142,5 +142,27 @@ export const timelineLogica = (contenedor) => {
                     });
             });
         });
+        const imgUsuario = postPublicado.querySelectorAll('.imgUsuario');
+
+        const eluid = (elemento, uidUnitario) => {
+            onAuthStateChanged(auth, () => {
+                getDownloadURL(ref(storage, `ikhybex-Bftzx/ ${uidUnitario}`))
+                    .then((urlimg) => {
+                        // eslint-disable-next-line no-param-reassign
+                        elemento.src = urlimg;
+                    });
+            });
+        };
+        //
+        imgUsuario.forEach((item) => {
+            getPost(item.dataset.uid)
+                .then((elUserUid) => {
+                    const datoUsuario = elUserUid.data().userUid;
+                    // console.log(datoUsuario);
+                    eluid(item, datoUsuario);
+                    // }
+                });
+        });
+        // Comentario de prueba para el commit 2
     });
 };
