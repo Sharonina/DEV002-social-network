@@ -37,7 +37,7 @@ export const timelineLogica = (contenedor) => {
                                 </div>
                                 <p class='tiempo'>${post.fechaPublicacion}</p>
                             </div>
-                            <div class='postOptionsContainer' data-uid='${doc.id}'>
+                            <div class='postOptionsContainer hide' data-uid='${doc.id}'>
                                 <button class='editarPost'>
                                     <img class='editarPostImg' src='./assets/pencil.png' data-uid='${doc.id}' alt="Ícono para editar post"/>
                                 <button class='borrarPost'>
@@ -67,8 +67,8 @@ export const timelineLogica = (contenedor) => {
                         .then((elUserUid) => {
                             const datoUsuario = elUserUid.data().userUid;
                             console.log(datoUsuario);
-                            if (datoUsuario !== auth.currentUser.uid) {
-                                item.classList.add('hide');
+                            if (datoUsuario === auth.currentUser.uid) {
+                                item.classList.remove('hide');
                             }
                         });
                 });
