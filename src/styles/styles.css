@@ -1245,6 +1245,48 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         border-radius: 0.6rem;
     }
 
+    /* registro */
+    main #content .registro-usuario .imagen{
+        height: 18%;
+    }
+    main #content .registro-usuario .imagen img{
+        height: 80%;
+    }
+    main #content .registro-usuario .campos-registro{
+        height: 50vh;
+        margin-top: 2%;
+    }
+    main #content .registro-usuario .campos-registro label{
+        font-size: 3.3vw;
+    }
+    main #content .registro-usuario .campos-registro div input{
+        font-size: 3.3vw;
+    }
+    main #content .registro-usuario .botonesRegistro{
+        height: 30vh;
+        padding-top: 2%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo{
+        height: 32%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroCorreo input{
+        width: 55%;
+        font-size: 3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle{
+        height: 32%;
+    }
+    main #content .registro-usuario .botonesRegistro .registroGoogle button{
+        width: 55%;
+        font-size: 3vw;
+    }
+    main #content .registro-usuario .botonesRegistro .volverInicioSesion{
+        font-size: 3vw;
+        height: 13%;
+    }
+    main #content .registro-usuario .campos-registro p{
+        font-size: 2.3vw;
+    }
 }
 
 @media screen and (min-width: 960px){
