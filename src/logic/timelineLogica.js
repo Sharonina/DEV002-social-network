@@ -118,6 +118,7 @@ export const timelineLogica = (contenedor) => {
 
         likeImg.forEach((btn) => {
             btn.addEventListener('click', () => {
+                // eslint-disable-next-line no-param-reassign
                 btn.src = './assets/heart_rosa.png';
             });
         });
@@ -135,7 +136,6 @@ export const timelineLogica = (contenedor) => {
                         } else {
                             const likes = (post.amountLikes) - 1;
                             dislikePost(idLikeButton, likes, currentUserLike);
-                            // likeImg.src = './assets/heart.png';
                         }
                     })
                     .catch(() => {
@@ -158,11 +158,8 @@ export const timelineLogica = (contenedor) => {
             getPost(item.dataset.uid)
                 .then((elUserUid) => {
                     const datoUsuario = elUserUid.data().userUid;
-                    // console.log(datoUsuario);
                     eluid(item, datoUsuario);
-                    // }
                 });
         });
-        // Comentario de prueba para el commit 2
     });
 };
