@@ -1691,10 +1691,10 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .Home{
         display: flex;
         justify-content: center;
+        height: 25vh;
     }
     main #content .header{
         width: 40%;
-        margin-top: 2%;
     }
     main #content .header .headerSuperior .logoButton{
         width: 35%;
@@ -1726,5 +1726,33 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     }
     main #content .header .headerSuperior .menuContainer .menu .opciones input{
         font-size: 1.1vw;
+    }
+    main #content .CreacionPost{
+        width: 36%;
+        margin-top: 1%;
+        height: 22vh;
+        border-top: .15rem solid var(--morado);
+        border-bottom: .15rem solid var(--morado);
+    }
+    main #content section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    main #content .CreacionPost .post #ingresoPost{
+        font-size: 1.4vw;
+    }
+    main #content .CreacionPost .botones{
+        flex-direction: row;
+    }
+    main #content .CreacionPost .botones .postImageBtn .addImageButton img{
+        width: 3rem;
+    }
+    main #content .CreacionPost .botones .ladraloBtn button{
+        font-size: 1.2vw;
+        height: 75%;
+    }
+    main #content .CreacionPost .botones .postImageBtn{
+        width: 12%;
     }
 }
