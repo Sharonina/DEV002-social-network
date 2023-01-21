@@ -1048,6 +1048,8 @@ main #content .Timeline{
     background-color: var(--blanco);
     height: auto;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 main #content .Timeline .postPublicado{
