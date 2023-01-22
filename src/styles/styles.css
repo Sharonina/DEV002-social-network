@@ -1718,6 +1718,42 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .error404 h3{
         font-size: 1.8vw;
     }
+    /*Inicio sesión*/
+    main #content .inicio-sesion .imagen img {
+        width: 16%;
+    }
+    main #content .inicio-sesion .camposInicioSesion div {
+        width: 36%;
+    }
+    main #content .inicio-sesion .camposInicioSesion label {
+        font-size: 1.3vw;
+    }
+    main #content .inicio-sesion .camposInicioSesion div input {
+        font-size: 1.3vw;
+    }
+    main #content .inicio-sesion .camposInicioSesion p {
+        font-size: 1vw;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .iniciarSesion input {
+        font-size: 1.3vw;
+        width: 33%;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle button {
+        font-size: 1.3vw;
+        width: 33%;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle button img {
+        width: 8%;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .volverRegistro {
+        font-size: 1.3vw;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .resetContrasena {
+        margin-top: 0.6%;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .resetContrasena a {
+        font-size: 1.3vw;
+    }
 }
 
 @media screen and (min-width: 1800px){ /* 1868 x 919 */
