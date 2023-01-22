@@ -53,7 +53,7 @@ export const creacionPostLogica = (contenedor) => {
                 console.log(url);
                 urlArray.push(url);
             } else {
-                urlArray.push('');
+                urlArray.push(null);
             }
             const postURL = urlArray[0];
             console.log(postURL);

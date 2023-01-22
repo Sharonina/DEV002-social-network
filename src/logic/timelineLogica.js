@@ -127,7 +127,7 @@ export const timelineLogica = (contenedor) => {
                 .then((document) => {
                     const post = document.data().postURL;
                     console.log(post);
-                    if (post === null || post === undefined) {
+                    if (post === null || post === undefined || post === '') {
                         console.log('entra aqui');
                         imagen.classList.add('hide');
                     }
