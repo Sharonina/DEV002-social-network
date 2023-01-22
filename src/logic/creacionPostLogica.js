@@ -52,6 +52,8 @@ export const creacionPostLogica = (contenedor) => {
                 const url = await getImageURL(result.ref);
                 console.log(url);
                 urlArray.push(url);
+            } else {
+                urlArray.push('');
             }
             const postURL = urlArray[0];
             console.log(postURL);

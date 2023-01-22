@@ -1159,9 +1159,9 @@ main #content .Timeline .postPublicado .postIndividual .postTexto{
 main #content .Timeline .postPublicado .postIndividual .postImagen {
     width: 4.5rem;
     height: 4.5rem;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     margin-right: 5%;
-    border: .12rem solid var(--jade);
+    /* border: .12rem solid var(--jade); */
     cursor:pointer;
 
 }
@@ -1170,7 +1170,7 @@ main #content .Timeline .postPublicado .postIndividual .postImagen img {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 
 main #content .Timeline .postPublicado .postIndividual .postBotones{
