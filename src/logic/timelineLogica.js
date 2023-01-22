@@ -49,7 +49,7 @@ export const timelineLogica = (contenedor) => {
                             <p class ='textoPost'>${post.valorPost}</p>
                         </div>
                         <figure class='postImagen'>
-                            <img class ='imagenDelPost' src='' alt = ''/>
+                            <img class ='imagenDelPost' src='${post.postURL}' alt = ''/>
                         </figure>
                         <div class='postBotones'>
                             <button class = 'likes' data-uid='${doc.id}'>
