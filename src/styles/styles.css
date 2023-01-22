@@ -1332,7 +1332,47 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .registro-usuario .campos-registro p{
         font-size: 2.3vw;
     }
-
+    /*Inicio sesión*/
+    main #content .inicio-sesion {
+        justify-content: space-evenly;
+    }
+    main #content .inicio-sesion .imagen {
+        height: 17%;
+        justify-content: space-evenly;
+    }
+    main #content .inicio-sesion .imagen img {
+        width: 45%;
+    }
+    main #content .inicio-sesion .camposInicioSesion {
+        height: 25%;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .iniciarSesion {
+        height: 28%;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .iniciarSesion input {
+        width: 55%;
+        height: 100%;
+        /* border-radius: 0.6rem; */
+        font-size: 3vw;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle {
+        height: 28%;
+        margin-top: 2%;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .iniciarGoogle button {
+        height: 100%;
+        width: 55%;
+        /* border-radius: 0.6rem; */
+        font-size: 3vw;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .volverRegistro {
+        font-size: 3vw;
+    }
+    main #content .inicio-sesion .botonesInicioSesion .resetContrasena {
+        font-size: 3vw;
+        margin-top: 2%;
+    }
+    
 }
 
 @media screen and (min-width: 960px){
