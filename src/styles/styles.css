@@ -1372,7 +1372,72 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         font-size: 3vw;
         margin-top: 2%;
     }
-    
+    /*Home*/
+    main #content .header .headerSuperior {
+        padding: 0 10%;
+    }
+    main #content .header .headerSuperior .logoButton {
+        width: 35%;
+    }
+    main #content .header .headerSuperior .profileImage {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+    main #content .header .headerInferior {
+        justify-content: center;
+    }
+    main #content .header .headerInferior .searchContainer {
+        width: 70%;
+    }
+    main #content .header .headerInferior .searchContainer .searcher {
+        font-size: 3vw;
+    }
+    main #content .header .headerInferior .searchContainer .searcherIcon {
+        left: 69%;
+        width: 3%;
+    }
+    main #content .header .headerInferior .matchBtnContainer {
+        justify-content: center;
+    }
+    main #content .header .headerInferior .matchBtnContainer button {
+        width: 65%;
+    }
+    main #content .header .headerInferior .matchBtnContainer button img {
+        width: 52%;
+    }
+    main #content .CreacionPost {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin-inline: auto;
+    }
+    main #content .CreacionPost .post #ingresoPost {
+        font-size: 3vw;
+    }
+    main #content .CreacionPost .botones .postImageBtn {
+        width: 12%;
+    }
+    main #content .CreacionPost .botones .postImageBtn .addImageButton img {
+        width: 2rem;
+    }
+    main #content .CreacionPost .botones .ladraloBtn button {
+        height: 80%;
+        font-size: 3vw;
+    }
+    main #content .Timeline {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    main #content .Timeline .postPublicado {
+        width: 80%;
+    }
+    main #content .Timeline .postPublicado .postIndividual {
+        width: 100%;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
 }
 
 @media screen and (min-width: 960px){
