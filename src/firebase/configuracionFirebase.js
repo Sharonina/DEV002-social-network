@@ -38,12 +38,15 @@ export const coleccionPost = collection(database, 'posts');
 // eslint-disable-next-line max-len
 export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 export const normalSign = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
+
+
 // Guardar username desde el registro de la mascota
 export const guardarDisplayName = (usernameIngresado) => updateProfile(auth.currentUser, {
     displayName: usernameIngresado,
 });
 // Autenticacion con el popup de Google Gmail-------------------------
-export const googleSign = (providero) => signInWithPopup(auth, provider);
+export const googleSign = (provider) => signInWithPopup(auth, provider);
 
 // Get the currently signed-in user
 // The recommended way to get the current user is by setting an observer on the Auth object:
