@@ -1,10 +1,12 @@
 /* eslint-disable max-len */
 import {
-    addDoc, doc, collection, where, query, getDocs, getDoc, setDoc, onSnapshot, serverTimestamp, orderBy, getFirestore
+    addDoc, doc, collection, where, query, getDocs, getDoc, setDoc, onSnapshot, serverTimestamp, orderBy, getFirestore,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { database, auth, currentUser, uploadImage, getImageURL } from '../firebase/configuracionFirebase.js';
 import { ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
+import {
+    database, auth, currentUser, uploadImage, getImageURL,
+} from '../firebase/configuracionFirebase.js';
 
 export const creacionPostLogica = (contenedor) => {
     const ingresoPost = contenedor.querySelector('#ingresoPost');
@@ -48,6 +50,7 @@ export const creacionPostLogica = (contenedor) => {
             if (inputFile.files[0]) {
                 const date = new Date();
                 const result = await uploadImage(inputFile.files[0], date.getTime());
+
                 console.log(result);
                 const url = await getImageURL(result.ref);
                 console.log(url);
@@ -55,6 +58,7 @@ export const creacionPostLogica = (contenedor) => {
             } else {
                 urlArray.push(null);
             }
+
             const postURL = urlArray[0];
             console.log(postURL);
             // -----------------------------------------------------------------

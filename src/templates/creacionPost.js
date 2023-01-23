@@ -8,7 +8,7 @@ const CreacionPost = () => {
         <section class='botones'>
             <div class="postImageBtn">
                 <label for='file' class='addImageButton'>
-                    <img src='../assets/picture_gray.png' alt="ícono para subir una imagen al post"/>
+                    <img class='imagePhotoBtn' src='../assets/picture_gray.png' alt="ícono para subir una imagen al post"/>
                 </label>
                 <input type='file' class='hide' id='file' accept='image'/>
             </div>
