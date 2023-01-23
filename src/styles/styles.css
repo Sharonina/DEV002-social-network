@@ -1072,7 +1072,7 @@ main #content .Timeline .postPublicado .postIndividual{
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado{
-    height: 38%;
+    height: 5rem;
     width: 100%;
     display: flex;
     margin-top: 3%;
@@ -1082,6 +1082,7 @@ main #content .Timeline .postPublicado .postIndividual .postEncabezado .name{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 3%;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior{
@@ -1155,11 +1156,10 @@ main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCa
 }
 
 main #content .Timeline .postPublicado .postIndividual .postTexto{
-    height: 30%;
-    /*cambio Pris: 47% - auto*/
+    height: auto;
     width: 100%;
     color: var(--font-negro);
-    padding-top: 3%;
+    margin-top: 3%;
 }
 /*A;adido por Pris*/
 main #content .Timeline .postPublicado .postIndividual .postTexto p{
@@ -1167,25 +1167,21 @@ main #content .Timeline .postPublicado .postIndividual .postTexto p{
 }
 
 main #content .Timeline .postPublicado .postIndividual .postImagen {
-    width: 15rem;
-    height: 15rem;
-    /* border-radius: 50%; */
-    margin-right: 5%;
-    /* border: .12rem solid var(--jade); */
-    /* cursor:pointer; */
+    width: auto;
+    height: auto;
     margin-top: 3%;
 }
 main #content .Timeline .postPublicado .postIndividual .postImagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* object-position: center; */
-    /* border-radius: 50%; */
+    object-position: center;
+    border-radius: 1rem;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postBotones{
     width: 100%;
-    /* height: 15%; cambios Pris*/
+    margin-top: 3%;
     height: 2rem;
     display: flex;
     justify-content: flex-end;
