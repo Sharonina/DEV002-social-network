@@ -1048,6 +1048,8 @@ main #content .Timeline{
     background-color: var(--blanco);
     height: auto;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 main #content .Timeline .postPublicado{
@@ -1930,4 +1932,72 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         margin-top: 1rem;
     }
 
+    /* Home */
+    main #content .Home{
+        display: flex;
+        justify-content: center;
+        height: 25vh;
+    }
+    main #content .header{
+        width: 40%;
+    }
+    main #content .header .headerSuperior .logoButton{
+        width: 35%;
+    }
+    main #content .header .headerSuperior .profileImage{
+    width: 5.5rem;
+    height: 5.5rem;
+    border: .16rem solid var(--jade);
+    }
+    main #content .header .headerInferior{
+        margin-top: 1%;
+    }
+    main #content .header .headerInferior .searchContainer .searcher{
+        border: .16rem solid var(--rosa);
+        font-size: 1.1vw;
+    }
+    main #content .header .headerInferior .searchContainer .searcherIcon{
+        left: 60%;
+        width: 1.6%;
+    }
+    main #content .header .headerInferior .matchBtnContainer button img{
+        width: 50%;
+    }
+    main #content .header .headerSuperior .menuContainer{
+        width: 9%;
+        height: 72%;
+        right: 32%;
+        top: 80%;
+    }
+    main #content .header .headerSuperior .menuContainer .menu .opciones input{
+        font-size: 1.1vw;
+    }
+    main #content .CreacionPost{
+        width: 36%;
+        margin-top: 1%;
+        height: 22vh;
+        border-top: .15rem solid var(--morado);
+        border-bottom: .15rem solid var(--morado);
+    }
+    main #content section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    main #content .CreacionPost .post #ingresoPost{
+        font-size: 1.4vw;
+    }
+    main #content .CreacionPost .botones{
+        flex-direction: row;
+    }
+    main #content .CreacionPost .botones .postImageBtn .addImageButton img{
+        width: 3rem;
+    }
+    main #content .CreacionPost .botones .ladraloBtn button{
+        font-size: 1.2vw;
+        height: 75%;
+    }
+    main #content .CreacionPost .botones .postImageBtn{
+        width: 12%;
+    }
 }
