@@ -1,8 +1,10 @@
+/* eslint-disable max-len */
 import {
     addDoc, doc, collection, where, query, getDocs, getDoc, setDoc, onSnapshot, serverTimestamp, orderBy, getFirestore
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { database, auth, currentUser } from '../firebase/configuracionFirebase.js';
+import { database, auth, currentUser, uploadImage, getImageURL } from '../firebase/configuracionFirebase.js';
+import { ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 
 export const creacionPostLogica = (contenedor) => {
     const ingresoPost = contenedor.querySelector('#ingresoPost');
@@ -17,6 +19,8 @@ export const creacionPostLogica = (contenedor) => {
 
         const docRef = doc(database, 'usuarios', auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
+        // console.log('Estoy imprimiendo el userUID');
+        // console.log(docRef.id);
 
         if (docSnap.exists()) {
             console.log('Document data:', docSnap.data());
@@ -38,11 +42,28 @@ export const creacionPostLogica = (contenedor) => {
                 month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
             });
             const createdAt = serverTimestamp();
-
-            addDoc(collection(database, 'postsTimeline'), {
-                userUid, valorPost, username, petName, amountLikes, arrayUsersLikes, fechaPublicacion, createdAt,
+            // -----------------------------------------------------------------
+            const inputFile = contenedor.querySelector('#file');
+            const urlArray = [];
+            if (inputFile.files[0]) {
+                const date = new Date();
+                const result = await uploadImage(inputFile.files[0], date.getTime());
+                console.log(result);
+                const url = await getImageURL(result.ref);
+                console.log(url);
+                urlArray.push(url);
+            } else {
+                urlArray.push(null);
+            }
+            const postURL = urlArray[0];
+            console.log(postURL);
+            // -----------------------------------------------------------------
+            const otroArchivo = collection(database, 'postsTimeline');
+            addDoc((otroArchivo), {
+                // eslint-disable-next-line max-len
+                userUid, valorPost, username, petName, amountLikes, arrayUsersLikes, fechaPublicacion, createdAt, postURL,
             });
-
+            // console.log(await getDoc(otroArchivo));
             /* Promise.all([
                 addDoc(collection(posts, auth.currentUser.uid, 'userPosts'), {
                     userUid, valorPost, username, petName, amountLikes, arrayUsersLikes, fechaPublicacion, createdAt,

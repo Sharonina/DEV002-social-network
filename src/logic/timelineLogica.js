@@ -48,8 +48,8 @@ export const timelineLogica = (contenedor) => {
                         <div class='postTexto'>
                             <p class ='textoPost'>${post.valorPost}</p>
                         </div>
-                        <figure class='postImagen'>
-                            <img class ='imagenDelPost' src='' alt = ''/>
+                        <figure class='postImagen' data-uid='${doc.id}'>
+                            <img class ='imagenDelPost' src='${post.postURL}' data-uid='${doc.id}' alt = ''/>
                         </figure>
                         <div class='postBotones'>
                             <button class = 'likes' data-uid='${doc.id}'>
@@ -114,6 +114,48 @@ export const timelineLogica = (contenedor) => {
             } else {
                 btn.classList.remove('hide');
             }
+        });
+
+        function isEmpty(value) {
+            return (value === ' ' || value == null || value.length === 0 || value === 'undefined');
+        }
+        const imagenesPosts = postPublicado.querySelectorAll('.postImagen');
+        // console.log(imagenesPosts);
+        imagenesPosts.forEach((imagen) => {
+            // console.log(imagen.firstChild.nextSibling);
+            getPostData2(imagen.dataset.uid)
+                .then((document) => {
+                    const post = document.data().postURL;
+                    console.log(post);
+                    if (post === null || post === undefined || post === '') {
+                        console.log('entra aqui');
+                        imagen.classList.add('hide');
+                    }
+
+                    // getPost(datoUsuario)
+                    //     .then((a) => {
+                    //         console.log(a);
+                    //     });
+
+                    // if (datoUsuario === auth.currentUser.uid) {
+                    //     imagen.classList.remove('hide');
+                    // }
+                });
+            // imagen.firstChild.nextSibling.classList.add('hide');
+            // if (imagen.firstChild.nextSibling.src === '') {
+            //     console.log('NO VEO ESTO');
+            //     imagen.classList.add('hide');
+            // } else {
+            //     console.log('aqui puse el add');
+            //     imagen.classList.remove('hide');
+            // }
+            // if (isEmpty(imagen.src)) {
+            //     console.log('Imagen no definida');
+            //     imagen.classList.add('hide');
+            // } else {
+            //     console.log('aqui puse el add');
+            //     imagen.classList.remove('hide');
+            // }
         });
 
         likeImg.forEach((btn) => {

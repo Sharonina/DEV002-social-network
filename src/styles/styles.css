@@ -1060,10 +1060,13 @@ main #content .Timeline .postPublicado{
 }
 
 main #content .Timeline .postPublicado .postIndividual{
-    height: 11rem;
+    height: auto;
+    /*cambios Pris: 11rem o 15*/
     width: 90%;
     display: flex;
     flex-direction: column;
+    /*Align items añadido por Pris*/
+    align-items: center;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado{
@@ -1150,20 +1153,38 @@ main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCa
 }
 
 main #content .Timeline .postPublicado .postIndividual .postTexto{
-    height: 47%;
+    height: 30%;
+    /*cambio Pris: 47% - auto*/
     width: 100%;
     color: var(--font-negro);
     padding-top: 3%;
 }
-
+/*A;adido por Pris*/
 main #content .Timeline .postPublicado .postIndividual .postTexto p{
+    font-size: 0.8rem;
+}
+
+main #content .Timeline .postPublicado .postIndividual .postImagen {
+    width: 15rem;
+    height: 15rem;
+    /* border-radius: 50%; */
+    margin-right: 5%;
+    /* border: .12rem solid var(--jade); */
+    /* cursor:pointer; */
+    margin-top: 3%;
+}
+main #content .Timeline .postPublicado .postIndividual .postImagen img {
     width: 100%;
-    font-size: 3vw;
+    height: 100%;
+    object-fit: cover;
+    /* object-position: center; */
+    /* border-radius: 50%; */
 }
 
 main #content .Timeline .postPublicado .postIndividual .postBotones{
     width: 100%;
-    height: 20%;
+    /* height: 15%; cambios Pris*/
+    height: 2rem;
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
@@ -1406,7 +1427,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         margin-top: 2%;
     }
     /*Home*/
-    main #content .header .headerSuperior {
+    /* main #content .header .headerSuperior {
         padding: 0 10%;
     }
     main #content .header .headerSuperior .logoButton {
@@ -1470,7 +1491,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera {
         width: 3.6rem;
         height: 3.6rem;
-    }
+    } */
 }
 
 @media screen and (min-width: 960px){

@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, updateProf
 // eslint-disable-next-line import/no-unresolved, object-curly-newline
 import { getFirestore, collection, getDoc, getDocs, setDoc, doc, onSnapshot, query, where, deleteDoc, updateDoc, arrayRemove, arrayUnion } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 // eslint-disable-next-line import/no-unresolved
-import { getStorage, ref } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
+import { getStorage, ref, getDownloadURL, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 // eslint-disable-next-line object-curly-newline
 import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID } from './secrets.js';
 
@@ -95,7 +95,24 @@ export const getPost = (uid) => getDoc(doc(database, 'postsTimeline', uid));
 // Update doc
 export const updatePost = (uid, nuevoValorPost) => updateDoc(doc(database, 'postsTimeline', uid), nuevoValorPost);
 
+// Funcion para subir imagenes
+export const uploadImage = async (file, nombrePic) => {
+    const storageRefSeleccionado = ref(storage, `listaFotos/${nombrePic}`);
+    return await uploadBytes(storageRefSeleccionado, file);
+    // await getDownloadURL(storageRefSeleccionado)
+    //     .then((url) => {
+    //         console.log(url);
+    //     });
+    // `url` is the download URL for 'images/stars.jpg'
+};
 
+// Funcion que permita obtener la URL de la imagen
+export const getImageURL = async (fileRef) => {
+    return await getDownloadURL(fileRef);
+        // .then((url) => {
+        //     console.log(url);
+        // });
+};
 // eslint-disable-next-line max-len
 // Notas Pris: las siguientes líneas de código solo son para nuestra referencia. Despues las podemos borrar
 
