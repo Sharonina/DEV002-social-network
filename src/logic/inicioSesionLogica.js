@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, getAdditionalUserInfo, deleteUser } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo, deleteUser } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { auth, normalSign, googleSign } from '../firebase/configuracionFirebase.js';
 import { doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
