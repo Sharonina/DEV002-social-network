@@ -1439,7 +1439,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         margin-top: 2%;
     }
     /*Home*/
-    /* main #content .header .headerSuperior {
+    main #content .header .headerSuperior {
         padding: 0 10%;
     }
     main #content .header .headerSuperior .logoButton {
@@ -1503,7 +1503,10 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera {
         width: 3.6rem;
         height: 3.6rem;
-    } */
+    } 
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name {
+        padding-bottom: 5%;
+    }
 }
 
 @media screen and (min-width: 960px){
