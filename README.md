@@ -108,3 +108,10 @@ Pagina para Visualizar perfil de Match - Eliminar Match - Contactar a Match
 
 [Link a Figma](https://www.figma.com/file/Jdz2la2rY8uAYWeGdJZohF/Untitled?node-id=8%3A488&t=OY1SfzVIznxZxQVH-0)
 
+## 6. Test de Usabilidad
+De los test de usabilidad podemos mencionar los siguientes comentarios.
+- Los colores son bonitos y es una paleta de color muy agradable.
+- Parece ser una red social de verdad. Me gustaria registrarme
+amigable
+- El botón de "ládralo" es muy divertido y va acorde a la temática.
+- Por temas se seguridad, no deberiamos mostrar el mensaje de error de la contraseña (Contraseña de 6 caracteres) en la pagina de Inicio de sesión. Solo en la página de Registro.
