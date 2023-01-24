@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import { createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { updateProfile } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { auth, coleccionUsuarios2, storage, storageRef, coleccionNombresUsuario, database } from '../firebase/configuracionFirebase.js';
 import { addDoc, getDocs, doc, setDoc, getFirestore, updateDoc } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 import { currentUser } from '../firebase/configuracionFirebase.js';

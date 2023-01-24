@@ -5,6 +5,7 @@
 * [1. Tema](#1-tema)
 * [2. Protousuarios](#2-protousuarios)
 * [3. Historias de usuario](#3-historias-de-usuario)
+* [4. Prototipos](#4-prototipos)
 
 ## 1. Tema
       Creación de una red social para mascotas
@@ -76,7 +77,15 @@
 * Añadir el CONTADOR de LIKES
 * Estudiar FIREBASE. Algunas ventanas que se consideraron en el diseño ya van a ser dadas por Firebase.
 
-## 5. Prototipo de Alta Fidelidad
+## 4. Protipos
+### 4.1. Prototipo de baja
+![prototipo-de-baja-1](../DEV002-social-network/src/assets/prototipobaja_1.png)
+![prototipo-de-baja-2](../DEV002-social-network/src/assets/prototipobaja_2.png)
+![prototipo-de-baja-3](../DEV002-social-network/src/assets/prototipobaja_3.png)
+![prototipo-de-baja-4](../DEV002-social-network/src/assets/prototipobaja_4.jpg)  
+
+
+### 4.2. Prototipo de Alta Fidelidad
 
  Página de Carga - Página de Bienvenida - Página de Registro de Usuario - Página de Formulario para registro
 
@@ -98,3 +107,4 @@ Pagina para Visualizar perfil de Match - Eliminar Match - Contactar a Match
 ![Paginas de carga, bienvenida y formularios de registro](.src/assets/prototiposAlta05.png)
 
 [Link a Figma](https://www.figma.com/file/Jdz2la2rY8uAYWeGdJZohF/Untitled?node-id=8%3A488&t=OY1SfzVIznxZxQVH-0)
+

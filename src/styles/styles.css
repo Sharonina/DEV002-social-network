@@ -1072,7 +1072,7 @@ main #content .Timeline .postPublicado .postIndividual{
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado{
-    height: 38%;
+    height: 5rem;
     width: 100%;
     display: flex;
     margin-top: 3%;
@@ -1082,6 +1082,7 @@ main #content .Timeline .postPublicado .postIndividual .postEncabezado .name{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 3%;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior{
@@ -1155,11 +1156,10 @@ main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCa
 }
 
 main #content .Timeline .postPublicado .postIndividual .postTexto{
-    height: 30%;
-    /*cambio Pris: 47% - auto*/
+    height: auto;
     width: 100%;
     color: var(--font-negro);
-    padding-top: 3%;
+    margin-top: 3%;
 }
 /*A;adido por Pris*/
 main #content .Timeline .postPublicado .postIndividual .postTexto p{
@@ -1167,25 +1167,21 @@ main #content .Timeline .postPublicado .postIndividual .postTexto p{
 }
 
 main #content .Timeline .postPublicado .postIndividual .postImagen {
-    width: 15rem;
-    height: 15rem;
-    /* border-radius: 50%; */
-    margin-right: 5%;
-    /* border: .12rem solid var(--jade); */
-    /* cursor:pointer; */
+    width: auto;
+    height: auto;
     margin-top: 3%;
 }
 main #content .Timeline .postPublicado .postIndividual .postImagen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* object-position: center; */
-    /* border-radius: 50%; */
+    object-position: center;
+    border-radius: 1rem;
 }
 
 main #content .Timeline .postPublicado .postIndividual .postBotones{
     width: 100%;
-    /* height: 15%; cambios Pris*/
+    margin-top: 3%;
     height: 2rem;
     display: flex;
     justify-content: flex-end;
@@ -1313,39 +1309,53 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         border-radius: 0.6rem;
     }
 
-    /* Formulario de Registro Mascota */
+/* Formulario de Registro Mascota */
     main #content .formularioMascota .logo{
-        height: 15%;
-    }
-    main #content .formularioMascota .logo img{
-        width: 35%;
-    }
-    main #content .formularioMascota .fotoPerfil{
         height: 13%;
     }
+    main #content .formularioMascota .logo img{
+        width: 32%;
+    }
+    main #content .formularioMascota .fotoPerfil{
+        height: 15%;
+    }
     main #content .formularioMascota .fotoPerfil figure{
-        height: 5rem;
-        width: 5rem;
+        height: 4.6rem;
+        width: 4.6rem;
     }
     main #content .formularioMascota .fotoPerfil .addImageButton{
-        top: 24%;
-        right: 41%;
+        top: 23%;
+        right: 42%;
         width: 1.3rem;
         height: 1.3rem;
-        font-size: 4.2vw;
+        font-size: 3.9vw;
+    }
+    main #content .formularioMascota form {
+        height: 63%;
     }
     main #content .formularioMascota form div{
-        width: 60%;
+        width: 55%;
     }
     main #content .formularioMascota form div label{
-        font-size: 3vw;
+        font-size: 2.8vw;
+    }
+    main #content .formularioMascota form div input{
+        font-size: 2.8vw;
     }
     main #content .formularioMascota form div #nombreMascota{
-        font-size: 3vw;
+        font-size: 2.8vw;
     }
     main #content .formularioMascota form div p{
         font-size: 2vw;
-
+    }
+    main #content .formularioMascota .botonGuardar{
+        height: 9%;
+    }
+    main #content .formularioMascota .botonGuardar input{
+        height: 76%;
+        width: 50%;
+        font-size: 2.8vw;
+    }
     /* registro */
     main #content .registro-usuario .imagen{
         height: 18%;
@@ -1536,7 +1546,6 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         width: 50%;
         display: block;
         margin: 0 0 0 auto ;
-        /*background-image: url(../assets/dog-iniciosesion.png);*/
     }
     /* Termina: Registro Usuario */
     /* Pantalla: Recuperar Contraseña */
@@ -1710,6 +1719,46 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         font-size: 2vw;
     }
 
+    /* Formulario de Registro Mascota */
+    main #content .formularioMascota .logo{
+        height: 11%;
+    }
+    main #content .formularioMascota .logo img{
+        width: 15%;
+    }
+    main #content .formularioMascota .fotoPerfil{
+        height: 13%;
+    }
+    main #content .formularioMascota .fotoPerfil .addImageButton{
+        top: 20.5%;
+        right: 46%;
+        width: 1.1rem;
+        height: 1.1rem;
+        font-size: 1.8vw;
+    }
+    main #content .formularioMascota form{
+        height: 67%;
+    }
+    main #content .formularioMascota form div{
+        width: 35%;
+    }
+    main #content .formularioMascota form div label{
+        font-size: 0.9rem;
+    }
+    main #content .formularioMascota form div #nombreMascota{
+        font-size: 0.9rem;
+    }
+    main #content .formularioMascota form div input{
+        font-size: 0.9rem;
+    }
+    main #content .formularioMascota form div p{
+        font-size: 0.6rem;
+    }
+    main #content .formularioMascota .botonGuardar #guardarDatos{
+        width: 30%;
+        font-size: 1.5vw;
+    }
+
 }
 
 @media screen and (min-width: 1350px){
@@ -1875,6 +1924,28 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .inicio-sesion .botonesInicioSesion .resetContrasena a {
         font-size: 1.3vw;
     }
+
+    /* Formulario de Registro Mascota */
+    main #content .formularioMascota .logo{
+        height: 11%;
+    }
+    main #content .formularioMascota .logo img {
+        width: 10%;
+    }
+    main #content .formularioMascota form div{
+        width: 28%;
+    }
+    main #content .formularioMascota .fotoPerfil .addImageButton {
+        width: 1.1rem;
+        height: 1.1rem;
+        font-size: 1.2vw;
+        top: 19%;
+        right: 47%;
+    }
+    main #content .formularioMascota .botonGuardar #guardarDatos{
+        width: 25%;
+        font-size: 1.2vw;
+    }
 }
 
 @media screen and (min-width: 1800px){ /* 1868 x 919 */
@@ -1967,7 +2038,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         width: 9%;
         height: 72%;
         right: 32%;
-        top: 80%;
+        top: 58%;
     }
     main #content .header .headerSuperior .menuContainer .menu .opciones input{
         font-size: 1.1vw;
@@ -1999,5 +2070,85 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     }
     main #content .CreacionPost .botones .postImageBtn{
         width: 12%;
+    }
+
+    main #content .Timeline{
+        width: 36%;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior .nombreMascota{
+        font-size: 1.5vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior .username{
+        font-size: 1.1vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .tiempo{
+        font-size: .8vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postTexto p{
+        font-size: .9vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postBotones{
+        margin-top: 4%;
+        height: 3rem;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLikes{
+        font-size: 1.2vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera{
+        width: 4.7rem;
+        height: 4.7rem;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name{
+        padding-bottom: 1%;
+    }
+
+    /* Formulario de Registro Mascota */
+    main #content .formularioMascota .logo {
+        height: 14%;
+    }
+
+    main #content .formularioMascota .logo img {
+        width: 12%;
+    }
+
+    main #content .formularioMascota .fotoPerfil {
+        height: 13%;
+    }
+
+    main #content .formularioMascota .fotoPerfil figure {
+        height: 7rem;
+        width: 7rem;
+    }
+    main #content .formularioMascota .fotoPerfil .addImageButton {
+        top: 23%;
+        right: 47%;
+        width: 1.6rem;
+        height: 1.6rem;
+        font-size: 1.25vw;
+    }
+
+    main #content .formularioMascota form {
+        height: 60%;
+        width: 100%;
+    }
+
+    main #content .formularioMascota form div label {
+        font-size: .9vw;
+    }
+
+    main #content .formularioMascota .botonGuardar {
+        height: 13%;
+    }
+
+    main #content .formularioMascota .botonGuardar #guardarDatos {
+        width: 23%;
+        height: 58%;
+        font-size: 1.2vw;
+    }
+    main #content .formularioMascota form div p{
+        font-size: .7vw;
+    }
+    main #content .formularioMascota form div #nombreMascota{
+        font-size: .9vw;
     }
 }
