@@ -1504,6 +1504,9 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         width: 3.6rem;
         height: 3.6rem;
     } 
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name {
+        padding-bottom: 5%;
+    }
 }
 
 @media screen and (min-width: 960px){
