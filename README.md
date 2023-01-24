@@ -79,9 +79,21 @@
 
 ## 4. Protipos
 ### 4.1. Prototipo de Baja Fidelidad
+
+Página de Craga - Página de Bienvenida - Página de inicio de sesión - Página de Formulario para registro del usuario - Página de Formulario para registro de la mascota - Página con templates de Header y Timeline
+
 ![prototipo-de-baja-1](./src/assets/prototipobaja_1.png)
+
+Página de recuperación de contraseña - Página de búsqueda de usuarios
+
 ![prototipo-de-baja-2](./src/assets/prototipobaja_2.png)
+
+Página de perfil de usuario - Página de match
+
 ![prototipo-de-baja-3](./src/assets/prototipobaja_3.png)
+
+Página de visualización de publicaciones privadas
+
 ![prototipo-de-baja-4](./src/assets/prototipobaja_4.jpg)  
 
 
