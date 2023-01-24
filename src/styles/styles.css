@@ -2038,7 +2038,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         width: 9%;
         height: 72%;
         right: 32%;
-        top: 80%;
+        top: 58%;
     }
     main #content .header .headerSuperior .menuContainer .menu .opciones input{
         font-size: 1.1vw;
@@ -2070,6 +2070,36 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     }
     main #content .CreacionPost .botones .postImageBtn{
         width: 12%;
+    }
+
+    main #content .Timeline{
+        width: 36%;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior .nombreMascota{
+        font-size: 1.5vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .nameSuperior .username{
+        font-size: 1.1vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name .tiempo{
+        font-size: .8vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postTexto p{
+        font-size: .9vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postBotones{
+        margin-top: 4%;
+        height: 3rem;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postBotones .contadorLikes{
+        font-size: 1.2vw;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .imagenCabecera{
+        width: 4.7rem;
+        height: 4.7rem;
+    }
+    main #content .Timeline .postPublicado .postIndividual .postEncabezado .name{
+        padding-bottom: 1%;
     }
 
     /* Formulario de Registro Mascota */

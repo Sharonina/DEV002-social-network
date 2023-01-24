@@ -2,7 +2,8 @@
 // import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import {
     // eslint-disable-next-line max-len
-    createUser, normalSign, likePost, dislikePost, getPostData, uploadImage, getImageURL, googleSign, guardarDisplayName,
+    createUser, normalSign, likePost, dislikePost, getPostData, uploadImage, getImageURL, googleSign, guardarDisplayName, logOut, auth, deletePost, updatePost,
+
 } from '../src/firebase/configuracionFirebase.js';
 
 /* Test de creación de usuario */
@@ -52,7 +53,6 @@ jest.mock('../src/firebase/configuracionFirebase.js', () => ({
             throw new Error('acción invalida');
         }
     }),
-    // Cambios de Pris
     getPostData: jest.fn((uid) => {
         if (!uid) {
             throw new Error('Error');
@@ -98,6 +98,35 @@ jest.mock('../src/firebase/configuracionFirebase.js', () => ({
         if (usernameIngresado === 'Ursula Arteaga') {
             return ('Username guardado');
         }
+    }),
+    logOut: jest.fn((auth) => {
+        if (!auth) {
+            throw new Error('No estas autenticado. Inicia Sesión o Registrate');
+        }
+    }),
+    deletePost: jest.fn((uid) => {
+        if (!uid) {
+            throw new Error('Uid no coincide');
+        }
+        Promise.resolve({
+            user1: {
+                uid: '1',
+            },
+        });
+    }),
+    updatePost: jest.fn((uid, nuevoValorPost) => {
+        if (!uid) {
+            throw new Error('Uid no coincide');
+        }
+        if (!nuevoValorPost) {
+            throw new Error('se cancela la accion de editar');
+        }
+        Promise.resolve({
+            user1: {
+                uid: '1',
+                valorPost: 'Hola soy una prueba',
+            },
+        });
     }),
 }));
 
@@ -216,7 +245,7 @@ describe('Tests para dar dislike a una publicación', () => {
         }
     });
 });
-// Cambios de Pris
+
 describe('Tests para obtener el dato de un post', () => {
     it('getPostData debería ser una función', () => {
         expect(typeof getPostData).toBe('function');
@@ -289,6 +318,70 @@ describe('Tests para guardar el Displayname', () => {
             await uploadImage(usernameIngresado);
         } catch (error) {
             expect(error.message).toBe('Error');
+
+describe('Tests para cerrar sesión', () => {
+    it(' si esta registrado, puede cerrar sesión', async () => {
+        try {
+            await logOut(auth);
+        } catch (error) {
+            expect(error.message).toBe('No estas autenticado. Inicia Sesión o Registrate');
+        }
+    });
+
+    it('si no esta registrado, no puede ver home y el usuario es enviado a bienvenida', async () => {
+        try {
+            await logOut(!auth);
+        } catch (error) {
+            expect(error.message).toBe('No estas autenticado. Inicia Sesión o Registrate');
+        }
+    });
+});
+describe('Tests para editar post', () => {
+    it('si el uid del usuario registrado no coincide con el uid del creador no puede editar', async () => {
+        const uid = '2';
+        try {
+            await updatePost(uid);
+        } catch (error) {
+            expect(error.message).toBe('se cancela la accion de editar');
+        }
+    });
+
+    it('si valorPost no cambia, se muestra el valor original', async () => {
+        const uid = '1';
+        const valorPost = 'Hola soy una prueba';
+        try {
+            await updatePost(uid, '');
+        } catch (error) {
+            expect(error.message).toBe('se cancela la accion de editar');
+        }
+    });
+
+    it('si valorPost cambia, se actualiza y muestra el nuevo valor', async () => {
+        const uid = '1';
+        const nuevoValorPost = 'Soy una prueba editada';
+        try {
+            await updatePost(uid, nuevoValorPost);
+        } catch (error) {
+            expect(error.message).toBe('Post se actualiza');
+        }
+    });
+});
+describe('Tests para borrar post', () => {
+    it('si el uid del usuario registrado coincide con el uid del creador, puede borrar', async () => {
+        const uid = '1';
+        try {
+            await deletePost(uid);
+        } catch (error) {
+            expect(error.message).toBe('Boton de borrar se muestra');
+        }
+    });
+
+    it('si el uid del usuario registrado no coincide con el uid del creador no puede borrar', async () => {
+        const uid = '2';
+        try {
+            await deletePost(uid);
+        } catch (error) {
+            expect(error.message).toBe('Boton de borrar no se muestra');
         }
     });
 });
