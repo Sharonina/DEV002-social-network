@@ -11,7 +11,8 @@ jest.mock('../src/firebase/configuracionFirebase.js', () => ({
             throw new Error('Error');
         }
         Promise.resolve({
-            email: 'ingrid',
+            email: 'tindoglatam@gmail.com',
+            password: '123456',
         });
     }),
 }));
