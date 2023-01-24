@@ -1449,6 +1449,11 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         width: 3.6rem;
         height: 3.6rem;
     }
+    main #content .header .headerSuperior .menuContainer {
+        right: 13%;
+        height: 70%;
+        width: 25%;
+    }
     main #content .header .headerInferior {
         justify-content: center;
     }
