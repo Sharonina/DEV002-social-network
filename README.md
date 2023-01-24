@@ -75,5 +75,26 @@
 * Hacker Edition para el Final
 * Añadir el CONTADOR de LIKES
 * Estudiar FIREBASE. Algunas ventanas que se consideraron en el diseño ya van a ser dadas por Firebase.
-Hola Soy Ingrid :)
-Y yo soy Pris ^^
+
+## 5. Prototipo de Alta Fidelidad
+
+ Página de Carga - Página de Bienvenida - Página de Registro de Usuario - Página de Formulario para registro
+
+![Paginas de carga, bienvenida y formularios de registro](.src/assets/prototiposAlta01.png)
+
+Página de Inicio de Sesión - Página de Reseteo de Contraseña
+
+![Paginas inicio de sesión y reseteo de contraseña](.src/assets/prototiposAlta02.png)
+
+Página de Timeline -Visualización Post públicos - Cerrar Sesión 
+
+![Paginas de carga, bienvenida y formularios de registro](.src/assets/prototiposAlta03.png)
+
+Página de Busqueda y Match con usuarios Registrados
+
+![Paginas de carga, bienvenida y formularios de registro](.src/assets/prototiposAlta04.png)
+
+Pagina para Visualizar perfil de Match - Eliminar Match - Contactar a Match 
+![Paginas de carga, bienvenida y formularios de registro](.src/assets/prototiposAlta05.png)
+
+[Link a Figma](https://www.figma.com/file/Jdz2la2rY8uAYWeGdJZohF/Untitled?node-id=8%3A488&t=OY1SfzVIznxZxQVH-0)
