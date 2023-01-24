@@ -318,6 +318,9 @@ describe('Tests para guardar el Displayname', () => {
             await uploadImage(usernameIngresado);
         } catch (error) {
             expect(error.message).toBe('Error');
+        }
+    });
+});
 
 describe('Tests para cerrar sesión', () => {
     it(' si esta registrado, puede cerrar sesión', async () => {

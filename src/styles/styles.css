@@ -2031,7 +2031,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
         font-size: 1.1vw;
     }
     main #content .header .headerInferior .searchContainer .searcherIcon{
-        left: 60%;
+        left: 57%;
         width: 1.6%;
     }
     main #content .header .headerInferior .matchBtnContainer button img{
@@ -2040,7 +2040,7 @@ main #content .Timeline .postPublicado .postIndividual .mensajeConfirmacionBorra
     main #content .header .headerSuperior .menuContainer{
         width: 9%;
         height: 72%;
-        right: 32%;
+        right: 35%;
         top: 58%;
     }
     main #content .header .headerSuperior .menuContainer .menu .opciones input{
