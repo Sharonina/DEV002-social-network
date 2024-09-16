@@ -25,6 +25,8 @@ const Header = () => {
                     </button>
                 </div>
             </div>
+            <div class="container">
+            </div>
         </section>
     `;
     return view;

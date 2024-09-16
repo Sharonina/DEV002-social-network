@@ -11,6 +11,7 @@ import Timeline from '../templates/Timeline.js';
 export const timelineLogica = (contenedor) => {
     const postsContainer = contenedor.querySelector('.Timeline');
     const postPublicado = contenedor.querySelector('.postPublicado');
+    const search = contenedor.querySelector('.searcher');
 
     let id = '';
     const postId = '';
@@ -206,5 +207,14 @@ export const timelineLogica = (contenedor) => {
                 });
         });
         // Comentario de prueba para el commit 2
+
+        // getDocs(coleccionNombresUsuario)
+        //     .then((snapshot) => {
+        //         const lista = [];
+        //         snapshot.docs.forEach((doc) => {
+        //             lista.push(doc.data().username);
+        //         });
+        //         searchPokemon(lista);
+        //     });
     });
 };
